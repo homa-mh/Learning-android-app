@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="35dp">
+
+    <ImageButton
+        android:id="@+id/btn_hint"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:background="@null"
+        android:scaleType="fitCenter"
+        android:src="@drawable/lightbulb"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txtQuestion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:text="Question here"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/edtCode"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:layout_marginBottom="280dp"
+        android:background="@drawable/code_editor_dark"
+        android:gravity="top|start"
+        android:hint="Write your code here..."
+        android:inputType="textMultiLine"
+        android:maxLines="10"
+        android:overScrollMode="always"
+        android:padding="12dp"
+        android:scrollbars="vertical"
+        android:textColor="#DCDCDC"
+        android:textColorHint="#888888"
+        android:textSize="14sp"
+        android:typeface="monospace"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Switch
+        android:id="@+id/switchTheme"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#4CAF50"
+        android:checked="true"
+        android:text="Dark Mode"
+        app:layout_constraintBaseline_toBaselineOf="@+id/btn_execute"
+        app:layout_constraintStart_toStartOf="parent"
+        android:thumb="@drawable/switch_code_thumb"
+        android:trackTint="@drawable/switch_code_track"/>
+
+    <Button
+        android:id="@+id/btn_execute"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/nav_buttons"
+        android:text="check"
+        android:textSize="14sp"
+        app:backgroundTint="#4CAF50"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtCode" />
+
+    <Button
+        android:id="@+id/btn_done"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="100dp"
+        android:background="@drawable/nav_buttons"
+        android:text="Done"
+        android:textSize="16sp"
+        android:visibility="invisible"
+        app:backgroundTint="@null"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/txt_question_num"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="1 / 1"
+        app:layout_constraintBottom_toTopOf="@+id/txtQuestion"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+

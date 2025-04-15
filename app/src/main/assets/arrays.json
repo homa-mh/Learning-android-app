@@ -1,0 +1,18 @@
+{
+  "id": 1,
+  "title": "Arrays",
+  "pages": [
+    {
+      "page": 1,
+      "content": "Arrays are used to store multiple values in a single variable."
+    },
+    {
+      "page": 2,
+      "content": "In Java, you declare an array like this: int[] numbers = new int[5];"
+    },
+    {
+      "page": 3,
+      "content": "You can loop through an array using a for loop."
+    }
+  ]
+}

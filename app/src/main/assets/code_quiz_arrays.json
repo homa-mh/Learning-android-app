@@ -1,0 +1,14 @@
+[
+  {
+    "question": "Write a program that prints the sum of 2 and 3.",
+    "expectedOutput": "5",
+    "language": "python",
+    "hint": "Use the print() function and add 2 + 3."
+  },
+  {
+    "question": "Print Hello World in Java.",
+    "expectedOutput": "Hello World",
+    "language": "java",
+    "hint": "Use System.out.println(\"Hello World\"); inside main."
+  }
+]

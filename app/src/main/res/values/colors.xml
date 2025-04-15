@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="menu">#1565C0</color>
+    <color name="menu_unselected">#3080DC</color>
+    <color name="unselected_text">#B0BEC5 </color>
+    <color name="profile">#1E88E5</color>
+    <color name="full_score">#009806</color>
+    <color name="good_score">#D8C200</color>
+    <color name="bad_score">#FF9800</color>
+    <color name="awful_score">#6A0000</color>
+
+
+</resources>

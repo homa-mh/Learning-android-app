@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "title": "Arrays",
+    "lesson_filename": "arrays.json",
+    "lesson_completed": false,
+    "multi_quiz_filename": "quiz_arrays.json",
+    "multi_quiz_score": null,
+    "code_quiz_filename": "code_quiz_arrays.json",
+    "code_quiz_score": null
+  },
+  {
+    "id": 2,
+    "title": "Stacks",
+    "lesson_filename": "stacks.json",
+    "lesson_completed": false,
+    "multi_quiz_filename": "quiz_stacks.json",
+    "multi_quiz_score": null,
+    "code_quiz_filename": "code_quiz_stacks.json",
+    "code_quiz_score": null
+  }
+]
