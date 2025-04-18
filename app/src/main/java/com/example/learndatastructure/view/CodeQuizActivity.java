@@ -42,6 +42,7 @@ public class CodeQuizActivity extends AppCompatActivity {
     private List<CodeQuizModel> quizList;
     private List<Boolean> answerStatusList;
     private List<String> userAnswers = new ArrayList<>();
+    private List<String> executionResults = new ArrayList<>();
     private Switch switchTheme;
     private boolean isAnswerChecked = false;
     private int lessonId;
@@ -102,9 +103,17 @@ public class CodeQuizActivity extends AppCompatActivity {
 
             isAnswerChecked = true;
 
-            if(btnNext.getVisibility() != View.VISIBLE)
+            // Update execution result list
+            if (executionResults.size() > currentIndex) {
+                executionResults.set(currentIndex, result);
+            } else {
+                executionResults.add(result);
+            }
+
+            if (btnNext.getVisibility() != View.VISIBLE)
                 showNextButton();
         });
+
 
 
         btnCheck.setOnClickListener(v -> {
@@ -141,8 +150,9 @@ public class CodeQuizActivity extends AppCompatActivity {
                 displayQuestion();
             } else {
                 Intent intent = new Intent(CodeQuizActivity.this, ResultActivity.class);
-                intent.putExtra("quiz_list", new ArrayList<>(quizList)); // Serializable
+                intent.putExtra("quiz_list", new ArrayList<CodeQuizModel>(quizList)); // Serializable
                 intent.putExtra("user_answers", new ArrayList<>(userAnswers));
+                intent.putExtra("execution_results", new ArrayList<>(executionResults));
                 intent.putExtra("lesson_id", lessonId);
                 intent.putExtra("lesson_title", lessonTitle);
                 intent.putExtra("is_code_quiz", true);

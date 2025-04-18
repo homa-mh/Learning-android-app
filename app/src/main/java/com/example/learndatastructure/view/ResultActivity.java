@@ -21,7 +21,7 @@ public class ResultActivity extends AppCompatActivity {
     private ArrayList<CodeQuizModel> codeQuizList;
     private ArrayList<MultiQuizModel> multiQuizList;
     private ArrayList<String> userAnswers;
-
+    ArrayList<String> executionResults;
     private String lessonTitle;
     private int lessonId;
     private boolean isCodeQuiz;
@@ -36,6 +36,7 @@ public class ResultActivity extends AppCompatActivity {
         txtScore = findViewById(R.id.txtScore);
 
         userAnswers = getIntent().getStringArrayListExtra("user_answers");
+        executionResults = getIntent().getStringArrayListExtra("execution_results");
         lessonId = getIntent().getIntExtra("lesson_id", 0);
         lessonTitle = getIntent().getStringExtra("lesson_title");
         isCodeQuiz = getIntent().getBooleanExtra("is_code_quiz", false);
@@ -52,17 +53,18 @@ public class ResultActivity extends AppCompatActivity {
             for (int i = 0; i < codeQuizList.size(); i++) {
                 if (i < userAnswers.size() && userAnswers.get(i) != null) {
                     String expected = codeQuizList.get(i).getExpectedOutput().trim();
-                    String actual = userAnswers.get(i).trim();
+                    String actual = executionResults.get(i).trim();
                     if (expected.equalsIgnoreCase(actual)) {
                         correctCount++;
                     }
                 }
             }
 
-            int score = (correctCount * 100) / codeQuizList.size();
+            score = (correctCount * 100) / codeQuizList.size();
             txtScore.setText("Score: " + score + "%");
 
-
+            // 🔥 NEW: Use updated adapter constructor for code quiz
+            adapter = new ResultAdapter(this, codeQuizList, userAnswers, executionResults);
         } else {
             multiQuizList = (ArrayList<MultiQuizModel>) getIntent().getSerializableExtra("quiz_list");
 
@@ -77,10 +79,12 @@ public class ResultActivity extends AppCompatActivity {
             score = (correctCount * 100) / multiQuizList.size();
             txtScore.setText("Score: " + score + "%");
 
-            adapter = new ResultAdapter(this, multiQuizList, userAnswers);
-            recyclerView.setLayoutManager(new LinearLayoutManager(this));
-            recyclerView.setAdapter(adapter);
+            adapter = new ResultAdapter(this, multiQuizList, userAnswers); // original
         }
+
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setAdapter(adapter);
+
 
         // Update progress
         HomeRepository repo = new HomeRepository(this);

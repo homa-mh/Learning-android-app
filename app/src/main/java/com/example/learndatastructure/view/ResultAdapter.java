@@ -10,6 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.learndatastructure.R;
+import com.example.learndatastructure.model.CodeQuizModel;
 import com.example.learndatastructure.model.MultiQuizModel;
 
 import java.util.List;
@@ -17,13 +18,27 @@ import java.util.List;
 public class ResultAdapter extends RecyclerView.Adapter<ResultAdapter.ResultViewHolder> {
 
     private Context context;
-    private List<MultiQuizModel> quizList;
+    private List<MultiQuizModel> multiQuizList;
+    private List<CodeQuizModel> codeQuizList;
     private List<String> userAnswers;
+    private List<String> executionResults;
+    private boolean isCodeQuiz;
 
+    // For multi-quiz
     public ResultAdapter(Context context, List<MultiQuizModel> quizList, List<String> userAnswers) {
         this.context = context;
-        this.quizList = quizList;
+        this.multiQuizList = quizList;
         this.userAnswers = userAnswers;
+        this.isCodeQuiz = false;
+    }
+
+    // For code quiz
+    public ResultAdapter(Context context, List<CodeQuizModel> quizList, List<String> userAnswers, List<String> executionResults) {
+        this.context = context;
+        this.codeQuizList = quizList;
+        this.userAnswers = userAnswers;
+        this.executionResults = executionResults;
+        this.isCodeQuiz = true;
     }
 
     @NonNull
@@ -35,44 +50,62 @@ public class ResultAdapter extends RecyclerView.Adapter<ResultAdapter.ResultView
 
     @Override
     public void onBindViewHolder(@NonNull ResultViewHolder holder, int position) {
-        MultiQuizModel question = quizList.get(position);
-        String userAns = userAnswers.get(position);
-        String correctAns = question.getCorrectAnswer();
+        if (isCodeQuiz) {
+            CodeQuizModel question = codeQuizList.get(position);
+            String userCode = userAnswers.get(position);
+            String apiOutput = executionResults.size() > position ? executionResults.get(position) : "";
+            String expected = question.getExpectedOutput();
 
-        holder.txtQuestion.setText((position + 1) + ". " + question.getQuestion());
+            holder.txtQuestion.setText((position + 1) + ". " + question.getQuestion());
+            holder.txtUserAnswer.setText("Your code:\n" + userCode);
+            holder.txtUserAnswer.setTextColor(Color.BLACK);
 
-        // Show "No answer" if userAns is null
-        if (userAns == null || userAns.trim().isEmpty()) {
-            holder.txtUserAnswer.setText("Your answer: No answer");
-            holder.txtUserAnswer.setTextColor(Color.RED);
+            holder.txtApiOutput.setVisibility(View.VISIBLE);
+            holder.txtApiOutput.setText("API Output:\n" + apiOutput);
             holder.txtCorrectAnswer.setVisibility(View.VISIBLE);
-            holder.txtCorrectAnswer.setText("Correct answer: " + correctAns);
-        } else if (!userAns.equals(correctAns)) {
-            holder.txtUserAnswer.setText("Your answer: " + userAns);
-            holder.txtUserAnswer.setTextColor(Color.RED);
-            holder.txtCorrectAnswer.setVisibility(View.VISIBLE);
-            holder.txtCorrectAnswer.setText("Correct answer: " + correctAns);
+            holder.txtCorrectAnswer.setText("Expected Output:\n" + expected);
+
         } else {
-            holder.txtUserAnswer.setText("Your answer: " + userAns);
-            holder.txtUserAnswer.setTextColor(Color.GREEN);
-            holder.txtCorrectAnswer.setVisibility(View.GONE);
+            MultiQuizModel question = multiQuizList.get(position);
+            String userAns = userAnswers.get(position);
+            String correctAns = question.getCorrectAnswer();
+
+            holder.txtQuestion.setText((position + 1) + ". " + question.getQuestion());
+            holder.txtApiOutput.setVisibility(View.GONE); // Hide for multi-quiz
+
+            if (userAns == null || userAns.trim().isEmpty()) {
+                holder.txtUserAnswer.setText("Your answer: No answer");
+                holder.txtUserAnswer.setTextColor(Color.RED);
+                holder.txtCorrectAnswer.setVisibility(View.VISIBLE);
+                holder.txtCorrectAnswer.setText("Correct answer: " + correctAns);
+            } else if (!userAns.equals(correctAns)) {
+                holder.txtUserAnswer.setText("Your answer: " + userAns);
+                holder.txtUserAnswer.setTextColor(Color.RED);
+                holder.txtCorrectAnswer.setVisibility(View.VISIBLE);
+                holder.txtCorrectAnswer.setText("Correct answer: " + correctAns);
+            } else {
+                holder.txtUserAnswer.setText("Your answer: " + userAns);
+                holder.txtUserAnswer.setTextColor(Color.GREEN);
+                holder.txtCorrectAnswer.setVisibility(View.GONE);
+            }
         }
     }
 
-
     @Override
     public int getItemCount() {
-        return quizList.size();
+        return isCodeQuiz ? codeQuizList.size() : multiQuizList.size();
     }
 
     public static class ResultViewHolder extends RecyclerView.ViewHolder {
-        TextView txtQuestion, txtUserAnswer, txtCorrectAnswer;
+        TextView txtQuestion, txtUserAnswer, txtCorrectAnswer, txtApiOutput;
 
         public ResultViewHolder(@NonNull View itemView) {
             super(itemView);
             txtQuestion = itemView.findViewById(R.id.txtQuestionResult);
             txtUserAnswer = itemView.findViewById(R.id.txtUserAnswer);
             txtCorrectAnswer = itemView.findViewById(R.id.txtCorrectAnswer);
+            txtApiOutput = itemView.findViewById(R.id.txtApiOutput);
         }
     }
 }
+
