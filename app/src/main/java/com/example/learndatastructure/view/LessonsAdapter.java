@@ -48,13 +48,19 @@ public class LessonsAdapter extends RecyclerView.Adapter<LessonsAdapter.LessonVi
 
 
         // Click to expand/collapse
-        holder.txtTitle.setOnClickListener(v -> {
-            lesson.setExpanded(!lesson.isExpanded());
+        holder.linearLayoutTitle.setOnClickListener(v -> {
+            boolean expand = !lesson.isExpanded();
+            lesson.setExpanded(expand);
 
-            // Smooth expand/collapse
+            // Smooth expand/collapse layout
             TransitionManager.beginDelayedTransition((ViewGroup) holder.itemView);
             notifyItemChanged(position, lesson);
+
+            // Rotate arrow
+            float rotationAngle = expand ? 90f : 0f;
+            holder.imgArrow.animate().rotation(rotationAngle).setDuration(300).start();
         });
+
 
 
 
@@ -156,8 +162,8 @@ public class LessonsAdapter extends RecyclerView.Adapter<LessonsAdapter.LessonVi
 
         TextView txtTitle, txtMultiQuizScore, txtCodeQuizScore;
         CardView cardLesson, cardMulti, cardCode;
-        ImageView iconMultiQuiz, iconCodeQuiz, iconLesson;
-        LinearLayout expandableLayout;
+        ImageView iconMultiQuiz, iconCodeQuiz, iconLesson, imgArrow;
+        LinearLayout expandableLayout, linearLayoutTitle;
 
         public LessonViewHolder(View itemView) {
             super(itemView);
@@ -176,6 +182,8 @@ public class LessonsAdapter extends RecyclerView.Adapter<LessonsAdapter.LessonVi
 
             expandableLayout = itemView.findViewById(R.id.expandable_layout);
 
+            imgArrow = itemView.findViewById(R.id.imgArrow);
+            linearLayoutTitle = itemView.findViewById(R.id.linearLayoutTitle);
         }
     }
 }
