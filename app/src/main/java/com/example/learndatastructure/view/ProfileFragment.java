@@ -1,6 +1,8 @@
 package com.example.learndatastructure.view;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,6 +13,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.Switch;
 
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -24,13 +27,15 @@ public class ProfileFragment extends Fragment {
     private SettingsViewModel viewModel;
     private Switch darkModeSwitch, soundSwitch, reminderSwitch;
     private Spinner spinnerLanguage;
+    private CardView cardViewShare, cardViewLogout, cardViewDelete;
+    @SuppressLint("MissingInflatedId")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
 
         // گرفتن کانتکست ایمن
-        Context context = requireContext();  // یا getContext() اگر مطمئنی نال نیست
+        Context context = requireContext();
         // گرفتن فونت با توجه به زبان
         Typeface typeface = FontUtil.getFontByLanguage(context);
         // اعمال فونت به کل ویوی فرگمنت
@@ -42,6 +47,9 @@ public class ProfileFragment extends Fragment {
         soundSwitch = view.findViewById(R.id.switch_sound);
         reminderSwitch = view.findViewById(R.id.switch_reminder);
         spinnerLanguage = view.findViewById(R.id.spinner_language);
+        cardViewShare = view.findViewById(R.id.cardViewShare);
+        cardViewLogout = view.findViewById(R.id.cardViewLogout);
+        cardViewDelete = view.findViewById(R.id.cardViewDelete);
 
 
         viewModel.darkMode.observe(getViewLifecycleOwner(), value -> darkModeSwitch.setChecked(value));
@@ -53,6 +61,9 @@ public class ProfileFragment extends Fragment {
         soundSwitch.setOnCheckedChangeListener((buttonView, isChecked) -> viewModel.toggleSound(isChecked));
         reminderSwitch.setOnCheckedChangeListener((buttonView, isChecked) -> viewModel.toggleReminder(isChecked));
 
+
+
+//        language:
 // 🟡 Setup language spinner
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
                 requireContext(),
@@ -82,6 +93,31 @@ public class ProfileFragment extends Fragment {
             public void onNothingSelected(AdapterView<?> parent) {}
         });
 
+//        share
+        cardViewShare.setOnClickListener(v -> {
+            String shareMessage = viewModel.getShareMessage();
+
+            Intent shareIntent = new Intent(Intent.ACTION_SEND);
+            shareIntent.setType("text/plain");
+            shareIntent.putExtra(Intent.EXTRA_TEXT, shareMessage);
+
+            startActivity(Intent.createChooser(shareIntent, "Share via"));
+        });
+
+// logout
+        // چک کردن وضعیت ورود
+        if (viewModel.isLoggedIn()) {
+            cardViewLogout.setVisibility(View.VISIBLE);
+            cardViewDelete.setVisibility(View.VISIBLE); // فعلاً GONE بمونه اگر delete کامل نشده
+        } else {
+            cardViewLogout.setVisibility(View.GONE);
+            cardViewDelete.setVisibility(View.GONE);
+        }
+
+        cardViewLogout.setOnClickListener(v -> {
+
+                new LogoutDialogFragment().show(getParentFragmentManager(), "LogoutDialog");
+        });
 
 
 

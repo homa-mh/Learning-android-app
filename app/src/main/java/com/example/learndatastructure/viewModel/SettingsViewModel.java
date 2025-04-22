@@ -57,4 +57,13 @@ public class SettingsViewModel extends AndroidViewModel {
     public void logout() {
         repo.logout();
     }
+
+    public String getShareMessage() {
+        return "Hey! Check out this awesome app to learn data structures:\nhttps://play.google.com/store/apps/details?id=com.example.learndatastructure";
+    }
+    public boolean isLoggedIn() {
+        return repo.isLoggedIn();
+    }
+
+
 }

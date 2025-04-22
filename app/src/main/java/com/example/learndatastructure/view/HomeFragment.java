@@ -1,11 +1,15 @@
 package com.example.learndatastructure.view;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
@@ -26,9 +30,11 @@ public class HomeFragment extends Fragment {
     private RecyclerView recyclerView;
     private LessonsAdapter lessonAdapter;
     private HomeViewModel lessonViewModel;
+    private Spinner spinnerCategory;
 
     public HomeFragment() {}
 
+    @SuppressLint("MissingInflatedId")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -58,6 +64,31 @@ public class HomeFragment extends Fragment {
             }
         });
 
+
+
+        spinnerCategory = view.findViewById(R.id.spinnerCategory);
+        // پر کردن اسپینر با مقادیر Basic و Advanced
+        ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<>(
+                requireContext(),
+                R.layout.spinner_layout,
+                new String[]{"Basic", "Advanced", "All" }  // گزینه All برای نمایش همه
+        );
+        spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerCategory.setAdapter(spinnerAdapter);
+// هندل انتخاب آیتم از اسپینر
+        spinnerCategory.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String selectedCategory = parent.getItemAtPosition(position).toString();
+                lessonAdapter.filterByCategory(selectedCategory);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                // هیچی نیاز نیست اینجا
+            }
+        });
+
         return view;
     }
 
@@ -66,4 +97,5 @@ public class HomeFragment extends Fragment {
         super.onResume();
         lessonViewModel.refreshLessons();
     }
+
 }

@@ -3,8 +3,10 @@ package com.example.learndatastructure.view;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -16,8 +18,9 @@ import android.widget.Toast;
 import com.example.learndatastructure.R;
 import com.example.learndatastructure.utils.FontUtil;
 import com.example.learndatastructure.utils.LocaleHelper;
+import com.example.learndatastructure.viewModel.SettingsViewModel;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements LogoutDialogFragment.LogoutDialogListener{
 
     private LinearLayout linearHome, linearProfile;
 
@@ -119,6 +122,18 @@ public class MainActivity extends AppCompatActivity {
         } else {
             getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
         }
+    }
+
+    @Override
+    public void onConfirmLogout() {
+        // دسترسی به ویومدل logout و اجراش
+        SettingsViewModel vm = new ViewModelProvider(this).get(SettingsViewModel.class);
+        vm.logout();
+
+        // برو به IntroActivity یا LoginActivity
+        Intent intent = new Intent(this, IntroActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
     }
 
 }

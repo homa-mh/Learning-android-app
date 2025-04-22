@@ -1,6 +1,7 @@
 [
   {
     "id": 1,
+    "category": "basic",
     "title": "Arrays",
     "title_fa": "آرایه‌ها",
     "lesson_filename": "arrays.json",
@@ -16,6 +17,7 @@
   {
     "id": 2,
     "title": "Stacks",
+    "category": "advanced",
     "title_fa": "پشته",
     "lesson_filename": "stacks.json",
     "lesson_filename_fa": "stacks_fa.json",

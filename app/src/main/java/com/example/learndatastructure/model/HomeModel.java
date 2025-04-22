@@ -8,6 +8,7 @@ public class HomeModel {
     private String title;
     private  String title_fa;
     private boolean expanded = false;
+    private String category;
 
     @SerializedName("lesson_filename")
     private String lessonFilename;
@@ -37,6 +38,8 @@ public class HomeModel {
 
     public int getId() { return id; }
     public String getTitle() { return title; }
+    public String getCategory() { return category; }
+
     public String getTitle_fa() { return title_fa; }
 
     public String getLessonFilename() { return lessonFilename; }
@@ -55,6 +58,8 @@ public class HomeModel {
     public Integer getCodeQuizScore() { return codeQuizScore; }
 
     public void setId(int id) { this.id = id; }
+    public void setCategory(String category) { this.category = category; }
+
     public void setTitle(String title) { this.title = title; }
     public void setTitle_fa(String title_fa) { this.title_fa = title_fa; }
 

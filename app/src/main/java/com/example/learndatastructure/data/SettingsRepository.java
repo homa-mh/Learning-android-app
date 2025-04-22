@@ -34,4 +34,8 @@ public class SettingsRepository {
     public void logout() {
         storage.clearAuthData();
     }
+    public boolean isLoggedIn() {
+        return storage.getAuthToken() != null && !storage.getAuthToken().isEmpty();
+    }
+
 }

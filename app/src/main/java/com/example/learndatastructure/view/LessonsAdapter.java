@@ -19,12 +19,15 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.learndatastructure.R;
 import com.example.learndatastructure.model.HomeModel;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class LessonsAdapter extends RecyclerView.Adapter<LessonsAdapter.LessonViewHolder> {
 
     private Context context;
     private List<HomeModel> lessons;
+    private List<HomeModel> allLessons;  // برای ذخیره تمام درس‌ها
+
 
     public LessonsAdapter(Context context) {
         this.context = context;
@@ -171,9 +174,27 @@ public class LessonsAdapter extends RecyclerView.Adapter<LessonsAdapter.LessonVi
     }
 
     public void setLessons(List<HomeModel> lessons) {
-        this.lessons = lessons;
+        this.allLessons = lessons;  // ذخیره لیست کامل
+        this.lessons = new ArrayList<>(lessons);  // نمایش اولیه
         notifyDataSetChanged();
     }
+    public void filterByCategory(String category) {
+        if (allLessons == null) return;
+
+        if (category.equals("All")) {
+            lessons = new ArrayList<>(allLessons);
+        } else {
+            List<HomeModel> filteredList = new ArrayList<>();
+            for (HomeModel lesson : allLessons) {
+                if (lesson.getCategory().equalsIgnoreCase(category)) {
+                    filteredList.add(lesson);
+                }
+            }
+            lessons = filteredList;
+        }
+        notifyDataSetChanged();
+    }
+
 
     // ViewHolder class. which holds our views, obviously.
     public static class LessonViewHolder extends RecyclerView.ViewHolder {
