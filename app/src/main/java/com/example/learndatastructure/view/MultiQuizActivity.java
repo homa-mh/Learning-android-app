@@ -1,6 +1,7 @@
 package com.example.learndatastructure.view;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -12,6 +13,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.learndatastructure.R;
 import com.example.learndatastructure.model.MultiQuizModel;
+import com.example.learndatastructure.utils.FontUtil;
 import com.example.learndatastructure.viewModel.MultiQuizViewModel;
 
 import java.io.Serializable;
@@ -36,6 +38,9 @@ public class MultiQuizActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_multi_quiz);
+
+        Typeface typeface = FontUtil.getFontByLanguage(this);
+        FontUtil.applyFontToView(this, findViewById(android.R.id.content), typeface);
 
         txtQuestion = findViewById(R.id.txtQuestion);
         txtQuestionNum = findViewById(R.id.txt_question_num);

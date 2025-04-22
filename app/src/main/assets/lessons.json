@@ -2,21 +2,29 @@
   {
     "id": 1,
     "title": "Arrays",
+    "title_fa": "آرایه‌ها",
     "lesson_filename": "arrays.json",
+    "lesson_filename_fa": "arrays_fa.json",
     "lesson_completed": false,
     "multi_quiz_filename": "quiz_arrays.json",
+    "multi_quiz_filename_fa": "quiz_arrays_fa.json",
     "multi_quiz_score": null,
     "code_quiz_filename": "code_quiz_arrays.json",
+    "code_quiz_filename_fa": "code_quiz_arrays_fa.json",
     "code_quiz_score": null
   },
   {
     "id": 2,
     "title": "Stacks",
+    "title_fa": "پشته",
     "lesson_filename": "stacks.json",
+    "lesson_filename_fa": "stacks_fa.json",
     "lesson_completed": false,
     "multi_quiz_filename": "quiz_stacks.json",
+    "multi_quiz_filename_fa": "quiz_stacks_fa.json",
     "multi_quiz_score": null,
     "code_quiz_filename": "code_quiz_stacks.json",
+    "code_quiz_filename_fa": "code_quiz_stacks_fa.json",
     "code_quiz_score": null
   }
 ]

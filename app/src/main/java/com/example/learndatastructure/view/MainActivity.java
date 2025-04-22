@@ -4,10 +4,18 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.os.Bundle;
+import android.os.Handler;
+import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.example.learndatastructure.R;
+import com.example.learndatastructure.utils.FontUtil;
+import com.example.learndatastructure.utils.LocaleHelper;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -17,6 +25,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        setLayoutDirection();
+
+        Typeface typeface = FontUtil.getFontByLanguage(this);
+        FontUtil.applyFontToView(this, findViewById(android.R.id.content), typeface);
+
 
         linearHome = findViewById(R.id.linear_home);
         linearProfile = findViewById(R.id.linear_profile);
@@ -71,6 +84,40 @@ public class MainActivity extends AppCompatActivity {
         } else {
             linearHome.setBackgroundResource(R.color.menu_unselected);
             linearProfile.setBackgroundResource(R.color.menu);
+        }
+    }
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(LocaleHelper.setLocale(newBase));
+    }
+    private boolean doubleBackToExitPressedOnce = false;
+    @Override
+    public void onBackPressed() {
+        if (doubleBackToExitPressedOnce) {
+            super.onBackPressed();
+            return;
+        }
+
+        this.doubleBackToExitPressedOnce = true;
+        Toast.makeText(this, "Tab again to exit", Toast.LENGTH_SHORT).show();
+
+        new Handler().postDelayed(() -> doubleBackToExitPressedOnce = false, 2000); // 2 seconds
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        setLayoutDirection();
+    }
+
+    public  void setLayoutDirection(){
+        SharedPreferences prefs = getSharedPreferences("app_settings", MODE_PRIVATE);
+        String lang = prefs.getString("language", "English");
+
+        if (lang.equals("English")) {
+            getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_LTR);
+        } else {
+            getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
         }
     }
 

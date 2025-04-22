@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layoutDirection="locale"
     android:padding="35dp">
 
     <ImageButton
@@ -14,26 +15,28 @@
         android:background="@null"
         android:scaleType="fitCenter"
         android:src="@drawable/lightbulb"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/txtQuestion"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="20dp"
+        android:gravity="start"
         android:text="Question here"
+        android:textDirection="locale"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/txt_question_num" />
 
     <EditText
         android:id="@+id/edtCode"
         android:layout_width="match_parent"
         android:layout_height="250dp"
-        android:layout_marginBottom="280dp"
+        android:layout_marginTop="70dp"
         android:background="@drawable/code_editor_dark"
         android:gravity="top|start"
         android:hint="Write your code here..."
@@ -44,11 +47,12 @@
         android:scrollbars="vertical"
         android:textColor="#DCDCDC"
         android:textColorHint="#888888"
+        android:textDirection="ltr"
         android:textSize="14sp"
         android:typeface="monospace"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtQuestion" />
 
     <Switch
         android:id="@+id/switchTheme"
@@ -56,11 +60,12 @@
         android:layout_height="wrap_content"
         android:backgroundTint="#4CAF50"
         android:checked="true"
-        android:text="Dark Mode"
-        app:layout_constraintBaseline_toBaselineOf="@+id/btn_execute"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layoutDirection="ltr"
+        android:text="@string/settings_darkMode"
         android:thumb="@drawable/switch_code_thumb"
-        android:trackTint="@drawable/switch_code_track"/>
+        android:trackTint="@drawable/switch_code_track"
+        app:layout_constraintBaseline_toBaselineOf="@+id/btn_execute"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/btn_execute"
@@ -69,7 +74,8 @@
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
         android:background="@drawable/nav_buttons"
-        android:text="check"
+        android:layoutDirection="ltr"
+        android:text="@string/lessons_check"
         android:textSize="14sp"
         app:backgroundTint="#4CAF50"
         app:layout_constraintEnd_toEndOf="parent"
@@ -93,12 +99,13 @@
         android:id="@+id/txt_question_num"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="40dp"
         android:layout_weight="1"
         android:gravity="center"
         android:text="1 / 1"
-        app:layout_constraintBottom_toTopOf="@+id/txtQuestion"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_hint" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

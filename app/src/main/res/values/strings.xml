@@ -1,8 +1,30 @@
 <resources>
-    <string name="app_name">Learn DataStructure</string>
+    <string name="app_name">Learn Data Structure</string>
     <string name="menu_home">Lessons</string>
     <string name="menu_profile">Profile</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="lessons_lesson">Lesson</string>
+    <string name="lessons_quiz1">Quiz 1</string>
+    <string name="lessons_quiz2">Quiz 2</string>
+    <string name="login">Login</string>
+    <string name="signup">SignUp</string>
+    <string name="settings_darkMode">Dark Mode</string>
+    <string name="settings_language">Language</string>
+    <string name="settings_appSound">App Sound</string>
+    <string name="settings_reminder">Reminder</string>
+    <string name="settings_share">Tell Your Friends</string>
+    <string name="settings_logout">Logout</string>
+    <string name="settings_delete">Delete Account</string>
+    <string name="lessons_done">Done</string>
+    <string name="lessons_submit">Submit</string>
+    <string name="lessons_score">Score</string>
+    <string name="lessons_userAnswer">Your Answer</string>
+    <string name="lessons_correctAnswer">Correct Answer</string>
+    <string name="lessons_check">Check</string>
+    <string name="settings_on">On</string>
+    <string name="settings_off">Off</string>
+    <string-array name="language_options">
+        <item>English</item>
+        <item>Persian</item>
+    </string-array>
 
 </resources>

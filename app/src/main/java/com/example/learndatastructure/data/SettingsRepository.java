@@ -1,0 +1,37 @@
+package com.example.learndatastructure.data;
+
+import android.content.Context;
+import com.example.learndatastructure.model.SettingsModel;
+
+public class SettingsRepository {
+    private final SettingsLocalStorageManager storage;
+
+    public SettingsRepository(Context context) {
+        storage = new SettingsLocalStorageManager(context);
+    }
+
+    public SettingsModel getSettings() {
+        return new SettingsModel(
+                storage.isDarkMode(),
+                storage.isReminderEnabled(),
+                storage.isSoundEnabled(),
+                storage.getLanguage()
+        );
+    }
+
+    public void saveSettings(SettingsModel settings) {
+        storage.setDarkMode(settings.isDarkMode());
+        storage.setReminderEnabled(settings.isReminders());
+        storage.setSoundEnabled(settings.isSound());
+        storage.setLanguage(settings.getLanguage());
+    }
+
+    public void saveAuth(String token, String username) {
+        storage.saveAuthToken(token);
+        storage.saveUsername(username);
+    }
+
+    public void logout() {
+        storage.clearAuthData();
+    }
+}

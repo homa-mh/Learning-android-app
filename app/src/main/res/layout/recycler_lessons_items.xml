@@ -13,7 +13,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:adjustViewBounds="true"
-        android:alpha="0.3"
+        android:alpha="0.4"
         android:scaleType="centerCrop"
         android:src="@drawable/background"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -26,6 +26,7 @@
         android:id="@+id/parentContentLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layoutDirection="locale"
         android:orientation="vertical"
         android:padding="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -45,10 +46,11 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:gravity="start|center_vertical"
                 android:paddingStart="10dp"
                 android:paddingEnd="15dp"
                 android:text="title"
-                android:textAlignment="textStart"
+                android:textDirection="locale"
                 android:textSize="22sp"
                 tools:ignore="RtlCompat" />
 
@@ -64,18 +66,19 @@
             android:id="@+id/expandable_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="20dp"
             android:orientation="vertical"
-            android:visibility="gone">
+            android:visibility="gone"
+            tools:visibility="visible">
 
-            <!-- CardView ها مثل قبل هستند و نیاز به تغییر خاصی ندارن -->
 
             <!-- Lesson Card -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/card_lesson"
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
-                android:layout_margin="10dp"
+                android:layout_marginTop="15dp"
+                android:layoutDirection="locale"
                 app:cardCornerRadius="16dp">
 
                 <LinearLayout
@@ -97,11 +100,12 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="3"
-                        android:gravity="center_vertical"
+                        android:gravity="start|center_vertical"
                         android:paddingEnd="10dp"
-                        android:text="Lesson"
-                        android:textAlignment="textStart"
-                        android:textSize="16sp" />
+                        android:text="@string/lessons_lesson"
+                        android:textDirection="locale"
+                        android:textSize="16sp"
+                        tools:ignore="RtlSymmetry" />
 
                     <ImageView
                         android:id="@+id/icon_lesson"
@@ -118,7 +122,8 @@
                 android:id="@+id/card_multi_choice"
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
-                android:layout_margin="10dp"
+                android:layout_marginTop="15dp"
+                android:layoutDirection="locale"
                 app:cardCornerRadius="16dp">
 
                 <LinearLayout
@@ -139,21 +144,23 @@
                         android:id="@+id/textView6"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_weight="2"
+                        android:layout_weight="1"
                         android:gravity="center_vertical"
                         android:paddingEnd="10dp"
-                        android:text="Quiz 1"
+                        android:text="@string/lessons_quiz1"
                         android:textAlignment="textStart"
+                        android:textDirection="locale"
                         android:textSize="16sp" />
 
                     <TextView
                         android:id="@+id/txt_multi_quiz_score"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_weight="1"
+                        android:layout_weight="2"
                         android:gravity="center_vertical"
                         android:paddingStart="10dp"
                         android:textAlignment="textEnd"
+                        android:textDirection="locale"
                         android:textSize="16sp" />
 
                     <ImageView
@@ -171,7 +178,8 @@
                 android:id="@+id/card_code_quiz"
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
-                android:layout_margin="10dp"
+                android:layout_marginTop="15dp"
+                android:layoutDirection="locale"
                 app:cardCornerRadius="16dp">
 
                 <LinearLayout
@@ -192,21 +200,23 @@
                         android:id="@+id/textView7"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_weight="2"
+                        android:layout_weight="1"
                         android:gravity="center_vertical"
                         android:paddingEnd="10dp"
-                        android:text="Quiz 2"
+                        android:text="@string/lessons_quiz2"
                         android:textAlignment="textStart"
+                        android:textDirection="locale"
                         android:textSize="16sp" />
 
                     <TextView
                         android:id="@+id/txt_code_quiz_score"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_weight="1"
+                        android:layout_weight="2"
                         android:gravity="center_vertical"
                         android:paddingStart="10dp"
                         android:textAlignment="textEnd"
+                        android:textDirection="locale"
                         android:textSize="16sp" />
 
                     <ImageView

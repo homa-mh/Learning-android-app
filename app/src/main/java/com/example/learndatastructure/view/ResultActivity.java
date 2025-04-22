@@ -1,5 +1,6 @@
 package com.example.learndatastructure.view;
 
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,6 +11,7 @@ import com.example.learndatastructure.R;
 import com.example.learndatastructure.data.HomeRepository;
 import com.example.learndatastructure.model.CodeQuizModel;
 import com.example.learndatastructure.model.MultiQuizModel;
+import com.example.learndatastructure.utils.FontUtil;
 
 import java.util.ArrayList;
 
@@ -31,6 +33,9 @@ public class ResultActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result);
+
+        Typeface typeface = FontUtil.getFontByLanguage(this);
+        FontUtil.applyFontToView(this, findViewById(android.R.id.content), typeface);
 
         recyclerView = findViewById(R.id.recyclerResult);
         txtScore = findViewById(R.id.txtScore);

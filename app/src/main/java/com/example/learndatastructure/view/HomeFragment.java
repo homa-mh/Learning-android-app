@@ -1,5 +1,7 @@
 package com.example.learndatastructure.view;
 
+import android.content.Context;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.learndatastructure.R;
 import com.example.learndatastructure.model.HomeModel;
+import com.example.learndatastructure.utils.FontUtil;
 import com.example.learndatastructure.viewModel.HomeViewModel;
 
 import java.util.List;
@@ -30,6 +33,13 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
+
+        // گرفتن کانتکست ایمن
+        Context context = requireContext();  // یا getContext() اگر مطمئنی نال نیست
+        // گرفتن فونت با توجه به زبان
+        Typeface typeface = FontUtil.getFontByLanguage(context);
+        // اعمال فونت به کل ویوی فرگمنت
+        FontUtil.applyFontToView(context, view, typeface);
 
         recyclerView = view.findViewById(R.id.recycler_lessons);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));

@@ -1,6 +1,7 @@
 package com.example.learndatastructure.data;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.util.Log;
 
 import com.example.learndatastructure.model.HomeModel;
@@ -31,12 +32,19 @@ public class HomeRepository {
         try {
             InputStream is;
 
-            // Check if lessons.json exists in internal storage
-            java.io.File file = new java.io.File(context.getFilesDir(), "lessons.json");
+            // خواندن زبان از SharedPreferences
+            SharedPreferences prefs = context.getSharedPreferences("app_settings", Context.MODE_PRIVATE);
+            String lang = prefs.getString("language", "English");
+
+
+            String fileName = "lessons.json";
+
+            // بررسی فایل در internal storage
+            java.io.File file = new java.io.File(context.getFilesDir(), fileName);
             if (file.exists()) {
-                is = context.openFileInput("lessons.json"); // Read from internal storage
+                is = context.openFileInput(fileName); // اگر قبلاً ذخیره شده
             } else {
-                is = context.getAssets().open("lessons.json"); // Fall back to assets on first run
+                is = context.getAssets().open(fileName); // فایل پیش‌فرض در assets
             }
 
             BufferedReader reader = new BufferedReader(new InputStreamReader(is));
@@ -47,16 +55,18 @@ public class HomeRepository {
             }
             reader.close();
 
-            // Convert the JSON string to a list of HomeModel objects using Gson
+            // تبدیل JSON به لیست HomeModel
             Gson gson = new Gson();
             Type listType = new TypeToken<List<HomeModel>>(){}.getType();
             lessons = gson.fromJson(json.toString(), listType);
 
         } catch (IOException e) {
             e.printStackTrace();
+            Log.e("HomeRepository", "Error loading lessons", e);
         }
         return lessons;
     }
+
 
 
     // Method to update a lesson progress and save it to lessons.json

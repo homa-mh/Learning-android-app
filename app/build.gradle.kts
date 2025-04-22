@@ -56,6 +56,7 @@ dependencies {
 
 //for animation
     implementation ("androidx.transition:transition:1.4.1")
+    implementation ("com.airbnb.android:lottie:6.0.0")
 
 
 }

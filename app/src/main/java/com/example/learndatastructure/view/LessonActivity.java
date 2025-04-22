@@ -5,14 +5,18 @@ import androidx.lifecycle.ViewModelProvider;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.learndatastructure.R;
 
 import com.example.learndatastructure.data.LessonRepository;
+import com.example.learndatastructure.utils.FontUtil;
 import com.example.learndatastructure.viewModel.HomeViewModel;
 import com.example.learndatastructure.viewModel.LessonViewModel;
 
@@ -30,6 +34,9 @@ public class LessonActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lesson);
+
+        Typeface typeface = FontUtil.getFontByLanguage(this);
+        FontUtil.applyFontToView(this, findViewById(android.R.id.content), typeface);
 
 
         txtTitle = findViewById(R.id.txt_title);
@@ -98,8 +105,10 @@ public class LessonActivity extends AppCompatActivity {
                 // Finalize progress and navigate to HomeActivity
                 updateLessonProgress(lessonId, true);
                 Intent i = new Intent(LessonActivity.this, MainActivity.class);
+                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 i.putExtra("tab", "home");
                 startActivity(i);
+                finish();
             }
         });
 
@@ -121,5 +130,8 @@ public class LessonActivity extends AppCompatActivity {
                 .get(HomeViewModel.class);
         lessonViewModel.updateLessonProgress(lessonId, lessonCompleted);
     }
+
+
+
 
 }

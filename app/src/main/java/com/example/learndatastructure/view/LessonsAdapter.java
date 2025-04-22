@@ -3,6 +3,7 @@ package com.example.learndatastructure.view;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.transition.TransitionManager;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -40,7 +41,6 @@ public class LessonsAdapter extends RecyclerView.Adapter<LessonsAdapter.LessonVi
     @Override
     public void onBindViewHolder(LessonViewHolder holder, int position) {
         HomeModel lesson = lessons.get(position);
-        holder.txtTitle.setText(lesson.getTitle());
 
         // Expand/collapse section
         boolean isExpanded = lesson.isExpanded();
@@ -112,33 +112,51 @@ public class LessonsAdapter extends RecyclerView.Adapter<LessonsAdapter.LessonVi
             holder.iconCodeQuiz.setImageResource(R.drawable.completed);  // Change icon if score is available
         }
 
+        // خواندن زبان از SharedPreferences
+        SharedPreferences prefs = context.getSharedPreferences("app_settings", Context.MODE_PRIVATE);
+        String lang = prefs.getString("language", "English");
 
+        String lesson_title, lesson_filename, multi_quiz_filename, code_quiz_filename;
+        int lesson_id = lesson.getId() ;
 
+        if (lang.equals("English")){
+            lesson_title = lesson.getTitle();
+            lesson_filename = lesson.getLessonFilename();
+            multi_quiz_filename = lesson.getMultiQuizFilename();
+            code_quiz_filename = lesson.getCodeQuizFilename();
+        }else {
+            lesson_title = lesson.getTitle_fa();
+            lesson_filename = lesson.getLessonFilename_fa();
+            multi_quiz_filename = lesson.getMultiQuizFilename_fa();
+            code_quiz_filename = lesson.getCodeQuizFilename_fa();
+        }
+
+        holder.txtTitle.setText(lesson_title);
 
 //      OnClickListeners for each card (lesson, quiz1, quiz2):
         holder.cardLesson.setOnClickListener(v -> {
             Intent intent = new Intent(context, LessonActivity.class);
 
-            intent.putExtra("lesson_title", lesson.getTitle());
-            intent.putExtra("lesson_filename", lesson.getLessonFilename());
-            intent.putExtra("lesson_id", lesson.getId());
+            intent.putExtra("lesson_title", lesson_title);
+            intent.putExtra("lesson_filename", lesson_filename);
+            intent.putExtra("lesson_id", lesson_id);
 
             context.startActivity(intent);
         });
         holder.cardMulti.setOnClickListener(v -> {
             Intent intent = new Intent(context, MultiQuizActivity.class);
 
-            intent.putExtra("lesson_title", lesson.getTitle());
-            intent.putExtra("multi_quiz_filename", lesson.getMultiQuizFilename());
-            intent.putExtra("lesson_id", lesson.getId());
+            intent.putExtra("lesson_title", lesson_title);
+            intent.putExtra("multi_quiz_filename", multi_quiz_filename);
+            intent.putExtra("lesson_id", lesson_id);
             context.startActivity(intent);
         });
         holder.cardCode.setOnClickListener(v -> {
             Intent intent = new Intent(context, CodeQuizActivity.class);
 
-            intent.putExtra("lesson_title", lesson.getTitle());
-            intent.putExtra("code_quiz_filename", lesson.getCodeQuizFilename());
-            intent.putExtra("lesson_id", lesson.getId());
+            intent.putExtra("lesson_title", lesson_title);
+            intent.putExtra("code_quiz_filename", code_quiz_filename);
+            intent.putExtra("lesson_id", lesson_id);
             context.startActivity(intent);
         });
 

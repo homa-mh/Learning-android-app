@@ -29,7 +29,8 @@
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        android:layoutDirection="ltr">
 
         <!-- Home Tab -->
         <LinearLayout
@@ -52,9 +53,9 @@
                 android:id="@+id/txt_home"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Lessons"
+                android:text="@string/menu_home"
                 android:textColor="@color/white"
-                android:textSize="12sp"/>
+                android:textSize="12sp" />
         </LinearLayout>
 
         <!-- Profile Tab -->
@@ -79,9 +80,9 @@
                 android:id="@+id/txt_profile"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Profile"
+                android:text="@string/menu_profile"
                 android:textColor="@color/white"
-                android:textSize="12sp"/>
+                android:textSize="12sp" />
         </LinearLayout>
 
     </LinearLayout>

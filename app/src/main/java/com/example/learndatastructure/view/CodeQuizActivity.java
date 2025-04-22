@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -26,6 +27,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.learndatastructure.R;
 import com.example.learndatastructure.model.CodeQuizModel;
+import com.example.learndatastructure.utils.FontUtil;
 import com.example.learndatastructure.viewModel.CodeQuizViewModel;
 
 import java.util.ArrayList;
@@ -54,6 +56,9 @@ public class CodeQuizActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_code_quiz);
+
+        Typeface typeface = FontUtil.getFontByLanguage(this);
+        FontUtil.applyFontToView(this, findViewById(android.R.id.content), typeface);
 
         if (!isNetworkAvailable(this)) {
             Toast.makeText(this, "No Internet connection!", Toast.LENGTH_SHORT).show();
@@ -89,7 +94,6 @@ public class CodeQuizActivity extends AppCompatActivity {
         });
 
         viewModel.getExecutionResult().observe(this, result -> {
-            Toast.makeText(this, "Output:\n" + result, Toast.LENGTH_LONG).show();
 
             String expected = quizList.get(currentIndex).getExpectedOutput().trim();
             String actual = result.trim();
