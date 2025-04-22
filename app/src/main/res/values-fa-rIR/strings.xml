@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">آموزش ساختمان داده</string>
+    <string name="menu_home">دروس</string>
+    <string name="menu_profile">پروفایل</string>
+    <string name="lessons_lesson">آموزش</string>
+    <string name="lessons_quiz1">آزمون 1</string>
+    <string name="lessons_quiz2">آزمون 2</string>
+    <string name="login">ورود</string>
+    <string name="signup">ثبت نام</string>
+    <string name="settings_darkMode">حالت تاریک</string>
+    <string name="settings_language">زبان</string>
+    <string name="settings_appSound">صدا</string>
+    <string name="settings_reminder">یادآوری</string>
+    <string name="settings_share">اشتراک گذاری برنامه</string>
+    <string name="settings_logout">خروج از حساب کاربری</string>
+    <string name="settings_delete">حذف حساب کاربری</string>
+    <string name="lessons_done">پایان</string>
+    <string name="lessons_score">نمره</string>
+    <string name="lessons_userAnswer">پاسخ شما</string>
+    <string name="lessons_correctAnswer">پاسخ صحیح</string>
+    <string name="lessons_check">بررسی</string>
+    <string name="settings_on">فعال</string>
+    <string name="settings_off">غیر فعال</string>
+    <string name="lessons_submit">ثبت</string>
+</resources>
