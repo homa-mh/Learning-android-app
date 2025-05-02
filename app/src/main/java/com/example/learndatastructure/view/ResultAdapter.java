@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -57,13 +58,13 @@ public class ResultAdapter extends RecyclerView.Adapter<ResultAdapter.ResultView
             String expected = question.getExpectedOutput();
 
             holder.txtQuestion.setText((position + 1) + ". " + question.getQuestion());
-            holder.txtUserAnswer.setText("Your code:\n" + userCode);
+            holder.txtUserAnswer.setText( userCode);
             holder.txtUserAnswer.setTextColor(Color.BLACK);
 
-            holder.txtApiOutput.setVisibility(View.VISIBLE);
-            holder.txtApiOutput.setText("API Output:\n" + apiOutput);
-            holder.txtCorrectAnswer.setVisibility(View.VISIBLE);
-            holder.txtCorrectAnswer.setText("Expected Output:\n" + expected);
+            holder.linearApiResponse.setVisibility(View.VISIBLE);
+            holder.txtApiOutput.setText( apiOutput);
+            holder.linearCorrectAnswer.setVisibility(View.VISIBLE);
+            holder.txtCorrectAnswer.setText( expected);
 
         } else {
             MultiQuizModel question = multiQuizList.get(position);
@@ -71,22 +72,22 @@ public class ResultAdapter extends RecyclerView.Adapter<ResultAdapter.ResultView
             String correctAns = question.getCorrectAnswer();
 
             holder.txtQuestion.setText((position + 1) + ". " + question.getQuestion());
-            holder.txtApiOutput.setVisibility(View.GONE); // Hide for multi-quiz
+            holder.linearApiResponse.setVisibility(View.GONE); // Hide for multi-quiz
 
             if (userAns == null || userAns.trim().isEmpty()) {
-                holder.txtUserAnswer.setText("Your answer: No answer");
+                holder.txtUserAnswer.setText(R.string.result_noAnswer);
                 holder.txtUserAnswer.setTextColor(Color.RED);
-                holder.txtCorrectAnswer.setVisibility(View.VISIBLE);
-                holder.txtCorrectAnswer.setText("Correct answer: " + correctAns);
+                holder.linearCorrectAnswer.setVisibility(View.VISIBLE);
+                holder.txtCorrectAnswer.setText( correctAns);
             } else if (!userAns.equals(correctAns)) {
-                holder.txtUserAnswer.setText("Your answer: " + userAns);
+                holder.txtUserAnswer.setText( userAns);
                 holder.txtUserAnswer.setTextColor(Color.RED);
-                holder.txtCorrectAnswer.setVisibility(View.VISIBLE);
-                holder.txtCorrectAnswer.setText("Correct answer: " + correctAns);
+                holder.linearCorrectAnswer.setVisibility(View.VISIBLE);
+                holder.txtCorrectAnswer.setText( correctAns);
             } else {
-                holder.txtUserAnswer.setText("Your answer: " + userAns);
+                holder.txtUserAnswer.setText( userAns);
                 holder.txtUserAnswer.setTextColor(Color.GREEN);
-                holder.txtCorrectAnswer.setVisibility(View.GONE);
+                holder.linearCorrectAnswer.setVisibility(View.GONE);
             }
         }
     }
@@ -98,6 +99,7 @@ public class ResultAdapter extends RecyclerView.Adapter<ResultAdapter.ResultView
 
     public static class ResultViewHolder extends RecyclerView.ViewHolder {
         TextView txtQuestion, txtUserAnswer, txtCorrectAnswer, txtApiOutput;
+        LinearLayout linearCorrectAnswer , linearApiResponse ;
 
         public ResultViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -105,6 +107,9 @@ public class ResultAdapter extends RecyclerView.Adapter<ResultAdapter.ResultView
             txtUserAnswer = itemView.findViewById(R.id.txtUserAnswer);
             txtCorrectAnswer = itemView.findViewById(R.id.txtCorrectAnswer);
             txtApiOutput = itemView.findViewById(R.id.txtApiOutput);
+
+            linearCorrectAnswer = itemView.findViewById(R.id.linearCorrectAnswer);
+            linearApiResponse = itemView.findViewById(R.id.linearApiResponse);
         }
     }
 }

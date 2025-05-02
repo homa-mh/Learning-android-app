@@ -1,6 +1,7 @@
 package com.example.learndatastructure.view;
 
 import android.annotation.SuppressLint;
+import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
@@ -10,8 +11,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.Switch;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
@@ -25,9 +29,13 @@ import com.example.learndatastructure.viewModel.SettingsViewModel;
 public class ProfileFragment extends Fragment {
     public ProfileFragment() {}
     private SettingsViewModel viewModel;
+    @SuppressLint("UseSwitchCompatOrMaterialCode")
     private Switch darkModeSwitch, soundSwitch, reminderSwitch;
     private Spinner spinnerLanguage;
     private CardView cardViewShare, cardViewLogout, cardViewDelete;
+    private LinearLayout linearSetTime;
+    private TextView txtReminderTime;
+
     @SuppressLint("MissingInflatedId")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -50,16 +58,62 @@ public class ProfileFragment extends Fragment {
         cardViewShare = view.findViewById(R.id.cardViewShare);
         cardViewLogout = view.findViewById(R.id.cardViewLogout);
         cardViewDelete = view.findViewById(R.id.cardViewDelete);
+        linearSetTime = view.findViewById(R.id.linearSetReminderTime);
+        txtReminderTime = view.findViewById(R.id.txtReminderTime);
+
+        // Set initial time
+        int[] time = viewModel.getReminderTime();
+        String formatted = String.format("%02d:%02d", time[0], time[1]);
+        txtReminderTime.setText(formatted);
 
 
-        viewModel.darkMode.observe(getViewLifecycleOwner(), value -> darkModeSwitch.setChecked(value));
-        viewModel.sound.observe(getViewLifecycleOwner(), value -> soundSwitch.setChecked(value));
-        viewModel.reminder.observe(getViewLifecycleOwner(), value -> reminderSwitch.setChecked(value));
+        viewModel.darkMode.observe(getViewLifecycleOwner(), value -> {
+            darkModeSwitch.setChecked(value);
+            darkModeSwitch.setText(value ? R.string.settings_on : R.string.settings_off);
+        });
+        viewModel.sound.observe(getViewLifecycleOwner(), value -> {
+            soundSwitch.setChecked(value);
+            soundSwitch.setText(value ? R.string.settings_on : R.string.settings_off);
+        });
+        viewModel.reminder.observe(getViewLifecycleOwner(), value -> {
+            reminderSwitch.setChecked(value);
+            reminderSwitch.setText(value ? R.string.settings_on : R.string.settings_off);
+        });
         viewModel.language.observe(getViewLifecycleOwner(), this::updateLanguageSpinnerSelection);
 
-        darkModeSwitch.setOnCheckedChangeListener((buttonView, isChecked) -> viewModel.toggleDarkMode(isChecked));
-        soundSwitch.setOnCheckedChangeListener((buttonView, isChecked) -> viewModel.toggleSound(isChecked));
-        reminderSwitch.setOnCheckedChangeListener((buttonView, isChecked) -> viewModel.toggleReminder(isChecked));
+
+        darkModeSwitch.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            viewModel.toggleDarkMode(isChecked);
+            darkModeSwitch.setText(isChecked ? R.string.settings_on : R.string.settings_off);
+        });
+        soundSwitch.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            viewModel.toggleSound(isChecked);
+            soundSwitch.setText(isChecked ? R.string.settings_on : R.string.settings_off);
+        });
+        reminderSwitch.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            viewModel.toggleReminder(isChecked);
+            reminderSwitch.setText(isChecked ? R.string.settings_on : R.string.settings_off);
+        });
+
+        linearSetTime.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int[] currentTime = viewModel.getReminderTime(); // e.g., [8, 0]
+
+                TimePickerDialog dialog = new TimePickerDialog(getContext(),
+                        (timePicker, hour, minute) -> {
+                            viewModel.updateReminderTime(hour, minute);
+                            String formatted = String.format("%02d:%02d", hour, minute);
+                            Toast.makeText(getContext(), "Reminder set to " + formatted, Toast.LENGTH_SHORT).show();
+                            txtReminderTime.setText( formatted);
+                        },
+                        currentTime[0],
+                        currentTime[1],
+                        true
+                );
+                dialog.show();
+            }
+        });
 
 
 

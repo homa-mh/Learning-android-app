@@ -59,8 +59,14 @@ public class MainActivity extends AppCompatActivity implements LogoutDialogFragm
     }
 
     private void loadFragment(Fragment fragment, boolean toRight) {
-        FragmentTransaction transaction = getSupportFragmentManager()
-                .beginTransaction();
+        Fragment currentFragment = getSupportFragmentManager().findFragmentById(R.id.fragment_container);
+
+        // Prevent reloading the same fragment
+        if (currentFragment != null && currentFragment.getClass().equals(fragment.getClass())) {
+            return;
+        }
+
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
 
         if (toRight) {
             transaction.setCustomAnimations(
@@ -76,6 +82,7 @@ public class MainActivity extends AppCompatActivity implements LogoutDialogFragm
 
         transaction.replace(R.id.fragment_container, fragment).commit();
     }
+
 
 
 

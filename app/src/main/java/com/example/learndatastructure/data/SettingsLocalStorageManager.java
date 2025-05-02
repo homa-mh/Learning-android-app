@@ -23,10 +23,22 @@ public class SettingsLocalStorageManager {
     public void setReminderEnabled(boolean enabled) {
         prefs.edit().putBoolean("reminder", enabled).apply();
     }
-
     public boolean isReminderEnabled() {
         return prefs.getBoolean("reminder", true);
     }
+
+
+    public void setReminderTime(int hour, int minute) {
+        int totalMinutes = hour * 60 + minute;
+        prefs.edit().putInt("reminder_time_minutes", totalMinutes).apply();
+    }
+
+    public int[] getReminderTime() {
+        int totalMinutes = prefs.getInt("reminder_time_minutes", 8 * 60); // default: 08:00
+        return new int[]{ totalMinutes / 60, totalMinutes % 60 };
+    }
+
+
 
     public void setSoundEnabled(boolean enabled) {
         prefs.edit().putBoolean("sound", enabled).apply();

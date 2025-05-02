@@ -23,4 +23,13 @@
     <string name="settings_on">فعال</string>
     <string name="settings_off">غیر فعال</string>
     <string name="lessons_submit">ثبت</string>
+    <string name="result_question">"سوال : "</string>
+    <string name="result_yourAnswer">"پاسخ شما : "</string>
+    <string name="result_correctAnswer">"پاسخ صحیح : "</string>
+    <string name="result_returned">"خروجی کد : "</string>
+    <string name="result_noAnswer">بدون پاسخ</string>
+    <string name="result_score">"نمره : "</string>
+    <string name="lessons_next">بعدی</string>
+    <string name="notif_title">یادآوری روزانه</string>
+    <string name="notif_text">هی! یادت نره امروز ساختمان داده بخونی!</string>
 </resources>

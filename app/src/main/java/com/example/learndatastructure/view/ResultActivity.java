@@ -82,7 +82,7 @@ public class ResultActivity extends AppCompatActivity {
             }
 
             score = (correctCount * 100) / multiQuizList.size();
-            txtScore.setText("Score: " + score + "%");
+            txtScore.setText(score + "%");
 
             adapter = new ResultAdapter(this, multiQuizList, userAnswers); // original
         }

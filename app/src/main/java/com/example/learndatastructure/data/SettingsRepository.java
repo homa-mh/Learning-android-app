@@ -15,7 +15,8 @@ public class SettingsRepository {
                 storage.isDarkMode(),
                 storage.isReminderEnabled(),
                 storage.isSoundEnabled(),
-                storage.getLanguage()
+                storage.getLanguage(),
+                storage.getReminderTime() // returns int[]
         );
     }
 
@@ -24,7 +25,10 @@ public class SettingsRepository {
         storage.setReminderEnabled(settings.isReminders());
         storage.setSoundEnabled(settings.isSound());
         storage.setLanguage(settings.getLanguage());
+        int[] time = settings.getReminderTime();
+        storage.setReminderTime(time[0], time[1]);
     }
+
 
     public void saveAuth(String token, String username) {
         storage.saveAuthToken(token);

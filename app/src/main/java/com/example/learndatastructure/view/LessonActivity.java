@@ -97,7 +97,7 @@ public class LessonActivity extends AppCompatActivity {
                 txtPageNum.setText((currentPage + 1) + "/" + pages.size());
                 // If we've arrived at the last page, change the button text to "Done"
                 if (currentPage == pages.size() - 1) {
-                    btnNext.setText("Done");
+                    btnNext.setText(R.string.lessons_done);
                 }
             }
             // Else, if we're already on the last page:

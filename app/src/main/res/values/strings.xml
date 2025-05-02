@@ -5,6 +5,19 @@
     <string name="lessons_lesson">Lesson</string>
     <string name="lessons_quiz1">Quiz 1</string>
     <string name="lessons_quiz2">Quiz 2</string>
+    <string name="lessons_done">Done</string>
+    <string name="lessons_submit">Submit</string>
+    <string name="lessons_score">Score</string>
+    <string name="lessons_userAnswer">Your Answer</string>
+    <string name="lessons_correctAnswer">Correct Answer</string>
+    <string name="lessons_check">Check</string>
+    <string name="lessons_next">Next</string>
+    <string name="result_question">Question : </string>
+    <string name="result_yourAnswer">Your answer : </string>
+    <string name="result_returned">What is returned : </string>
+    <string name="result_correctAnswer">Correct Answer : </string>
+    <string name="result_score">Score : </string>
+    <string name="result_noAnswer">No answer</string>
     <string name="login">Login</string>
     <string name="signup">SignUp</string>
     <string name="settings_darkMode">Dark Mode</string>
@@ -14,19 +27,17 @@
     <string name="settings_share">Tell Your Friends</string>
     <string name="settings_logout">Logout</string>
     <string name="settings_delete">Delete Account</string>
-    <string name="lessons_done">Done</string>
-    <string name="lessons_submit">Submit</string>
-    <string name="lessons_score">Score</string>
-    <string name="lessons_userAnswer">Your Answer</string>
-    <string name="lessons_correctAnswer">Correct Answer</string>
-    <string name="lessons_check">Check</string>
     <string name="settings_on">On</string>
     <string name="settings_off">Off</string>
+
+    <string name="notif_title">Daily reminder</string>
+    <string name="notif_text">Hey! Don\'t forget to study data structure!</string>
+
     <string-array name="language_options">
         <item>English</item>
         <item>Persian</item>
     </string-array>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 
 </resources>

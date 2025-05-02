@@ -71,7 +71,7 @@ public class HomeFragment extends Fragment {
         ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<>(
                 requireContext(),
                 R.layout.spinner_layout,
-                new String[]{"Basic", "Advanced", "All" }  // گزینه All برای نمایش همه
+                new String[]{ "All" , "Basic", "Advanced" }  // گزینه All برای نمایش همه
         );
         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerCategory.setAdapter(spinnerAdapter);

@@ -203,9 +203,9 @@ public class CodeQuizActivity extends AppCompatActivity {
                 hideNextButton();
 
                 if (currentIndex == quizList.size() - 1) {
-                    btnNext.setText("Done");
+                    btnNext.setText(R.string.lessons_done);
                 } else {
-                    btnNext.setText("Next");
+                    btnNext.setText(R.string.lessons_next);
                 }
 
                 // Fade in views

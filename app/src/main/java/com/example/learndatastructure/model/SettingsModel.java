@@ -1,16 +1,20 @@
 package com.example.learndatastructure.model;
 
+import java.sql.Time;
+
 public class SettingsModel {
     private boolean darkMode;
     private boolean reminders;
     private boolean sound;
     private String language;
+    private int[] reminderTime;
 
-    public SettingsModel(boolean darkMode, boolean reminders, boolean sound, String language) {
+    public SettingsModel(boolean darkMode, boolean reminders, boolean sound, String language, int[] reminderTime) {
         this.darkMode = darkMode;
         this.reminders = reminders;
         this.sound = sound;
         this.language = language;
+        this.reminderTime = reminderTime;
     }
 
     public boolean isDarkMode() {
@@ -44,4 +48,15 @@ public class SettingsModel {
     public void setLanguage(String language) {
         this.language = language;
     }
+
+
+
+    public int[] getReminderTime() {
+        return reminderTime;
+    }
+
+    public void setReminderTime(int[] reminderTime) {
+        this.reminderTime = reminderTime;
+    }
+
 }

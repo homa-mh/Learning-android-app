@@ -8,6 +8,7 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.example.learndatastructure.data.SettingsRepository;
 import com.example.learndatastructure.model.SettingsModel;
+import com.example.learndatastructure.notifications.ReminderHelper;
 
 public class SettingsViewModel extends AndroidViewModel {
     private final SettingsRepository repo;
@@ -17,6 +18,7 @@ public class SettingsViewModel extends AndroidViewModel {
     public MutableLiveData<Boolean> reminder = new MutableLiveData<>();
     public MutableLiveData<Boolean> sound = new MutableLiveData<>();
     public MutableLiveData<String> language = new MutableLiveData<>();
+
 
     public SettingsViewModel(@NonNull Application application) {
         super(application);
@@ -40,7 +42,25 @@ public class SettingsViewModel extends AndroidViewModel {
         settings.setReminders(value);
         reminder.setValue(value);
         repo.saveSettings(settings);
+
+        int[] time = settings.getReminderTime();
+        if (value) {
+            ReminderHelper.setDailyReminder(getApplication(), time[0], time[1]);
+        } else {
+            ReminderHelper.cancelReminder(getApplication());
+        }
     }
+
+    public void updateReminderTime(int hour, int minute) {
+        settings.setReminderTime(new int[]{hour, minute});
+        repo.saveSettings(settings);
+
+        if (settings.isReminders()) {
+            ReminderHelper.setDailyReminder(getApplication(), hour, minute);
+        }
+    }
+
+
 
     public void toggleSound(boolean value) {
         settings.setSound(value);
@@ -64,6 +84,11 @@ public class SettingsViewModel extends AndroidViewModel {
     public boolean isLoggedIn() {
         return repo.isLoggedIn();
     }
+
+    public int[] getReminderTime() {
+        return settings.getReminderTime();
+    }
+
 
 
 }
