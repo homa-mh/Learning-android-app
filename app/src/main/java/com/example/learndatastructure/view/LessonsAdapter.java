@@ -45,9 +45,20 @@ public class LessonsAdapter extends RecyclerView.Adapter<LessonsAdapter.LessonVi
     public void onBindViewHolder(LessonViewHolder holder, int position) {
         HomeModel lesson = lessons.get(position);
 
+        // get the language from sharedPreferences (needed for image rotation and loading lessons, ...)
+        SharedPreferences prefs = context.getSharedPreferences("app_settings", Context.MODE_PRIVATE);
+        String lang = prefs.getString("language", "English");
+
         // Expand/collapse section
         boolean isExpanded = lesson.isExpanded();
         holder.expandableLayout.setVisibility(isExpanded ? View.VISIBLE : View.GONE);
+
+        // to rotate the image if language was farsi
+        if (lang.equals("English")) {
+            holder.imgArrow.setScaleX(1f);
+        } else {
+            holder.imgArrow.setScaleX(-1f);
+        }
 
 
         // Click to expand/collapse
@@ -60,7 +71,10 @@ public class LessonsAdapter extends RecyclerView.Adapter<LessonsAdapter.LessonVi
             notifyItemChanged(position, lesson);
 
             // Rotate arrow
-            float rotationAngle = expand ? 90f : 0f;
+            float rotationAngle = expand
+                    ? (lang.equals("English") ? 90f : -90f)
+                    : 0f;
+
             holder.imgArrow.animate().rotation(rotationAngle).setDuration(300).start();
         });
 
@@ -115,9 +129,6 @@ public class LessonsAdapter extends RecyclerView.Adapter<LessonsAdapter.LessonVi
             holder.iconCodeQuiz.setImageResource(R.drawable.completed);  // Change icon if score is available
         }
 
-        // خواندن زبان از SharedPreferences
-        SharedPreferences prefs = context.getSharedPreferences("app_settings", Context.MODE_PRIVATE);
-        String lang = prefs.getString("language", "English");
 
         String lesson_title, lesson_filename, multi_quiz_filename, code_quiz_filename;
         int lesson_id = lesson.getId() ;
@@ -133,10 +144,15 @@ public class LessonsAdapter extends RecyclerView.Adapter<LessonsAdapter.LessonVi
             multi_quiz_filename = lesson.getMultiQuizFilename_fa();
             code_quiz_filename = lesson.getCodeQuizFilename_fa();
         }
+        // hide code quiz if not exists
+        if(lesson.getCodeQuizFilename() == null){
+            holder.cardCode.setVisibility(View.GONE);
+        }
+
 
         holder.txtTitle.setText(lesson_title);
 
-//      OnClickListeners for each card (lesson, quiz1, quiz2):
+        // OnClickListeners for each card (lesson, quiz1, quiz2):
         holder.cardLesson.setOnClickListener(v -> {
             Intent intent = new Intent(context, LessonActivity.class);
 

@@ -6,7 +6,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@color/background"
     android:padding="35dp">
 
 
@@ -17,6 +17,7 @@
         android:layout_marginTop="100dp"
         android:gravity="start"
         android:text="Question here"
+        android:textColor="@color/txtColor"
         android:textDirection="locale"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -39,22 +40,26 @@
         <RadioButton
             android:id="@+id/option1"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:textColor="@color/txtColor" />
 
         <RadioButton
             android:id="@+id/option2"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:textColor="@color/txtColor" />
 
         <RadioButton
             android:id="@+id/option3"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:textColor="@color/txtColor" />
 
         <RadioButton
             android:id="@+id/option4"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:textColor="@color/txtColor" />
     </RadioGroup>
 
     <LinearLayout
@@ -76,6 +81,7 @@
             android:layout_weight="0"
             android:background="@drawable/nav_buttons"
             android:text="&lt;"
+            android:textColor="@color/white"
             app:backgroundTint="@null" />
 
         <TextView
@@ -84,7 +90,8 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="1 / 1" />
+            android:text="1 / 1"
+            android:textColor="@color/txtColor" />
 
         <Button
             android:id="@+id/btnNext"
@@ -93,6 +100,7 @@
             android:layout_weight="0"
             android:background="@drawable/nav_buttons"
             android:text="&gt;"
+            android:textColor="@color/white"
             app:backgroundTint="@null" />
     </LinearLayout>
 
@@ -103,6 +111,7 @@
         android:layout_marginBottom="70dp"
         android:background="@drawable/nav_buttons"
         android:text="@string/lessons_submit"
+        android:textColor="@color/white"
         android:textSize="16sp"
         app:backgroundTint="@null"
         app:layout_constraintBottom_toBottomOf="parent"

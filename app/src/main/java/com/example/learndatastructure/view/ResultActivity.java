@@ -1,7 +1,11 @@
 package com.example.learndatastructure.view;
 
+import android.content.Context;
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -12,6 +16,7 @@ import com.example.learndatastructure.data.HomeRepository;
 import com.example.learndatastructure.model.CodeQuizModel;
 import com.example.learndatastructure.model.MultiQuizModel;
 import com.example.learndatastructure.utils.FontUtil;
+import com.example.learndatastructure.utils.LocaleHelper;
 
 import java.util.ArrayList;
 
@@ -23,11 +28,12 @@ public class ResultActivity extends AppCompatActivity {
     private ArrayList<CodeQuizModel> codeQuizList;
     private ArrayList<MultiQuizModel> multiQuizList;
     private ArrayList<String> userAnswers;
-    ArrayList<String> executionResults;
+    private ArrayList<String> executionResults;
     private String lessonTitle;
     private int lessonId;
     private boolean isCodeQuiz;
     private int score;
+    private ImageButton btnExit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +45,15 @@ public class ResultActivity extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.recyclerResult);
         txtScore = findViewById(R.id.txtScore);
+        btnExit = findViewById(R.id.btnExit);
+
+        btnExit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(ResultActivity.this, MainActivity.class);
+                startActivity(i);
+            }
+        });
 
         userAnswers = getIntent().getStringArrayListExtra("user_answers");
         executionResults = getIntent().getStringArrayListExtra("execution_results");
@@ -98,5 +113,9 @@ public class ResultActivity extends AppCompatActivity {
         } else {
             repo.updateMultiQuizProgress(lessonId, score);
         }
+    }
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(LocaleHelper.setLocale(newBase));
     }
 }

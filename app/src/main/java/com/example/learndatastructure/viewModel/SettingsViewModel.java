@@ -3,6 +3,7 @@ package com.example.learndatastructure.viewModel;
 import android.app.Application;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 
@@ -36,7 +37,11 @@ public class SettingsViewModel extends AndroidViewModel {
         settings.setDarkMode(value);
         darkMode.setValue(value);
         repo.saveSettings(settings);
+        AppCompatDelegate.setDefaultNightMode(
+                value ? AppCompatDelegate.MODE_NIGHT_YES : AppCompatDelegate.MODE_NIGHT_NO
+        );
     }
+
 
     public void toggleReminder(boolean value) {
         settings.setReminders(value);

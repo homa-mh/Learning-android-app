@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#0D0D0D</color>
+    <color name="white">#FFFFFF</color>
+
+    <color name="menu_unselected">#39AEA8</color> <!-- آبی روشن مناسب پس‌زمینه تیره -->
+    <color name="menu">#266D67</color> <!-- آبی تیره‌تر برای موارد غیرفعال -->
+    <color name="unselected_text">#B0BEC5</color> <!-- خاکستری کم‌رنگ اما خوانا -->
+
+
+    <color name="full_score">#81C784</color> <!-- سبز چشم‌نواز روی زمینه تیره -->
+    <color name="good_score">#FFF176</color> <!-- زرد متمایل به کرم -->
+    <color name="bad_score">#FFB74D</color> <!-- نارنجی ملایم -->
+    <color name="awful_score">#E57373</color> <!-- قرمز با شفافیت کمتر -->
+
+    <color name="background">#121212</color> <!-- استاندارد دارک مود -->
+    <color name="txtColor">#E0E0E0</color> <!-- خاکستری روشن برای نوشته‌ها -->
+</resources>

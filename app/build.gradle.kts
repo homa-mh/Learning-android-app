@@ -58,5 +58,5 @@ dependencies {
     implementation ("androidx.transition:transition:1.4.1")
     implementation ("com.airbnb.android:lottie:6.0.0")
 
-
+    implementation ("com.google.android.gms:play-services-ads:22.6.0")
 }

@@ -1,12 +1,42 @@
 [
   {
-    "question": "What is the index of the first element in an array?",
-    "options": ["1", "0", "-1", "Depends on language"],
-    "correctAnswerIndex": 1
+    "question": "What type of data structure is an array?",
+    "options": ["Linear", "Non-linear", "Tree", "Graph"],
+    "answerIndex": 0
   },
   {
-    "question": "Which of the following allows random access?",
-    "options": ["Array", "Linked List", "Stack", "Queue"],
-    "correctAnswerIndex": 0
+    "question": "Which of the following is true about arrays (lists) in Python?",
+    "options": [
+      "They have a fixed size",
+      "They cannot store strings",
+      "They require all elements to be the same type",
+      "They are dynamic in size by default"
+    ],
+    "answerIndex": 3
+  },
+  {
+    "question": "When can Binary Search be applied to a list?",
+    "options": [
+      "When the list is sorted",
+      "When the list contains only characters",
+      "When the list has more than 5 elements",
+      "When the list is nested"
+    ],
+    "answerIndex": 0
+  },
+  {
+    "question": "What is the time complexity of inserting an element at the beginning of a Python list?",
+    "options": ["O(1)", "O(log n)", "O(n)", "O(n^2)"],
+    "answerIndex": 2
+  },
+  {
+    "question": "What is one of the benefits of Python lists compared to traditional arrays?",
+    "options": [
+      "Fixed data types",
+      "Sequential access only",
+      "Dynamic resizing",
+      "Size must be defined at the start"
+    ],
+    "answerIndex": 2
   }
 ]

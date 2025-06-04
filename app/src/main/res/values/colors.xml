@@ -1,15 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
-    <color name="menu">#1565C0</color>
-    <color name="menu_unselected">#3080DC</color>
-    <color name="unselected_text">#B0BEC5 </color>
-    <color name="profile">#1E88E5</color>
-    <color name="full_score">#009806</color>
-    <color name="good_score">#D8C200</color>
-    <color name="bad_score">#FF9800</color>
-    <color name="awful_score">#6A0000</color>
+    <color name="black">#1C1C1E</color>
+    <color name="white">#FFFFFF</color>
 
+    <color name="menu">#1E88E5</color> <!-- آبی کلاسیک آموزشی -->
+    <color name="menu_unselected">#90CAF9</color> <!-- آبی کم‌رنگ برای حالت غیرانتخاب‌شده -->
+    <color name="unselected_text">#9E9E9E</color> <!-- خاکستری برای نوشته غیرفعال -->
+
+    <color name="profile">#42A5F5</color> <!-- آبی روشن برای آواتار یا دکمه‌های پروفایل -->
+
+    <color name="full_score">#388E3C</color> <!-- سبز طبیعی و خوش‌رنگ برای عالی -->
+    <color name="good_score">#FBC02D</color> <!-- زرد ملایم -->
+    <color name="bad_score">#FB8C00</color> <!-- نارنجی آموزش‌محور -->
+    <color name="awful_score">#E53935</color> <!-- قرمز روشن اما نه زننده -->
+
+    <color name="background">#FFFCFC</color> <!-- پس‌زمینه بسیار روشن با حس کاغذ -->
+    <color name="txtColor">#212121</color> <!-- رنگ نوشته‌ها برای خوانایی بالا -->
 
 </resources>

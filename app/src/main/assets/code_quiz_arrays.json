@@ -1,14 +1,32 @@
 [
   {
-    "question": "Write a program that prints the sum of 2 and 3.",
-    "expectedOutput": "5",
+    "question": "Write a program that creates an array of integers [10, 20, 30, 40] and prints the second element.",
+    "expectedOutput": "20",
     "language": "python",
-    "hint": "Use the print() function and add 2 + 3."
+    "hint": "Remember: indexing in Python starts from 0."
   },
   {
-    "question": "Print Hello World in Java.",
-    "expectedOutput": "Hello World",
-    "language": "java",
-    "hint": "Use System.out.println(\"Hello World\"); inside main."
+    "question": "Write a program that creates an array of 5 numbers and prints their sum.",
+    "expectedOutput": "150",
+    "language": "python",
+    "hint": "Use the sum() function on the array like sum(arr). Use any 5 numbers that add up to 150."
+  },
+  {
+    "question": "Write a program that finds the maximum number in the array [12, 45, 7, 22, 89].",
+    "expectedOutput": "89",
+    "language": "python",
+    "hint": "Use the max() function to get the highest number in a list."
+  },
+  {
+    "question": "Write a program that loops through the array [1, 2, 3, 4, 5] and prints each element on a new line.",
+    "expectedOutput": "1\n2\n3\n4\n5",
+    "language": "python",
+    "hint": "Use a for loop and print each element individually."
+  },
+  {
+    "question": "Write a program that searches for the number 33 in the array [11, 22, 33, 44] and prints its index.",
+    "expectedOutput": "2",
+    "language": "python",
+    "hint": "Use the index() method like arr.index(33)."
   }
 ]

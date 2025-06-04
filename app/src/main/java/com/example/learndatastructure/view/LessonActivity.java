@@ -1,13 +1,19 @@
 package com.example.learndatastructure.view;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.DialogFragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.graphics.text.LineBreaker;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.Html;
+import android.text.Layout;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
@@ -17,6 +23,7 @@ import com.example.learndatastructure.R;
 
 import com.example.learndatastructure.data.LessonRepository;
 import com.example.learndatastructure.utils.FontUtil;
+import com.example.learndatastructure.utils.LocaleHelper;
 import com.example.learndatastructure.viewModel.HomeViewModel;
 import com.example.learndatastructure.viewModel.LessonViewModel;
 
@@ -114,10 +121,19 @@ public class LessonActivity extends AppCompatActivity {
 
 
     }
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(LocaleHelper.setLocale(newBase));
+    }
+
+
 
     private void showPage(int pageIndex) {
         if (pages != null && pageIndex < pages.size()) {
-            txtContent.setText(pages.get(pageIndex));
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                txtContent.setJustificationMode(LineBreaker.JUSTIFICATION_MODE_INTER_WORD);
+            }
+            txtContent.setText(Html.fromHtml(pages.get(pageIndex)));
         } else {
             txtContent.setText("No content found");
         }
@@ -130,6 +146,7 @@ public class LessonActivity extends AppCompatActivity {
                 .get(HomeViewModel.class);
         lessonViewModel.updateLessonProgress(lessonId, lessonCompleted);
     }
+
 
 
 

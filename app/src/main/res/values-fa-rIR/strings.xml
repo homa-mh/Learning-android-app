@@ -2,7 +2,7 @@
 <resources>
     <string name="app_name">آموزش ساختمان داده</string>
     <string name="menu_home">دروس</string>
-    <string name="menu_profile">پروفایل</string>
+    <string name="menu_profile">تنظیمات</string>
     <string name="lessons_lesson">آموزش</string>
     <string name="lessons_quiz1">آزمون 1</string>
     <string name="lessons_quiz2">آزمون 2</string>
@@ -32,4 +32,8 @@
     <string name="lessons_next">بعدی</string>
     <string name="notif_title">یادآوری روزانه</string>
     <string name="notif_text">هی! یادت نره امروز ساختمان داده بخونی!</string>
+    <string name="app_version">App Version : </string>
+    <string name="app_creator">App Creator : </string>
+    <string name="creator_name">Mh</string>
+    <string name="settings_contact">تماس با ما</string>
 </resources>

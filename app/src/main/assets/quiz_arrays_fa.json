@@ -1,12 +1,42 @@
 [
   {
-    "question": "What is the index of the first element in an array?",
-    "options": ["1", "0", "-1", "Depends on language"],
-    "correctAnswerIndex": 1
+    "question": "آرایه‌ها چه نوع ساختمان داده‌ای هستند؟",
+    "options": ["خطی", "غیرخطی", "درختی", "گرافی"],
+    "answerIndex": 0
   },
   {
-    "question": "Which of the following allows random access?",
-    "options": ["Array", "Linked List", "Stack", "Queue"],
-    "correctAnswerIndex": 0
+    "question": "کدام مورد از محدودیت‌های آرایه در پایتون است؟",
+    "options": [
+      "اندازهٔ ثابت در زمان اجرا",
+      "عدم پشتیبانی از رشته",
+      "نیاز به نوع داده یکسان در لیست",
+      "آرایه‌ها در پایتون به‌صورت پیش‌فرض لیست هستند و اندازهٔ آن‌ها دینامیک است"
+    ],
+    "answerIndex": 3
+  },
+  {
+    "question": "در کدام حالت می‌توان از جست‌وجوی دودویی (Binary Search) استفاده کرد؟",
+    "options": [
+      "وقتی لیست مرتب‌شده باشد",
+      "وقتی لیست شامل حروف باشد",
+      "در هر لیستی با طول بیشتر از ۵",
+      "وقتی لیست تو در تو باشد"
+    ],
+    "answerIndex": 0
+  },
+  {
+    "question": "پیچیدگی زمانی درج یک عنصر در ابتدای لیست پایتون چیست؟",
+    "options": ["O(1)", "O(log n)", "O(n)", "O(n^2)"],
+    "answerIndex": 2
+  },
+  {
+    "question": "کدام مورد از مزایای لیست‌های پایتون (به‌جای آرایه‌های سنتی) است؟",
+    "options": [
+      "نوع دادهٔ ثابت",
+      "دسترسی فقط ترتیبی",
+      "اندازهٔ دینامیک",
+      "نیاز به تعریف اندازه در ابتدا"
+    ],
+    "answerIndex": 2
   }
 ]

@@ -17,6 +17,7 @@ import android.view.animation.ScaleAnimation;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -28,6 +29,7 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.learndatastructure.R;
 import com.example.learndatastructure.model.CodeQuizModel;
 import com.example.learndatastructure.utils.FontUtil;
+import com.example.learndatastructure.utils.LocaleHelper;
 import com.example.learndatastructure.viewModel.CodeQuizViewModel;
 
 import java.util.ArrayList;
@@ -49,7 +51,7 @@ public class CodeQuizActivity extends AppCompatActivity {
     private boolean isAnswerChecked = false;
     private int lessonId;
     private String lessonTitle;
-
+    private ProgressBar btnLoadingSpinner;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -73,6 +75,8 @@ public class CodeQuizActivity extends AppCompatActivity {
         btnNext = findViewById(R.id.btn_done); // btn_done acts as "Next"
         btnHint = findViewById(R.id.btn_hint);
         switchTheme = findViewById(R.id.switchTheme);
+        btnLoadingSpinner = findViewById(R.id.loading_spinner);
+
 
         viewModel = new ViewModelProvider(this).get(CodeQuizViewModel.class);
 
@@ -98,14 +102,18 @@ public class CodeQuizActivity extends AppCompatActivity {
             String expected = quizList.get(currentIndex).getExpectedOutput().trim();
             String actual = result.trim();
 
-            if (actual.equalsIgnoreCase(expected)) {
-                edtCode.setBackgroundResource(R.drawable.code_editor_correct);
+            boolean isCorrect = actual.equalsIgnoreCase(expected);
+            updateEditorBackground(isCorrect);
+            if (isCorrect) {
                 answerStatusList.set(currentIndex, true);
-            } else {
-                edtCode.setBackgroundResource(R.drawable.code_editor_wrong);
             }
 
+
             isAnswerChecked = true;
+
+            btnCheck.setEnabled(true);
+            btnLoadingSpinner.setVisibility(View.GONE);
+
 
             // Update execution result list
             if (executionResults.size() > currentIndex) {
@@ -132,6 +140,10 @@ public class CodeQuizActivity extends AppCompatActivity {
                 return;
             }
 
+            // Disable button and show spinner
+            btnCheck.setEnabled(false);
+            btnLoadingSpinner.setVisibility(View.VISIBLE);
+
             CodeQuizModel currentQuiz = quizList.get(currentIndex);
             viewModel.executeCode(userCode, currentQuiz.getLanguage());
 
@@ -142,6 +154,7 @@ public class CodeQuizActivity extends AppCompatActivity {
                 userAnswers.add(userCode);
             }
         });
+
 
         btnNext.setOnClickListener(v -> {
             if (!isAnswerChecked) {
@@ -186,6 +199,10 @@ public class CodeQuizActivity extends AppCompatActivity {
             }
         });
     }
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(LocaleHelper.setLocale(newBase));
+    }
 
     private void displayQuestion() {
         if (quizList != null && !quizList.isEmpty()) {
@@ -196,7 +213,17 @@ public class CodeQuizActivity extends AppCompatActivity {
                 // Update content when fade out is done
                 txtQuestion.setText(quiz.getQuestion());
                 edtCode.setText("");
-                edtCode.setBackgroundResource(R.drawable.code_editor_dark);
+
+                if (switchTheme.isChecked()) {
+                    edtCode.setBackgroundResource(R.drawable.code_editor_dark);
+                    edtCode.setTextColor(Color.parseColor("#DCDCDC"));
+                    edtCode.setHintTextColor(Color.parseColor("#888888"));
+                } else {
+                    edtCode.setBackgroundResource(R.drawable.code_editor_light);
+                    edtCode.setTextColor(Color.parseColor("#000000"));
+                    edtCode.setHintTextColor(Color.parseColor("#999999"));
+                }
+
                 txtQuestionNum.setText((currentIndex + 1) + " / " + quizList.size());
 
                 isAnswerChecked = false;
@@ -247,6 +274,21 @@ public class CodeQuizActivity extends AppCompatActivity {
                 .withEndAction(() -> btnNext.setVisibility(View.INVISIBLE))
                 .start();
     }
+
+    private void updateEditorBackground(boolean isCorrect) {
+        boolean isDark = switchTheme.isChecked();
+
+        if (isCorrect) {
+            edtCode.setBackgroundResource(isDark
+                    ? R.drawable.code_editor_correct_dark
+                    : R.drawable.code_editor_correct_light);
+        } else {
+            edtCode.setBackgroundResource(isDark
+                    ? R.drawable.code_editor_wrong_dark
+                    : R.drawable.code_editor_wrong_light);
+        }
+    }
+
 
 
 }

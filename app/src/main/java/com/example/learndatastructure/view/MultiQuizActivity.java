@@ -1,5 +1,6 @@
 package com.example.learndatastructure.view;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -14,6 +15,7 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.learndatastructure.R;
 import com.example.learndatastructure.model.MultiQuizModel;
 import com.example.learndatastructure.utils.FontUtil;
+import com.example.learndatastructure.utils.LocaleHelper;
 import com.example.learndatastructure.viewModel.MultiQuizViewModel;
 
 import java.io.Serializable;
@@ -99,6 +101,11 @@ public class MultiQuizActivity extends AppCompatActivity {
             startActivity(intent);
             finish();
         });
+    }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(LocaleHelper.setLocale(newBase));
     }
 
     private void loadQuestion() {

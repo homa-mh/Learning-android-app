@@ -2,14 +2,16 @@ package com.example.learndatastructure.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+
 import android.animation.Animator;
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 
 import com.airbnb.lottie.LottieAnimationView;
 import com.example.learndatastructure.R;
+import com.example.learndatastructure.utils.LocaleHelper;
 
 public class IntroActivity extends AppCompatActivity {
 
@@ -18,6 +20,7 @@ public class IntroActivity extends AppCompatActivity {
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_intro);
 
@@ -42,5 +45,9 @@ public class IntroActivity extends AppCompatActivity {
             public void onAnimationRepeat(Animator animator) {}
         });
 
+    }
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(LocaleHelper.setLocale(newBase));
     }
 }

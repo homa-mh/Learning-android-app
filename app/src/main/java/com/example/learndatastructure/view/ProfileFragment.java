@@ -2,9 +2,13 @@ package com.example.learndatastructure.view;
 
 import android.annotation.SuppressLint;
 import android.app.TimePickerDialog;
+import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.graphics.Typeface;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +21,7 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
@@ -25,6 +30,9 @@ import com.example.learndatastructure.R;
 import com.example.learndatastructure.utils.FontUtil;
 import com.example.learndatastructure.utils.LocaleHelper;
 import com.example.learndatastructure.viewModel.SettingsViewModel;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
 
 public class ProfileFragment extends Fragment {
     public ProfileFragment() {}
@@ -32,9 +40,10 @@ public class ProfileFragment extends Fragment {
     @SuppressLint("UseSwitchCompatOrMaterialCode")
     private Switch darkModeSwitch, soundSwitch, reminderSwitch;
     private Spinner spinnerLanguage;
-    private CardView cardViewShare, cardViewLogout, cardViewDelete;
+    private CardView cardViewShare, cardLanguage, cardContact, cardSound, cardTheme;
     private LinearLayout linearSetTime;
-    private TextView txtReminderTime;
+    private TextView txtReminderTime, txtVersion;
+    private AdView adView;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -56,10 +65,23 @@ public class ProfileFragment extends Fragment {
         reminderSwitch = view.findViewById(R.id.switch_reminder);
         spinnerLanguage = view.findViewById(R.id.spinner_language);
         cardViewShare = view.findViewById(R.id.cardViewShare);
-        cardViewLogout = view.findViewById(R.id.cardViewLogout);
-        cardViewDelete = view.findViewById(R.id.cardViewDelete);
         linearSetTime = view.findViewById(R.id.linearSetReminderTime);
         txtReminderTime = view.findViewById(R.id.txtReminderTime);
+        cardLanguage = view.findViewById(R.id.cardViewLanguage);
+        txtVersion = view.findViewById(R.id.txtAppVersion);
+        adView = view.findViewById(R.id.adView);
+        cardContact = view.findViewById(R.id.cardViewContact);
+        cardSound = view.findViewById(R.id.cardViewSound);
+        cardTheme = view.findViewById(R.id.cardViewTheme);
+
+
+
+
+        // google ads:
+        AdRequest adRequest = new AdRequest.Builder().build();
+        adView.loadAd(adRequest);
+        MobileAds.initialize(requireContext());
+
 
         // Set initial time
         int[] time = viewModel.getReminderTime();
@@ -95,6 +117,14 @@ public class ProfileFragment extends Fragment {
             reminderSwitch.setText(isChecked ? R.string.settings_on : R.string.settings_off);
         });
 
+
+
+        cardSound.setOnClickListener(v -> {
+            soundSwitch.setChecked(!soundSwitch.isChecked());
+        });
+        cardTheme.setOnClickListener(v -> {
+            darkModeSwitch.setChecked(!darkModeSwitch.isChecked());
+        });
         linearSetTime.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -158,20 +188,39 @@ public class ProfileFragment extends Fragment {
             startActivity(Intent.createChooser(shareIntent, "Share via"));
         });
 
-// logout
-        // چک کردن وضعیت ورود
-        if (viewModel.isLoggedIn()) {
-            cardViewLogout.setVisibility(View.VISIBLE);
-            cardViewDelete.setVisibility(View.VISIBLE); // فعلاً GONE بمونه اگر delete کامل نشده
-        } else {
-            cardViewLogout.setVisibility(View.GONE);
-            cardViewDelete.setVisibility(View.GONE);
-        }
+        // email contact
 
-        cardViewLogout.setOnClickListener(v -> {
+        cardContact.setOnClickListener(v -> {
+            Intent intent = new Intent(Intent.ACTION_SENDTO);
+            intent.setData(Uri.parse("mailto:homa.mwr@gmail.com"));
+            intent.putExtra(Intent.EXTRA_SUBJECT, "نظر یا پیشنهاد درباره برنامه");
+            intent.putExtra(Intent.EXTRA_TEXT, "سلام، من این نظر رو دارم...");
 
-                new LogoutDialogFragment().show(getParentFragmentManager(), "LogoutDialog");
+            try {
+                startActivity(Intent.createChooser(intent, "ارسال ایمیل با:"));
+            } catch (ActivityNotFoundException e) {
+                Toast.makeText(getContext(), "برنامه ایمیل پیدا نشد", Toast.LENGTH_SHORT).show();
+            }
         });
+
+
+
+        cardLanguage.setOnClickListener(v -> {
+            spinnerLanguage.performClick();
+        });
+
+
+
+        try {
+            String version = requireContext()
+                    .getPackageManager()
+                    .getPackageInfo(requireContext().getPackageName(), 0)
+                    .versionName;
+
+            txtVersion.setText(version);
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
 
 
 
@@ -187,4 +236,6 @@ public class ProfileFragment extends Fragment {
             }
         }
     }
+
+
 }

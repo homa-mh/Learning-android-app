@@ -1,0 +1,32 @@
+[
+  {
+    "question": "Define a Node class with attributes data and next, then create one node with value 10 and print its data.",
+    "expectedOutput": "10",
+    "language": "python",
+    "hint": "Use a class with __init__ method to set data and next."
+  },
+  {
+    "question": "Create a singly linked list with nodes containing 10 → 20 → 30 and print the second node's data.",
+    "expectedOutput": "20",
+    "language": "python",
+    "hint": "Link nodes manually using their 'next' attribute."
+  },
+  {
+    "question": "Write a function that traverses a linked list and prints each node's data on a new line. Use nodes with values 5 → 15 → 25.",
+    "expectedOutput": "5\n15\n25",
+    "language": "python",
+    "hint": "Use a while loop with current = current.next."
+  },
+  {
+    "question": "Insert a new node with value 5 at the beginning of a linked list starting with 10 → 20. Then print the head node's data.",
+    "expectedOutput": "5",
+    "language": "python",
+    "hint": "Create a new node, set its next to old head, and update head."
+  },
+  {
+    "question": "Given a linked list 1 → 2 → 3 → 4, write code to delete the node with value 3 and print the new list.",
+    "expectedOutput": "1\n2\n4",
+    "language": "python",
+    "hint": "Skip the node where current.next.data == 3."
+  }
+]

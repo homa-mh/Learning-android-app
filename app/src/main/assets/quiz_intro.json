@@ -1,0 +1,52 @@
+[
+  {
+    "question": "What is the main purpose of using data structures in programming?",
+    "options": [
+      "To make the code look prettier",
+      "To increase program security",
+      "To manage and access data efficiently",
+      "To consume more memory"
+    ],
+    "correctAnswerIndex": 2
+  },
+  {
+    "question": "Which of the following is a non-linear data structure?",
+    "options": [
+      "Array",
+      "Stack",
+      "Tree",
+      "Queue"
+    ],
+    "correctAnswerIndex": 2
+  },
+  {
+    "question": "How are elements organized in a linear data structure?",
+    "options": [
+      "Randomly",
+      "As nested nodes",
+      "Sequentially one after another",
+      "Based on code execution priority"
+    ],
+    "correctAnswerIndex": 2
+  },
+  {
+    "question": "Why is it important to choose the right data structure in a project?",
+    "options": [
+      "To avoid typos",
+      "To optimize performance and resource usage",
+      "To reduce the number of functions",
+      "To minimize loop usage"
+    ],
+    "correctAnswerIndex": 1
+  },
+  {
+    "question": "What is emphasized in this course?",
+    "options": [
+      "Just memorizing definitions",
+      "Theoretical learning without coding",
+      "Practical use of data structures in real projects",
+      "Designing fancy UI layouts"
+    ],
+    "correctAnswerIndex": 2
+  }
+]

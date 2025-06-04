@@ -16,7 +16,7 @@ public class SettingsRepository {
                 storage.isReminderEnabled(),
                 storage.isSoundEnabled(),
                 storage.getLanguage(),
-                storage.getReminderTime() // returns int[]
+                storage.getReminderTime()
         );
     }
 

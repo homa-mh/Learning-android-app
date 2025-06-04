@@ -1,0 +1,50 @@
+{
+  "id": 3,
+  "title": "Linked Lists",
+  "pages": [
+    {
+      "page": 1,
+      "content": "<h2>What Is a Linked List?</h2><p>A <b>Linked List</b> is a <b>linear data structure</b> in which elements (called <b>nodes</b>) are connected using <b>pointers</b>. Each node contains two parts: the <b>data</b> and a reference to the <b>next</b> node.</p><p>Unlike arrays, linked lists do not store elements in contiguous memory locations.</p>"
+    },
+    {
+      "page": 2,
+      "content": "<h2>Structure of a Node</h2><p>In Python, a node can be defined like this:</p><pre><code>class Node:\n    def __init__(self, data):\n        self.data = data\n        self.next = None</code></pre><p>Each <code>Node</code> holds some <b>data</b> and a pointer to the <b>next</b> node.</p>"
+    },
+    {
+      "page": 3,
+      "content": "<h2>Creating a Simple Linked List</h2><p>Here's how to create a simple list with three elements:</p><pre><code>node1 = Node(10)\nnode2 = Node(20)\nnode3 = Node(30)\n\nnode1.next = node2\nnode2.next = node3</code></pre><p>Now, <code>node1</code> points to <code>node2</code>, and <code>node2</code> points to <code>node3</code>.</p>"
+    },
+    {
+      "page": 4,
+      "content": "<h2>Traversing a Linked List</h2><p>To visit all the nodes in the list:</p><pre><code>current = node1\nwhile current:\n    print(current.data)\n    current = current.next</code></pre><p>This prints all elements in order.</p>"
+    },
+    {
+      "page": 5,
+      "content": "<h2>Insertion in a Linked List</h2><p>To insert at the beginning:</p><pre><code>new_node = Node(5)\nnew_node.next = node1\nhead = new_node</code></pre><p>To insert after a given node:</p><pre><code>new_node = Node(25)\nnew_node.next = node2.next\nnode2.next = new_node</code></pre>"
+    },
+    {
+      "page": 6,
+      "content": "<h2>Deletion from a Linked List</h2><p>To delete a node with a specific value:</p><pre><code>def delete_node(head, key):\n    if head.data == key:\n        return head.next\n    current = head\n    while current.next:\n        if current.next.data == key:\n            current.next = current.next.next\n            return head\n        current = current.next\n    return head</code></pre><p>This removes the first occurrence of <code>key</code>.</p>"
+    },
+    {
+      "page": 7,
+      "content": "<h2>Types of Linked Lists</h2><ul><li><b>Singly Linked List:</b> Each node points to the next node only.</li><li><b>Doubly Linked List:</b> Each node has both <code>next</code> and <code>prev</code> pointers.</li><li><b>Circular Linked List:</b> The last node points back to the first node.</li></ul>"
+    },
+    {
+      "page": 8,
+      "content": "<h2>Doubly Linked List in Python</h2><pre><code>class DNode:\n    def __init__(self, data):\n        self.data = data\n        self.next = None\n        self.prev = None</code></pre><p>This structure allows traversal in both directions.</p>"
+    },
+    {
+      "page": 9,
+      "content": "<h2>Circular Linked List</h2><p>In a circular list, the last node points to the first node:</p><pre><code>node3.next = node1</code></pre><p>This forms a loop.</p>"
+    },
+    {
+      "page": 10,
+      "content": "<h2>Time Complexities</h2><ul><li><b>Access by index:</b> O(n)</li><li><b>Insertion at head:</b> O(1)</li><li><b>Insertion at tail:</b> O(n)</li><li><b>Search:</b> O(n)</li><li><b>Deletion:</b> O(n)</li></ul>"
+    },
+    {
+      "page": 11,
+      "content": "<h2>Advantages and Limitations</h2><ul><li><b>Advantages:</b> Dynamic size, efficient insertions/deletions.</li><li><b>Limitations:</b> Slow access by index, more memory usage due to pointers.</li></ul><p>Linked lists are suitable when frequent insertion/deletion is needed.</p>"
+    }
+  ]
+}

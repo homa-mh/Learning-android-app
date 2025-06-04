@@ -21,6 +21,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.learndatastructure.R;
 import com.example.learndatastructure.model.HomeModel;
 import com.example.learndatastructure.utils.FontUtil;
+import com.example.learndatastructure.utils.LocaleHelper;
 import com.example.learndatastructure.viewModel.HomeViewModel;
 
 import java.util.List;
@@ -46,6 +47,7 @@ public class HomeFragment extends Fragment {
         Typeface typeface = FontUtil.getFontByLanguage(context);
         // اعمال فونت به کل ویوی فرگمنت
         FontUtil.applyFontToView(context, view, typeface);
+
 
         recyclerView = view.findViewById(R.id.recycler_lessons);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));

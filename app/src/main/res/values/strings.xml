@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Learn Data Structure</string>
     <string name="menu_home">Lessons</string>
-    <string name="menu_profile">Profile</string>
+    <string name="menu_profile">Settings</string>
     <string name="lessons_lesson">Lesson</string>
     <string name="lessons_quiz1">Quiz 1</string>
     <string name="lessons_quiz2">Quiz 2</string>
@@ -29,6 +29,12 @@
     <string name="settings_delete">Delete Account</string>
     <string name="settings_on">On</string>
     <string name="settings_off">Off</string>
+    <string name="settings_contact">Contact Us</string>
+
+
+    <string name="app_version">App Version : </string>
+    <string name="app_creator">App Creator : </string>
+    <string name="creator_name">Mh</string>
 
     <string name="notif_title">Daily reminder</string>
     <string name="notif_text">Hey! Don\'t forget to study data structure!</string>

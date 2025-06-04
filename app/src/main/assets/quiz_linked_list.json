@@ -1,0 +1,47 @@
+[
+  {
+    "question": "What is the main structural difference between arrays and linked lists?",
+    "options": [
+      "Arrays store elements randomly; linked lists store them in order",
+      "Arrays store data with a pointer; linked lists do not",
+      "Arrays use contiguous memory; linked lists use scattered nodes connected by pointers",
+      "Linked lists can only store integers; arrays can store any type"
+    ],
+    "answerIndex": 2
+  },
+  {
+    "question": "What does a node in a singly linked list typically contain?",
+    "options": [
+      "Only the data",
+      "Only the pointer to the next node",
+      "Data and a pointer to the previous node",
+      "Data and a pointer to the next node"
+    ],
+    "answerIndex": 3
+  },
+  {
+    "question": "What is the time complexity of accessing an element in a singly linked list?",
+    "options": ["O(1)", "O(log n)", "O(n)", "O(n log n)"],
+    "answerIndex": 2
+  },
+  {
+    "question": "Which of the following is a key advantage of linked lists over arrays?",
+    "options": [
+      "Faster random access",
+      "Constant memory usage",
+      "Efficient insertions and deletions in the middle",
+      "Simpler implementation"
+    ],
+    "answerIndex": 2
+  },
+  {
+    "question": "In a doubly linked list, what does each node have?",
+    "options": [
+      "Only a data field",
+      "A pointer to the next node",
+      "A pointer to the previous node",
+      "Pointers to both the next and previous nodes"
+    ],
+    "answerIndex": 3
+  }
+]

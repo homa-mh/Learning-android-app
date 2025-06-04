@@ -3,5 +3,11 @@
     <style name="Base.Theme.LearnDataStructure" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your dark theme here. -->
         <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+        <item name="android:statusBarColor">@color/background</item>
+        <!-- Ensures dark icons if you have a light background -->
+        <item name="android:windowLightStatusBar">true</item>
+
+        <!-- Optionally: Change navigation bar color -->
+        <item name="android:navigationBarColor">@color/menu</item>
     </style>
 </resources>

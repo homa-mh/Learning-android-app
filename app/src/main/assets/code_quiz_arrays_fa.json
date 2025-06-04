@@ -1,14 +1,32 @@
 [
   {
-    "question": "Write a program that prints the sum of 2 and 3.",
-    "expectedOutput": "5",
+    "question": "برنامه‌ای بنویس که یک آرایه از اعداد صحیح شامل [10, 20, 30, 40] بسازد و عنصر دوم را چاپ کند.",
+    "expectedOutput": "20",
     "language": "python",
-    "hint": "Use the print() function and add 2 + 3."
+    "hint": "یادت باشد اندیس‌گذاری در پایتون از ۰ شروع می‌شود."
   },
   {
-    "question": "Print Hello World in Java.",
-    "expectedOutput": "Hello World",
-    "language": "java",
-    "hint": "Use System.out.println(\"Hello World\"); inside main."
+    "question": "برنامه‌ای بنویس که یک آرایه با ۵ عدد ساخته و مجموع آن‌ها را چاپ کند.",
+    "expectedOutput": "150",
+    "language": "python",
+    "hint": "از تابع sum() برای محاسبهٔ مجموع استفاده کن. می‌توانی هر ۵ عددی را انتخاب کنی که مجموعشان ۱۵۰ شود."
+  },
+  {
+    "question": "برنامه‌ای بنویس که بزرگ‌ترین عدد را در آرایه [12, 45, 7, 22, 89] پیدا کرده و چاپ کند.",
+    "expectedOutput": "89",
+    "language": "python",
+    "hint": "از تابع max() برای یافتن بیشینه در لیست استفاده کن."
+  },
+  {
+    "question": "برنامه‌ای بنویس که آرایه [1, 2, 3, 4, 5] را پیمایش کرده و هر عنصر را در یک خط جداگانه چاپ کند.",
+    "expectedOutput": "1\n2\n3\n4\n5",
+    "language": "python",
+    "hint": "از حلقه for استفاده کن و هر عنصر را جداگانه چاپ کن."
+  },
+  {
+    "question": "برنامه‌ای بنویس که عدد ۳۳ را در آرایه [11, 22, 33, 44] جست‌وجو کرده و اندیس آن را چاپ کند.",
+    "expectedOutput": "2",
+    "language": "python",
+    "hint": "از متد index مانند arr.index(33) استفاده کن."
   }
 ]

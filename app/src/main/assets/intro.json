@@ -1,0 +1,42 @@
+{
+  "id": 1,
+  "title": "Introduction to Data Structures",
+  "pages": [
+    {
+      "page": 1,
+      "content": "<b>What is a Data Structure?</b><br><br>In programming, one of the most essential concepts used in nearly every project is the 'data structure'. Simply put, a data structure is a method of organizing and storing data in memory to enable efficient access and modification."
+    },
+    {
+      "page": 2,
+      "content": "<b>Why Do We Need Data Structures?</b><br><br>Using simple variables like <i>int</i> or <i>String</i> is fine for small programs. But in real-world applications, data tends to be large and complex—such as a list of users, product orders, or route maps. In such cases, using appropriate data structures is essential for managing data efficiently."
+    },
+    {
+      "page": 3,
+      "content": "<b>Advantages of Using Data Structures</b><br><br>Data structures allow you to perform operations such as searching, inserting, deleting, and updating data efficiently. Choosing the right data structure can significantly improve your program's speed and memory usage."
+    },
+    {
+      "page": 4,
+      "content": "<b>General Classification of Data Structures</b><br><br>Data structures are generally categorized into two types:<br><br><b>1. Linear Data Structures:</b><br>In these, elements are arranged sequentially. Examples include <i>arrays, linked lists, stacks, and queues</i>.<br><br><b>2. Non-Linear Data Structures:</b><br>In these, elements may be connected in multiple directions. Examples include <i>trees and graphs</i>."
+    },
+    {
+      "page": 5,
+      "content": "<b>A Real-Life Example</b><br><br>Imagine you need to store students' grades and calculate the average. Using separate variables for each grade would be inefficient. But using an array or list allows you to store all grades together and calculate the average using a simple loop."
+    },
+    {
+      "page": 6,
+      "content": "<h2>What is Algorithm Complexity?</h2><p>When we write an algorithm, there might be several different ways to solve a problem. But which one is better? To compare algorithms, we use the concept of <b>algorithm complexity</b>.</p><p>Algorithm complexity tells us how much <b>time</b> or <b>memory</b> an algorithm needs as the size of the input (like the number of array elements) increases.</p><p>Simply put, complexity means:</p><ul><li>How fast is your algorithm?</li><li>Does it still perform well as the data grows?</li></ul><p>For example, an algorithm might sort 10 numbers in 1 second, but take minutes for 100,000 numbers. That may not be efficient.</p><p>To express complexity, we usually use symbols like <b>O(n)</b>, which we will explain in the next page.</p>"
+    },
+    {
+      "page": 7,
+      "content": "<h2>Common Complexity Notations</h2><p>To describe algorithm performance, we use mathematical symbols. The most common is <b>Big O notation (O)</b>. These notations help us understand how time or memory usage grows relative to input size.</p><ul><li><b>O(n)</b>: The most common notation. It shows the <b>worst-case</b> performance where time grows linearly with the input size. If input doubles, time roughly doubles.</li><li><b>Ω(n)</b>: This represents the <b>best-case</b> performance — when the algorithm completes quickly due to ideal input.</li><li><b>Θ(n)</b>: This is used when both <b>best and worst cases</b> are similar. The time is tightly bound to the input size.</li></ul><p>In practice, we mostly use <b>Big O</b> to evaluate the <b>worst-case scenario</b> of an algorithm.</p>"
+    },
+    {
+      "page": 8,
+      "content": "<b>What Will You Learn in This Course?</b><br><br>In this course, you'll learn about different data structures, their real-world use cases, and how to implement them in Python. Each lesson includes conceptual explanations, practical examples, and quizzes for both theory and coding."
+    },
+    {
+      "page": 9,
+      "content": "<b>The Final Goal</b><br><br>The aim of this course is not just to help you pass exams or interviews, but to enable you to select the right data structure in real projects and write optimized, maintainable code."
+    }
+  ]
+}
