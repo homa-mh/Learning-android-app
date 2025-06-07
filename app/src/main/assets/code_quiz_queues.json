@@ -1,0 +1,32 @@
+[
+  {
+    "question": "Write a program that creates an empty queue, enqueues 10, 20, and 30 in order, then dequeues and prints the first element.",
+    "expectedOutput": "10",
+    "language": "python",
+    "hint": "Use collections.deque. Use popleft() to remove and return the front element."
+  },
+  {
+    "question": "Write a program that creates a queue of strings ['apple', 'banana', 'cherry'] and prints all elements in order.",
+    "expectedOutput": "apple\nbanana\ncherry",
+    "language": "python",
+    "hint": "Use a while loop and popleft() to print and remove each element until the queue is empty."
+  },
+  {
+    "question": "Write a program that checks if a queue is empty. Print 'Empty' if it is, otherwise print 'Not Empty'.",
+    "expectedOutput": "Empty",
+    "language": "python",
+    "hint": "Create an empty deque and use 'if not queue' to check if it’s empty."
+  },
+  {
+    "question": "Write a program that creates a queue with elements [5, 15, 25], enqueues 35, and prints all elements.",
+    "expectedOutput": "5\n15\n25\n35",
+    "language": "python",
+    "hint": "Use append() to add elements and a loop to print them."
+  },
+  {
+    "question": "Write a program that takes an input number, adds it to a queue, and prints the whole queue.",
+    "expectedOutput": "50",
+    "language": "python",
+    "hint": "Use input() to read a number, then append it to the deque and print it."
+  }
+]

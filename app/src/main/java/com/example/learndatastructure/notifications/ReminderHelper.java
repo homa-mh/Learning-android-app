@@ -17,7 +17,7 @@ public class ReminderHelper {
         calendar.set(Calendar.MINUTE, minute);
         calendar.set(Calendar.SECOND, 0);
 
-        // اگه ساعت امروز گذشته، بزارش برای فردا
+        // set for tomorrow if it passed today
         if (calendar.getTimeInMillis() < System.currentTimeMillis()) {
             calendar.add(Calendar.DAY_OF_YEAR, 1);
         }
@@ -32,8 +32,8 @@ public class ReminderHelper {
     public static void scheduleNextReminder(Context context) {
         Calendar next = Calendar.getInstance();
 
-        next.set(Calendar.HOUR_OF_DAY, 19);   // ساعت مورد نظر برای فردا (مثلاً 9 صبح)
-        next.set(Calendar.MINUTE, 59);
+        next.set(Calendar.HOUR_OF_DAY, 19);
+        next.set(Calendar.MINUTE, 0);
         next.set(Calendar.SECOND, 0);
 
         if (next.getTimeInMillis() < System.currentTimeMillis()) {

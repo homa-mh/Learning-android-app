@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         setLayoutDirection();
 
 
-
+        // first of all, applying fonts using FontUtil class based on the language
         Typeface typeface = FontUtil.getFontByLanguage(this);
         FontUtil.applyFontToView(this, findViewById(android.R.id.content), typeface);
 
@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
         linearHome = findViewById(R.id.linear_home);
         linearProfile = findViewById(R.id.linear_profile);
 
+        // now we check which fragment must be shown (default is home fragment)
         String tab = getIntent().getStringExtra("tab");
         if ("profile".equals(tab)) {
             loadFragment(new ProfileFragment(), true);
@@ -50,13 +51,14 @@ public class MainActivity extends AppCompatActivity {
             highlightSelectedTab(true);
         }
 
+        // on click listener for tabs
         linearHome.setOnClickListener(v -> {
-            loadFragment(new HomeFragment(), false);  // coming from right to left
+            loadFragment(new HomeFragment(), false);  // right to left
             highlightSelectedTab(true);
         });
 
         linearProfile.setOnClickListener(v -> {
-            loadFragment(new ProfileFragment(), true);  // coming from left to right
+            loadFragment(new ProfileFragment(), true);  // left to right
             highlightSelectedTab(false);
         });
 
@@ -71,7 +73,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-
         if (toRight) {
             transaction.setCustomAnimations(
                     R.anim.slide_in_right,  // enter
@@ -100,10 +101,13 @@ public class MainActivity extends AppCompatActivity {
             linearProfile.setBackgroundResource(R.color.menu);
         }
     }
+
+    // sets the application language based on the settings
     @Override
     protected void attachBaseContext(Context newBase) {
         super.attachBaseContext(LocaleHelper.setLocale(newBase));
     }
+
     private boolean doubleBackToExitPressedOnce = false;
     @Override
     public void onBackPressed() {

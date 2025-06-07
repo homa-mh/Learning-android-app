@@ -1,0 +1,32 @@
+[
+  {
+    "question": "Write a Python class for a Binary Tree node with 'value', 'left', and 'right'. Create a root node with value 10.",
+    "expectedOutput": "10",
+    "language": "python",
+    "hint": "Define a class with __init__ method and print root.value after creation."
+  },
+  {
+    "question": "Write a function to perform in-order traversal of a binary tree and print the values. Test it with a tree having values 1, 2, 3 (2 as root, 1 left, 3 right).",
+    "expectedOutput": "1\n2\n3",
+    "language": "python",
+    "hint": "Use recursion: inorder(left), print(value), inorder(right)."
+  },
+  {
+    "question": "Write a function to search for a value in a Binary Search Tree (BST). Create a BST with 20 as root, 10 left, and 30 right, then search for 30.",
+    "expectedOutput": "Found",
+    "language": "python",
+    "hint": "Use recursion or loop to compare with current node and go left/right."
+  },
+  {
+    "question": "Write a function to insert a value into a BST. Insert 25 into a tree with 20 as root and 30 as right child.",
+    "expectedOutput": "Inserted 25",
+    "language": "python",
+    "hint": "Check if left or right is None before inserting recursively."
+  },
+  {
+    "question": "Write a function that prints all nodes in level-order from a binary tree with root 5, left 3, and right 7.",
+    "expectedOutput": "5\n3\n7",
+    "language": "python",
+    "hint": "Use collections.deque as a queue and append children while looping."
+  }
+]

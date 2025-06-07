@@ -26,6 +26,7 @@ public class IntroActivity extends AppCompatActivity {
 
         lottieView = findViewById(R.id.lottieIntro);
 
+        // when lottie animation ends, goes to the main activity
         lottieView.addAnimatorListener(new Animator.AnimatorListener() {
             @Override
             public void onAnimationStart(Animator animator) {}
@@ -46,6 +47,8 @@ public class IntroActivity extends AppCompatActivity {
         });
 
     }
+
+    // it sets the layout direction based on the language using LocaleHelper class
     @Override
     protected void attachBaseContext(Context newBase) {
         super.attachBaseContext(LocaleHelper.setLocale(newBase));

@@ -1,0 +1,30 @@
+{
+  "id": 6,
+  "title": "Binary Trees",
+  "pages": [
+  {
+    "page": 1,
+    "content": "<h2>Introduction to Trees</h2><p>Trees are a type of <b>non-linear hierarchical data structure</b> used to represent relationships between elements. A tree consists of <b>nodes</b> connected by <b>edges</b>. The topmost node is called the <b>root</b>, and nodes without children are called <b>leaves</b>.</p><p>Each node may point to multiple children, but only one parent. Trees are often used to represent hierarchical data such as file systems, organizational charts, and expression parsing.</p><p>Common types of trees include:</p><ul><li><b>General Trees</b>: No constraint on number of children.</li><li><b>Binary Trees</b>: Each node has at most 2 children.</li><li><b>Binary Search Trees (BST)</b>: A binary tree where left child < root < right child.</li><li><b>AVL Trees</b>: Self-balancing BSTs.</li><li><b>Heap Trees</b>: Binary trees used for priority queues.</li><li><b>B-Trees</b>: Used for databases and filesystems.</li></ul>"
+  },
+  {
+    "page": 2,
+    "content": "<h2>What is a Binary Tree?</h2><p>A <b>Binary Tree</b> is a tree where each node has at most two children, called <b>left</b> and <b>right</b>. The structure is recursive: each child is itself a binary tree.</p><p>Here is a simple Python class for a binary tree node:</p><pre><code>class Node:\n    def **init**(self, value):\n        self.value = value\n        self.left = None\n        self.right = None</code></pre><p>Binary trees are used in searching, sorting, expression parsing, and many more domains.</p>"
+  },
+  {
+    "page": 3,
+    "content": "<h2>Binary Tree Traversal</h2><p>Traversal is the process of visiting all nodes in a tree in a specific order. There are three main types of traversal:</p><ul><li><b>In-order</b> (Left, Root, Right)</li><li><b>Pre-order</b> (Root, Left, Right)</li><li><b>Post-order</b> (Left, Right, Root)</li></ul><p>Example - In-order traversal:</p><pre><code>def inorder(node):\n    if node:\n        inorder(node.left)\n        print(node.value)\n        inorder(node.right)</code></pre><p>There is also <b>level-order</b> traversal (Breadth-First), usually implemented using a queue.</p>"
+  },
+  {
+    "page": 4,
+    "content": "<h2>Binary Search Trees (BST)</h2><p>A <b>Binary Search Tree</b> is a special type of binary tree where for each node:</p><ul><li>All elements in the left subtree are less than the node.</li><li>All elements in the right subtree are greater than the node.</li></ul><p>This property allows <b>O(log n)</b> average time for search, insert, and delete operations if the tree is balanced.</p><p>Example - Search in BST:</p><pre><code>def search(root, value):\n    if not root or root.value == value:\n        return root\n    if value < root.value:\n        return search(root.left, value)\n    else:\n        return search(root.right, value)</code></pre>"
+  },
+  {
+    "page": 5,
+    "content": "<h2>Applications of Binary Trees</h2><p>Binary trees are used in many fields:</p><ul><li><b>Expression Trees</b>: Represent and evaluate arithmetic expressions.</li><li><b>Decision Trees</b>: Machine learning and decision-making processes.</li><li><b>Binary Heaps</b>: Implement priority queues.</li><li><b>Syntax Trees</b>: Compilers use them to parse code.</li><li><b>Huffman Encoding Trees</b>: Used in data compression algorithms.</li></ul><p>Example - Expression Tree:</p><pre><code>    *\n   / \\\n  +   5\n / \\\n3   2</code></pre><p>Evaluates to: (3 + 2) * 5 = 25</p>"
+  },
+  {
+    "page": 6,
+    "content": "<h2>Time Complexity</h2><table><thead><tr><th>Operation</th><th>Binary Tree</th><th>BST (avg)</th><th>BST (worst)</th></tr></thead><tbody><tr><td>Search</td><td>O(n)</td><td>O(log n)</td><td>O(n)</td></tr><tr><td>Insert</td><td>O(n)</td><td>O(log n)</td><td>O(n)</td></tr><tr><td>Delete</td><td>O(n)</td><td>O(log n)</td><td>O(n)</td></tr></tbody></table><p>Balanced BSTs like AVL and Red-Black Trees maintain O(log n) time in worst cases.</p>"
+  }
+]
+}

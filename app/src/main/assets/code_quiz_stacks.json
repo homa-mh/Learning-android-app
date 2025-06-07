@@ -1,0 +1,32 @@
+[
+  {
+    "question": "Write a program that creates an empty stack using a Python list and pushes the numbers 10, 20, and 30 onto it. Then print the stack.",
+    "expectedOutput": "[10, 20, 30]",
+    "language": "python",
+    "hint": "Use append() to push elements into the stack (list)."
+  },
+  {
+    "question": "Write a program that pops the top element from the stack [5, 10, 15] and prints the popped element.",
+    "expectedOutput": "15",
+    "language": "python",
+    "hint": "Use the pop() method to remove the top (last) element from the list."
+  },
+  {
+    "question": "Write a program that creates a stack [1, 2, 3, 4], performs two pop() operations, and prints the final stack.",
+    "expectedOutput": "[1, 2]",
+    "language": "python",
+    "hint": "Each pop() removes the last element in the list."
+  },
+  {
+    "question": "Write a program that checks if the stack [7, 14, 21] is empty. Print 'Empty' if it is, otherwise print 'Not Empty'.",
+    "expectedOutput": "Not Empty",
+    "language": "python",
+    "hint": "Use len(stack) or simply check if stack is truthy."
+  },
+  {
+    "question": "Write a program that pushes numbers 1 to 5 into an empty stack, then pops all elements one by one and prints each on a new line.",
+    "expectedOutput": "5\n4\n3\n2\n1",
+    "language": "python",
+    "hint": "Use a for loop to push, and then another loop with pop() to print each element."
+  }
+]

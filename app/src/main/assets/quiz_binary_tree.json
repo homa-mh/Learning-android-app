@@ -1,0 +1,27 @@
+[
+  {
+    "question": "What is the maximum number of children a node can have in a binary tree?",
+    "options": ["1", "2", "3", "Unlimited"],
+    "answerIndex": 1
+  },
+  {
+    "question": "Which traversal method processes the root node before its subtrees?",
+    "options": ["In-order", "Pre-order", "Post-order", "Level-order"],
+    "answerIndex": 1
+  },
+  {
+    "question": "Which of the following is NOT a type of binary tree?",
+    "options": ["BST", "AVL Tree", "Heap Tree", "Graph Tree"],
+    "answerIndex": 3
+  },
+  {
+    "question": "In a Binary Search Tree (BST), where are smaller elements placed?",
+    "options": ["Left subtree", "Right subtree", "At the root", "Randomly"],
+    "answerIndex": 0
+  },
+  {
+    "question": "What is the time complexity of searching in a balanced Binary Search Tree?",
+    "options": ["O(1)", "O(log n)", "O(n)", "O(n log n)"],
+    "answerIndex": 1
+  }
+]

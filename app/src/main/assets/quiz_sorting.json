@@ -1,0 +1,52 @@
+[
+  {
+    "question": "Which sorting algorithm is based on repeatedly swapping adjacent elements if they are in the wrong order?",
+    "options": ["Selection Sort", "Bubble Sort", "Insertion Sort", "Quick Sort"],
+    "answerIndex": 1
+  },
+  {
+    "question": "Which sorting algorithm always has time complexity O(n log n), regardless of input?",
+    "options": ["Quick Sort", "Merge Sort", "Bubble Sort", "Insertion Sort"],
+    "answerIndex": 1
+  },
+  {
+    "question": "Which sorting algorithm builds a sorted list by repeatedly selecting the smallest element?",
+    "options": ["Heap Sort", "Insertion Sort", "Selection Sort", "Radix Sort"],
+    "answerIndex": 2
+  },
+  {
+    "question": "What is the worst-case time complexity of Quick Sort?",
+    "options": ["O(n log n)", "O(n)", "O(n^2)", "O(1)"],
+    "answerIndex": 2
+  },
+  {
+    "question": "Which sorting algorithm uses a binary tree to organize and sort data?",
+    "options": ["Heap Sort", "Tree Sort", "Radix Sort", "Merge Sort"],
+    "answerIndex": 1
+  },
+  {
+    "question": "Which algorithm is NOT stable by default?",
+    "options": ["Bubble Sort", "Merge Sort", "Selection Sort", "Insertion Sort"],
+    "answerIndex": 2
+  },
+  {
+    "question": "Which sorting algorithm is best suited for sorting integers with a limited number of digits?",
+    "options": ["Quick Sort", "Radix Sort", "Merge Sort", "Selection Sort"],
+    "answerIndex": 1
+  },
+  {
+    "question": "Which of the following algorithms is NOT in-place?",
+    "options": ["Quick Sort", "Merge Sort", "Selection Sort", "Heap Sort"],
+    "answerIndex": 1
+  },
+  {
+    "question": "Which sorting algorithm has O(n) best-case time complexity?",
+    "options": ["Bubble Sort", "Selection Sort", "Heap Sort", "Quick Sort"],
+    "answerIndex": 0
+  },
+  {
+    "question": "Which algorithm uses the divide-and-conquer strategy?",
+    "options": ["Merge Sort", "Bubble Sort", "Insertion Sort", "Selection Sort"],
+    "answerIndex": 0
+  }
+]

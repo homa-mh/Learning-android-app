@@ -1,0 +1,102 @@
+[
+  {
+    "question": "Which principle does a Stack follow?",
+    "options": [
+      "FIFO - First In First Out",
+      "LIFO - Last In First Out",
+      "LILO - Last In Last Out",
+      "FILF - First In Last First"
+    ],
+    "correctAnswerIndex": 1
+  },
+  {
+    "question": "Which of the following is NOT a primary stack operation?",
+    "options": [
+      "push",
+      "pop",
+      "peek",
+      "insert_at_bottom"
+    ],
+    "correctAnswerIndex": 3
+  },
+  {
+    "question": "In Python, which method is commonly used to perform the push operation on a stack?",
+    "options": [
+      "stack.add()",
+      "stack.append()",
+      "stack.insert()",
+      "stack.push()"
+    ],
+    "correctAnswerIndex": 1
+  },
+  {
+    "question": "If the numbers 5 and 7 are pushed onto a stack in that order, and then one pop is performed, which number is removed?",
+    "options": [
+      "5",
+      "7",
+      "0",
+      "The stack becomes empty"
+    ],
+    "correctAnswerIndex": 1
+  },
+  {
+    "question": "What is the main reason for using a stack in postfix expression evaluation?",
+    "options": [
+      "To reduce memory usage",
+      "To increase code complexity",
+      "To evaluate expressions without parentheses",
+      "To translate expressions to machine code"
+    ],
+    "correctAnswerIndex": 2
+  },
+  {
+    "question": "In prefix notation, what is the order of operators and operands?",
+    "options": [
+      "Operand → Operand → Operator",
+      "Operator → Operand → Operand",
+      "Operator → Operator → Operand",
+      "Operand → Operator → Operand"
+    ],
+    "correctAnswerIndex": 1
+  },
+  {
+    "question": "Which of the following is a common use of stacks?",
+    "options": [
+      "Sorting lists quickly",
+      "Storing databases",
+      "Managing function calls",
+      "Comparing strings"
+    ],
+    "correctAnswerIndex": 2
+  },
+  {
+    "question": "In a Python list used as a stack, what does the pop() method do?",
+    "options": [
+      "Adds an item to the end",
+      "Removes and returns the top item",
+      "Checks the size of the stack",
+      "Reverses the order of elements"
+    ],
+    "correctAnswerIndex": 1
+  },
+  {
+    "question": "Which of the following is a disadvantage of stacks?",
+    "options": [
+      "Access is limited to the top element only",
+      "It requires too much code",
+      "It cannot store data",
+      "It’s incompatible with Python"
+    ],
+    "correctAnswerIndex": 0
+  },
+  {
+    "question": "During program execution, which structure is commonly used to manage recursive function calls?",
+    "options": [
+      "Linked lists",
+      "Binary trees",
+      "Stacks",
+      "Queues"
+    ],
+    "correctAnswerIndex": 2
+  }
+]

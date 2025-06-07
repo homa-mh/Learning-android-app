@@ -51,15 +51,17 @@ public class ProfileFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
 
-        // گرفتن کانتکست ایمن
+        // getting context (since this is not an activity)
         Context context = requireContext();
-        // گرفتن فونت با توجه به زبان
+        // getting font face
         Typeface typeface = FontUtil.getFontByLanguage(context);
-        // اعمال فونت به کل ویوی فرگمنت
+        // applying the font
         FontUtil.applyFontToView(context, view, typeface);
 
+        // settings view model
         viewModel = new ViewModelProvider(this).get(SettingsViewModel.class);
 
+        // ui
         darkModeSwitch = view.findViewById(R.id.switch_dark_mode);
         soundSwitch = view.findViewById(R.id.switch_sound);
         reminderSwitch = view.findViewById(R.id.switch_reminder);
@@ -83,12 +85,13 @@ public class ProfileFragment extends Fragment {
         MobileAds.initialize(requireContext());
 
 
-        // Set initial time
+        // Set alarm time
         int[] time = viewModel.getReminderTime();
         String formatted = String.format("%02d:%02d", time[0], time[1]);
         txtReminderTime.setText(formatted);
 
 
+        // default value for settings (gets data from view model)
         viewModel.darkMode.observe(getViewLifecycleOwner(), value -> {
             darkModeSwitch.setChecked(value);
             darkModeSwitch.setText(value ? R.string.settings_on : R.string.settings_off);
@@ -104,6 +107,7 @@ public class ProfileFragment extends Fragment {
         viewModel.language.observe(getViewLifecycleOwner(), this::updateLanguageSpinnerSelection);
 
 
+        // OnCheckedChange listeners for switches
         darkModeSwitch.setOnCheckedChangeListener((buttonView, isChecked) -> {
             viewModel.toggleDarkMode(isChecked);
             darkModeSwitch.setText(isChecked ? R.string.settings_on : R.string.settings_off);
@@ -118,17 +122,20 @@ public class ProfileFragment extends Fragment {
         });
 
 
-
+        // on click listeners for card views
         cardSound.setOnClickListener(v -> {
             soundSwitch.setChecked(!soundSwitch.isChecked());
         });
         cardTheme.setOnClickListener(v -> {
             darkModeSwitch.setChecked(!darkModeSwitch.isChecked());
         });
+        cardLanguage.setOnClickListener(v -> {
+            spinnerLanguage.performClick();
+        });
         linearSetTime.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int[] currentTime = viewModel.getReminderTime(); // e.g., [8, 0]
+                int[] currentTime = viewModel.getReminderTime();
 
                 TimePickerDialog dialog = new TimePickerDialog(getContext(),
                         (timePicker, hour, minute) -> {
@@ -147,11 +154,11 @@ public class ProfileFragment extends Fragment {
 
 
 
-//        language:
-// 🟡 Setup language spinner
+        // language:
+        // Setup language spinner
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
                 requireContext(),
-                R.array.language_options, // defined in res/values/strings.xml
+                R.array.language_options,
                 android.R.layout.simple_spinner_item
         );
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -162,13 +169,13 @@ public class ProfileFragment extends Fragment {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String selectedLanguage = parent.getItemAtPosition(position).toString();
                 if (!selectedLanguage.equals(viewModel.language.getValue())) {
-                    // ذخیره زبان انتخاب‌شده در SharedPreferences از طریق ViewModel
+                    // saving new language in SharedPreferences
                     viewModel.changeLanguage(selectedLanguage);
 
-                    // اعمال locale جدید از SharedPreferences
+                    // set the application language (locale)
                     LocaleHelper.setLocale(requireContext());
 
-                    // ریستارت activity برای اعمال تغییر زبان
+                    // restarting activity to apply changes
                     requireActivity().recreate();
                 }
             }
@@ -177,7 +184,7 @@ public class ProfileFragment extends Fragment {
             public void onNothingSelected(AdapterView<?> parent) {}
         });
 
-//        share
+        // share
         cardViewShare.setOnClickListener(v -> {
             String shareMessage = viewModel.getShareMessage();
 
@@ -185,32 +192,29 @@ public class ProfileFragment extends Fragment {
             shareIntent.setType("text/plain");
             shareIntent.putExtra(Intent.EXTRA_TEXT, shareMessage);
 
-            startActivity(Intent.createChooser(shareIntent, "Share via"));
+            startActivity(Intent.createChooser(shareIntent, getString(R.string.share_via)));
         });
 
         // email contact
-
         cardContact.setOnClickListener(v -> {
             Intent intent = new Intent(Intent.ACTION_SENDTO);
             intent.setData(Uri.parse("mailto:homa.mwr@gmail.com"));
-            intent.putExtra(Intent.EXTRA_SUBJECT, "نظر یا پیشنهاد درباره برنامه");
-            intent.putExtra(Intent.EXTRA_TEXT, "سلام، من این نظر رو دارم...");
+            intent.putExtra(Intent.EXTRA_SUBJECT, R.string.contact_subject);
+            intent.putExtra(Intent.EXTRA_TEXT, "" );
 
             try {
-                startActivity(Intent.createChooser(intent, "ارسال ایمیل با:"));
+                startActivity(Intent.createChooser(intent, getString(R.string.email_via)));
             } catch (ActivityNotFoundException e) {
-                Toast.makeText(getContext(), "برنامه ایمیل پیدا نشد", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), getString(R.string.no_email), Toast.LENGTH_SHORT).show();
             }
         });
 
 
 
-        cardLanguage.setOnClickListener(v -> {
-            spinnerLanguage.performClick();
-        });
 
 
 
+        // set application version to txt version
         try {
             String version = requireContext()
                     .getPackageManager()
@@ -227,6 +231,7 @@ public class ProfileFragment extends Fragment {
 
         return view;
     }
+
     private void updateLanguageSpinnerSelection(String language) {
         ArrayAdapter<CharSequence> adapter = (ArrayAdapter<CharSequence>) spinnerLanguage.getAdapter();
         if (adapter != null) {

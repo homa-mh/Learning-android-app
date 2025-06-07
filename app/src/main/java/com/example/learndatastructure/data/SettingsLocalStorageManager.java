@@ -56,7 +56,7 @@ public class SettingsLocalStorageManager {
         return prefs.getString("language", "English");
     }
 
-    // Auth
+    // Auth (for later updates)
     public void saveAuthToken(String token) {
         prefs.edit().putString("auth_token", token).apply();
     }

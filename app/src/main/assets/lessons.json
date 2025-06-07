@@ -78,7 +78,7 @@
     "id": 6,
     "category": "advanced",
     "title": "Binary Trees",
-    "title_fa": "درخت دودویی",
+    "title_fa": "درخت های دودویی",
     "lesson_filename": "binary_tree.json",
     "lesson_filename_fa": "binary_tree_fa.json",
     "lesson_completed": false,
@@ -92,51 +92,6 @@
   {
     "id": 7,
     "category": "advanced",
-    "title": "Sorting Algorithms",
-    "title_fa": "الگوریتم‌های مرتب‌سازی",
-    "lesson_filename": "sorting.json",
-    "lesson_filename_fa": "sorting_fa.json",
-    "lesson_completed": false,
-    "multi_quiz_filename": "quiz_sorting.json",
-    "multi_quiz_filename_fa": "quiz_sorting_fa.json",
-    "multi_quiz_score": null,
-    "code_quiz_filename": "code_quiz_sorting.json",
-    "code_quiz_filename_fa": "code_quiz_sorting_fa.json",
-    "code_quiz_score": null
-  },
-  {
-    "id": 8,
-    "category": "advanced",
-    "title": "Binary Search",
-    "title_fa": "جستجوی دودویی",
-    "lesson_filename": "binary_search.json",
-    "lesson_filename_fa": "binary_search_fa.json",
-    "lesson_completed": false,
-    "multi_quiz_filename": "quiz_binary_search.json",
-    "multi_quiz_filename_fa": "quiz_binary_search_fa.json",
-    "multi_quiz_score": null,
-    "code_quiz_filename": "code_quiz_binary_search.json",
-    "code_quiz_filename_fa": "code_quiz_binary_search_fa.json",
-    "code_quiz_score": null
-  },
-  {
-    "id": 9,
-    "category": "advanced",
-    "title": "Circular & Doubly Linked Lists",
-    "title_fa": "لیست پیوندی حلقوی و دوطرفه",
-    "lesson_filename": "circular_doubly_list.json",
-    "lesson_filename_fa": "circular_doubly_list_fa.json",
-    "lesson_completed": false,
-    "multi_quiz_filename": "quiz_circular_doubly_list.json",
-    "multi_quiz_filename_fa": "quiz_circular_doubly_list_fa.json",
-    "multi_quiz_score": null,
-    "code_quiz_filename": "code_quiz_circular_doubly_list.json",
-    "code_quiz_filename_fa": "code_quiz_circular_doubly_list_fa.json",
-    "code_quiz_score": null
-  },
-  {
-    "id": 10,
-    "category": "advanced",
     "title": "Graphs - Introduction",
     "title_fa": "گراف‌ها - معرفی",
     "lesson_filename": "graphs.json",
@@ -148,5 +103,20 @@
     "code_quiz_filename": "code_quiz_graphs.json",
     "code_quiz_filename_fa": "code_quiz_graphs_fa.json",
     "code_quiz_score": null
-  }
+  },
+  {
+  "id": 8,
+  "category": "advanced",
+  "title": "Sorting Algorithms",
+  "title_fa": "الگوریتم‌های مرتب‌سازی",
+  "lesson_filename": "sorting.json",
+  "lesson_filename_fa": "sorting_fa.json",
+  "lesson_completed": false,
+  "multi_quiz_filename": "quiz_sorting.json",
+  "multi_quiz_filename_fa": "quiz_sorting_fa.json",
+  "multi_quiz_score": null,
+  "code_quiz_filename": "code_quiz_sorting.json",
+  "code_quiz_filename_fa": "code_quiz_sorting_fa.json",
+  "code_quiz_score": null
+}
 ]

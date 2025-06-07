@@ -1,0 +1,32 @@
+[
+  {
+    "question": "Write a program that represents a directed graph with edges A → B and B → C using an adjacency list. Then print all neighbors of node A.",
+    "expectedOutput": "['B']",
+    "language": "python",
+    "hint": "Use a dictionary like {'A': ['B'], 'B': ['C'], 'C': []} and print graph['A']"
+  },
+  {
+    "question": "Create a graph with 4 nodes: A, B, C, D. Add undirected edges between A-B, A-C, B-D. Print the degree (number of connections) of node A.",
+    "expectedOutput": "2",
+    "language": "python",
+    "hint": "Undirected edges mean you add neighbors both ways. Count the length of graph['A']."
+  },
+  {
+    "question": "Write a program that checks whether there is a direct edge from node 'X' to 'Y' in a given graph and prints 'Yes' or 'No'.",
+    "expectedOutput": "Yes",
+    "language": "python",
+    "hint": "Check if 'Y' is in graph['X'] using 'if Y in graph[X]'"
+  },
+  {
+    "question": "Create a graph with nodes A, B, C where A → B, B → C, and C → A. Print all nodes that have outgoing edges.",
+    "expectedOutput": "A\nB\nC",
+    "language": "python",
+    "hint": "Loop through graph and print keys that have non-empty adjacency lists."
+  },
+  {
+    "question": "Create a graph with a node 'Start' connected to three nodes. Write a loop that prints all nodes directly reachable from 'Start'.",
+    "expectedOutput": "Node1\nNode2\nNode3",
+    "language": "python",
+    "hint": "Create graph = {'Start': ['Node1', 'Node2', 'Node3']} and loop through graph['Start']"
+  }
+]

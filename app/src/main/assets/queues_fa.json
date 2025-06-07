@@ -1,0 +1,30 @@
+{
+  "id": 5,
+  "title": "Queue",
+  "pages": [
+    {
+      "page": 1,
+      "content": "<h2>صف (Queue) چیست؟</h2><p>یک <b>صف</b> نوعی <b>ساختمان داده خطی</b> است که از اصل <b>اول وارد، اول خارج (FIFO)</b> پیروی می‌کند. یعنی عنصری که اول وارد صف می‌شود، اول هم خارج خواهد شد.</p><p>صف مانند صف افراد در یک بانک است: کسی که زودتر آمده زودتر سرویس می‌گیرد.</p>"
+    },
+    {
+      "page": 2,
+      "content": "<h2>عملیات‌های صف</h2><ul><li><b>enqueue(item)</b>: اضافه‌کردن یک عنصر به انتهای صف</li><li><b>dequeue()</b>: حذف و بازگرداندن عنصر جلوی صف</li><li><b>front()</b>: مشاهده عنصر جلویی بدون حذف آن</li><li><b>isEmpty()</b>: بررسی خالی بودن صف</li><li><b>size()</b>: تعداد عناصر صف</li></ul><p>در پایتون می‌توان صف را با <code>collections.deque</code> پیاده‌سازی کرد.</p><pre><code>from collections import deque\nq = deque()\nq.append(10)  # enqueue\nq.append(20)\nprint(q.popleft())  # dequeue: 10</code></pre>"
+    },
+    {
+      "page": 3,
+      "content": "<h2>انواع صف</h2><ul><li><b>صف ساده</b>: ساختار معمولی FIFO</li><li><b>صف حلقه‌ای</b>: انتها به ابتدا متصل است؛ مناسب برای مدیریت حافظه حلقه‌ای</li><li><b>صف با اولویت</b>: ترتیب سرویس‌دهی بر اساس اولویت‌ها است، نه زمان ورود</li><li><b>صف دو سر (Deque)</b>: ورود و خروج از هر دو سر ممکن است</li></ul>"
+    },
+    {
+      "page": 4,
+      "content": "<h2>پیچیدگی زمانی عملیات‌ها</h2><table><tr><th>عملیات</th><th>پیچیدگی زمانی</th></tr><tr><td>enqueue</td><td>O(1)</td></tr><tr><td>dequeue</td><td>O(1)</td></tr><tr><td>front</td><td>O(1)</td></tr><tr><td>isEmpty</td><td>O(1)</td></tr></table><p>استفاده از <code>collections.deque</code> باعث عملکرد سریع و ثابت در هر دو سر صف می‌شود.</p>"
+    },
+    {
+      "page": 5,
+      "content": "<h2>کاربردهای صف</h2><ul><li><b>زمان‌بندی CPU و دیسک</b>: برای صف‌بندی و ترتیب اجرای پردازش‌ها</li><li><b>بافرهای داده</b>: در چاپگر، شبکه و IOها</li><li><b>جستجوی BFS</b>: در پیمایش گراف‌ها</li><li><b>مدیریت وظایف</b>: در سیستم‌های مدیریت کارهای پس‌زمینه</li></ul>"
+    },
+    {
+      "page": 6,
+      "content": "<h2>مثال: پیمایش BFS با صف</h2><pre><code>from collections import deque\ndef bfs(graph, start):\n    visited = set()\n    queue = deque([start])\n    while queue:\n        vertex = queue.popleft()\n        if vertex not in visited:\n            print(vertex)\n            visited.add(vertex)\n            queue.extend(graph[vertex])</code></pre>"
+    }
+  ]
+}

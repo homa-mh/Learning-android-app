@@ -4,8 +4,8 @@
     <string name="menu_home">دروس</string>
     <string name="menu_profile">تنظیمات</string>
     <string name="lessons_lesson">آموزش</string>
-    <string name="lessons_quiz1">آزمون 1</string>
-    <string name="lessons_quiz2">آزمون 2</string>
+    <string name="lessons_quiz1">آزمون تستی</string>
+    <string name="lessons_quiz2">آزمون عملی</string>
     <string name="login">ورود</string>
     <string name="signup">ثبت نام</string>
     <string name="settings_darkMode">حالت تاریک</string>
@@ -36,4 +36,9 @@
     <string name="app_creator">App Creator : </string>
     <string name="creator_name">Mh</string>
     <string name="settings_contact">تماس با ما</string>
+    <string name="contact_subject">نظر درباره اپلیکیشن آموزش ساختمان داده</string>
+    <string name="email_via">ارسال ایمیل با:</string>
+    <string name="no_email">برنامه ایمیل پیدا نشد</string>
+    <string name="share_via">ارسال با:</string>
+
 </resources>

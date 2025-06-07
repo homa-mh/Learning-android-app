@@ -3,8 +3,8 @@
     <string name="menu_home">Lessons</string>
     <string name="menu_profile">Settings</string>
     <string name="lessons_lesson">Lesson</string>
-    <string name="lessons_quiz1">Quiz 1</string>
-    <string name="lessons_quiz2">Quiz 2</string>
+    <string name="lessons_quiz1">Theoretical Quiz</string>
+    <string name="lessons_quiz2">Practical Quiz</string>
     <string name="lessons_done">Done</string>
     <string name="lessons_submit">Submit</string>
     <string name="lessons_score">Score</string>
@@ -31,6 +31,10 @@
     <string name="settings_off">Off</string>
     <string name="settings_contact">Contact Us</string>
 
+    <string name="contact_subject">Comment about Learn DataStructure App</string>
+    <string name="email_via">Send Email via:</string>
+    <string name="share_via">share via:</string>
+    <string name="no_email">No email app found</string>
 
     <string name="app_version">App Version : </string>
     <string name="app_creator">App Creator : </string>

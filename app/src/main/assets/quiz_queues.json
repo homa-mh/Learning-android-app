@@ -1,0 +1,102 @@
+[
+  {
+    "question": "Which of the following best describes a queue?",
+    "options": [
+      "A data structure that follows LIFO",
+      "A data structure that follows FIFO",
+      "A list that adds elements randomly",
+      "An unordered data structure"
+    ],
+    "correctAnswerIndex": 1
+  },
+  {
+    "question": "What does the dequeue operation do in a queue?",
+    "options": [
+      "Adds an element to the front of the queue",
+      "Removes and returns the rear element",
+      "Removes and returns the front element",
+      "Returns all elements in the queue"
+    ],
+    "correctAnswerIndex": 2
+  },
+  {
+    "question": "What is a unique feature of a circular queue?",
+    "options": [
+      "Automatic initialization",
+      "Rear is connected back to the front",
+      "Allows removing from the middle",
+      "Popping elements is not allowed"
+    ],
+    "correctAnswerIndex": 1
+  },
+  {
+    "question": "Which queue allows insertion and deletion from both ends?",
+    "options": [
+      "Simple Queue",
+      "Priority Queue",
+      "Circular Queue",
+      "Deque (Double-Ended Queue)"
+    ],
+    "correctAnswerIndex": 3
+  },
+  {
+    "question": "What is the time complexity of enqueue and dequeue operations in a deque?",
+    "options": [
+      "O(n)",
+      "O(log n)",
+      "O(n^2)",
+      "O(1)"
+    ],
+    "correctAnswerIndex": 3
+  },
+  {
+    "question": "Which is a real-world application of queues?",
+    "options": [
+      "Quick sort",
+      "CPU Scheduling",
+      "File compression",
+      "Binary search"
+    ],
+    "correctAnswerIndex": 1
+  },
+  {
+    "question": "What happens if you call dequeue on an empty queue?",
+    "options": [
+      "Returns the last element",
+      "Empties the queue",
+      "Throws an error or exception",
+      "Always returns 0"
+    ],
+    "correctAnswerIndex": 2
+  },
+  {
+    "question": "Queues are used in which graph traversal algorithm?",
+    "options": [
+      "DFS",
+      "BFS",
+      "Dijkstra",
+      "Bellman-Ford"
+    ],
+    "correctAnswerIndex": 1
+  },
+  {
+    "question": "Which of the following is true about a priority queue?",
+    "options": [
+      "New elements are always added to the rear",
+      "Only negative numbers are allowed",
+      "Element priority overrides insertion order",
+      "No algorithms exist to implement it"
+    ],
+    "correctAnswerIndex": 2
+  },
+  {
+    "question": "Queues are best suited for what kind of tasks in operating systems?",
+    "options": [
+      "Rendering user interface",
+      "Managing background tasks",
+      "Natural language translation",
+      "Sorting databases"
+    ],
+    "correctAnswerIndex": 1
+  }
+]

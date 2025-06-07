@@ -20,6 +20,7 @@ public class LocaleHelper {
         config.setLocale(locale);
         config.setLayoutDirection(locale);
 
-        return context.createConfigurationContext(config); // ✅ کانتکست جدید برمی‌گرده
+        // returns a new context with fixed direction
+        return context.createConfigurationContext(config);
     }
 }

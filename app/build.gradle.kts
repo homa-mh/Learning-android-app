@@ -51,12 +51,10 @@ dependencies {
     // OkHttp for api requests
     implementation ("com.squareup.okhttp3:okhttp:4.12.0")
 
-//    for code editor
-
-
-//for animation
+    //for animation
     implementation ("androidx.transition:transition:1.4.1")
     implementation ("com.airbnb.android:lottie:6.0.0")
 
+    // for google ads
     implementation ("com.google.android.gms:play-services-ads:22.6.0")
 }

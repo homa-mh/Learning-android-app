@@ -1,0 +1,102 @@
+[
+  {
+    "question": "What are the two main components of a graph?",
+    "options": [
+      "Keys and values",
+      "Nodes and arrays",
+      "Vertices and edges",
+      "Stacks and queues"
+    ],
+    "correctAnswerIndex": 2
+  },
+  {
+    "question": "Which of the following is an example of a real-world graph?",
+    "options": [
+      "A sorted array",
+      "A web of linked web pages",
+      "A to-do list",
+      "A single variable"
+    ],
+    "correctAnswerIndex": 1
+  },
+  {
+    "question": "What does 'adjacent' mean in graph terminology?",
+    "options": [
+      "Nodes with similar names",
+      "Nodes connected by an edge",
+      "Nodes stored in the same list",
+      "Nodes with the same degree"
+    ],
+    "correctAnswerIndex": 1
+  },
+  {
+    "question": "In a directed graph, what does an edge represent?",
+    "options": [
+      "A reversible connection",
+      "An undirected connection",
+      "A one-way relationship",
+      "A parallel line"
+    ],
+    "correctAnswerIndex": 2
+  },
+  {
+    "question": "Which structure uses a 2D array to represent connections?",
+    "options": [
+      "Adjacency list",
+      "Queue",
+      "Adjacency matrix",
+      "Heap"
+    ],
+    "correctAnswerIndex": 2
+  },
+  {
+    "question": "Which algorithm explores all neighbors before going deeper?",
+    "options": [
+      "DFS",
+      "BFS",
+      "Binary Search",
+      "Dijkstra's"
+    ],
+    "correctAnswerIndex": 1
+  },
+  {
+    "question": "Which data structure is commonly used for BFS traversal?",
+    "options": [
+      "Stack",
+      "Queue",
+      "List",
+      "Heap"
+    ],
+    "correctAnswerIndex": 1
+  },
+  {
+    "question": "What is the degree of a node?",
+    "options": [
+      "Its distance from the root",
+      "Its number of outgoing edges",
+      "Number of edges connected to it",
+      "The number of nodes it contains"
+    ],
+    "correctAnswerIndex": 2
+  },
+  {
+    "question": "Which of the following is NOT a typical graph operation?",
+    "options": [
+      "Add Vertex",
+      "Sort Graph",
+      "Remove Edge",
+      "Traverse"
+    ],
+    "correctAnswerIndex": 1
+  },
+  {
+    "question": "Why are graphs useful in navigation systems?",
+    "options": [
+      "Because they store large text files",
+      "Because they optimize image rendering",
+      "Because they model paths and connections",
+      "Because they are linear structures"
+    ],
+    "correctAnswerIndex": 2
+  }
+]
