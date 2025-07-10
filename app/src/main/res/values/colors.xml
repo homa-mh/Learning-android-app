@@ -17,4 +17,5 @@
     <color name="background">#FFFCFC</color> <!-- پس‌زمینه بسیار روشن با حس کاغذ -->
     <color name="txtColor">#212121</color> <!-- رنگ نوشته‌ها برای خوانایی بالا -->
 
+    <color name="task_undone">#9FCCCCCC</color>
 </resources>

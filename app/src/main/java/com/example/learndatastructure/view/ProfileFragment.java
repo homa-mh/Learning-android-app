@@ -25,14 +25,20 @@ import android.widget.Toast;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.learndatastructure.R;
+import com.example.learndatastructure.model.TaskModel;
 import com.example.learndatastructure.utils.FontUtil;
 import com.example.learndatastructure.utils.LocaleHelper;
 import com.example.learndatastructure.viewModel.SettingsViewModel;
+import com.example.learndatastructure.viewModel.TaskViewModel;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
+
+import java.util.ArrayList;
 
 public class ProfileFragment extends Fragment {
     public ProfileFragment() {}
@@ -44,6 +50,11 @@ public class ProfileFragment extends Fragment {
     private LinearLayout linearSetTime;
     private TextView txtReminderTime, txtVersion;
     private AdView adView;
+
+    // for gamifiction
+    private RecyclerView recyclerView;
+    private TaskViewModel taskViewModel;
+    private TaskAdapter adapter;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -76,6 +87,24 @@ public class ProfileFragment extends Fragment {
         cardSound = view.findViewById(R.id.cardViewSound);
         cardTheme = view.findViewById(R.id.cardViewTheme);
 
+
+
+
+
+
+        recyclerView = view.findViewById(R.id.recyclerView);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
+
+        adapter = new TaskAdapter(requireContext(), new ArrayList<>());
+        recyclerView.setAdapter(adapter);
+
+        taskViewModel = new ViewModelProvider(this).get(TaskViewModel.class);
+        taskViewModel.getTasks().observe(getViewLifecycleOwner(), tasks -> {
+            adapter = new TaskAdapter(requireContext(), tasks);
+            recyclerView.setAdapter(adapter);
+        });
+        // برای تست می‌تونی یک تسک وارد کنی:
+        taskViewModel.addTask(new TaskModel(0, false, "ماموریت اول", "توضیح تستی", "task_icon1"));
 
 
 

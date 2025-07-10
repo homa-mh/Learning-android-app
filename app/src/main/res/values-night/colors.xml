@@ -15,4 +15,7 @@
 
     <color name="background">#121212</color> <!-- استاندارد دارک مود -->
     <color name="txtColor">#E0E0E0</color> <!-- خاکستری روشن برای نوشته‌ها -->
+
+    <color name="task_undone">#3E4A4A4A</color>
+
 </resources>
