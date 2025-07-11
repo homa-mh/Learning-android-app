@@ -90,7 +90,7 @@ public class ProfileFragment extends Fragment {
 
 
 
-
+        // GAMIFICTION (TASK)
 
         recyclerView = view.findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
@@ -103,8 +103,7 @@ public class ProfileFragment extends Fragment {
             adapter = new TaskAdapter(requireContext(), tasks);
             recyclerView.setAdapter(adapter);
         });
-        // برای تست می‌تونی یک تسک وارد کنی:
-        taskViewModel.addTask(new TaskModel(0, false, "ماموریت اول", "توضیح تستی", "task_icon1"));
+
 
 
 

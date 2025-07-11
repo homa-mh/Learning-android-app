@@ -1,9 +1,13 @@
 package com.example.learndatastructure.view;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.MediaPlayer;
 import android.transition.TransitionManager;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,13 +15,18 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.cardview.widget.CardView;
 import androidx.core.content.ContextCompat;
+import androidx.fragment.app.FragmentActivity;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.example.learndatastructure.R;
 import com.example.learndatastructure.model.HomeModel;
+import com.example.learndatastructure.viewModel.TaskViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -180,9 +189,92 @@ public class LessonsAdapter extends RecyclerView.Adapter<LessonsAdapter.LessonVi
         });
 
 
+        // gamifiction conditions
+        // بخش گیمیفیکیشن
+        TaskViewModel taskViewModel = new ViewModelProvider((FragmentActivity) context).get(TaskViewModel.class);
+
+        // 1. شمارش درس‌های کامل‌شده
+        int completedLessonsCount = 0;
+        int fullScoreCount = 0;
+        int multiQuizCompletedCount = 0;
+        boolean hasCompletedCodeQuiz = false;
+        boolean hasAnyMultiQuiz = false;
+
+        for (HomeModel item : lessons) {
+            if (item.isLessonCompleted()) completedLessonsCount++;
+            if (item.getMultiQuizScore() != null) {
+                hasAnyMultiQuiz = true;
+                multiQuizCompletedCount++;
+                if (item.getMultiQuizScore() == 100) fullScoreCount++;
+            }
+            if (item.getCodeQuizScore() != null && item.getCodeQuizScore() >= 50) {
+                hasCompletedCodeQuiz = true;
+            }
+        }
+
+        // 2. شروط گیمیفیکیشن
+        checkTaskCondition(taskViewModel, 1, completedLessonsCount >= 1);                        // مطالعه یک درس
+        checkTaskCondition(taskViewModel, 2, completedLessonsCount == lessons.size());          // تمام دروس
+        checkTaskCondition(taskViewModel, 3, hasAnyMultiQuiz);                                   // اولین کوییز
+        checkTaskCondition(taskViewModel, 4, fullScoreCount >= 1);                                // نمره کامل در یک کوییز
+        checkTaskCondition(taskViewModel, 5, hasCompletedCodeQuiz);                              // تمرین کدنویسی
+        checkTaskCondition(taskViewModel, 6, multiQuizCompletedCount == lessons.size());         // اتمام همه کوییزها
+        checkTaskCondition(taskViewModel, 7, fullScoreCount >= 5);                                // در پنج درس نمره کامل
+        checkTaskCondition(taskViewModel, 8, fullScoreCount == lessons.size());                  // تمام نمرات کامل
+
+        // 3. نمایش انیمیشن فقط یکبار
+        SharedPreferences flagPrefs = context.getSharedPreferences("gamification_flags", Context.MODE_PRIVATE);
+        for (int taskId = 1; taskId <= 8; taskId++) {
+            String key = "task_" + taskId + "_just_completed";
+            if (flagPrefs.getBoolean(key, false)) {
+                showTaskCompletedAnimation(holder.itemView, taskId);
+                flagPrefs.edit().putBoolean(key, false).apply();
+            }
+        }
+
+
 
 
     }
+    private void checkTaskCondition(TaskViewModel taskViewModel, int taskId, boolean conditionMet) {
+        if (conditionMet) {
+            taskViewModel.completeTaskIfNotDone(taskId, context);
+        }
+    }
+
+    private void showTaskCompletedAnimation(View view, int taskId) {
+        Context context = view.getContext();
+        View rootView = ((Activity) context).findViewById(android.R.id.content);
+        LottieAnimationView animationView = rootView.findViewById(R.id.taskSuccessAnim);
+
+        if (animationView != null) {
+            // 🔊 پخش صدا
+            MediaPlayer mediaPlayer = MediaPlayer.create(context, R.raw.task_completed);
+            mediaPlayer.start();
+
+            // در پایان صدا آزاد کن تا حافظه نشت نکنه
+            mediaPlayer.setOnCompletionListener(mp -> {
+                mp.release();
+            });
+
+            // ✅ انیمیشن
+            animationView.setVisibility(View.VISIBLE);
+            animationView.setProgress(0f);
+            animationView.playAnimation();
+
+            Toast.makeText(context, "🎉 تسک " + taskId + " با موفقیت انجام شد!", Toast.LENGTH_SHORT).show();
+
+            animationView.addAnimatorListener(new AnimatorListenerAdapter() {
+                @Override
+                public void onAnimationEnd(Animator animation) {
+                    animationView.setVisibility(View.GONE);
+                }
+            });
+        }
+    }
+
+
+
 
     @Override
     public int getItemCount() {
@@ -241,4 +333,9 @@ public class LessonsAdapter extends RecyclerView.Adapter<LessonsAdapter.LessonVi
             linearLayoutTitle = itemView.findViewById(R.id.linearLayoutTitle);
         }
     }
+
+
+
+
+
 }

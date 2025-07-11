@@ -1,6 +1,9 @@
 package com.example.learndatastructure.view;
 
 import android.content.Context;
+import android.graphics.ColorMatrix;
+import android.graphics.ColorMatrixColorFilter;
+import android.graphics.PorterDuff;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 
@@ -41,6 +45,23 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
         holder.icon.setImageResource(
                 context.getResources().getIdentifier(task.getIconName(), "drawable", context.getPackageName())
         );
+
+//        if (!task.isCompleted()) {
+//            holder.icon.setColorFilter(ContextCompat.getColor(context, R.color.task_undone), PorterDuff.Mode.SRC_OVER);
+//        }
+
+        if (!task.isCompleted()) {
+            ColorMatrix matrix = new ColorMatrix();
+            matrix.setSaturation(0); // This makes it grayscale
+
+            ColorMatrixColorFilter filter = new ColorMatrixColorFilter(matrix);
+            holder.icon.setColorFilter(filter);
+
+            // Apply alpha from color.task_undone
+            int alpha = ContextCompat.getColor(context, R.color.task_undone) >>> 24; // extract alpha
+            holder.icon.setImageAlpha(alpha);
+        }
+
     }
 
     @Override

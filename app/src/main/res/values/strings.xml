@@ -47,7 +47,26 @@
         <item>English</item>
         <item>Persian</item>
     </string-array>
-    <!-- TODO: Remove or change this placeholder text -->
 
+
+
+    // tasks
+    <string name="task_name_book">Study a Lesson</string>
+    <string name="task_name_successful">Complete All Lessons</string>
+    <string name="task_name_quiz">Answer the First Quiz</string>
+    <string name="task_name_score">Get a Perfect Score on a Quiz</string>
+    <string name="task_name_code">Solve a Coding Exercise</string>
+    <string name="task_name_checklist">Complete All Quizzes</string>
+    <string name="task_name_perfection">Top Student</string>
+    <string name="task_name_mind">Genius</string>
+
+    <string name="task_book">Study one lesson from the learning section</string>
+    <string name="task_successful">Finish all the lessons</string>
+    <string name="task_quiz">Complete the first theory quiz</string>
+    <string name="task_score">Get a perfect score on a quiz</string>
+    <string name="task_code">Successfully solve a coding exercise</string>
+    <string name="task_checklist">Complete all multiple-choice quizzes</string>
+    <string name="task_perfection">Get a perfect score in five coding challenges</string>
+    <string name="task_mind">Get a perfect score in all lessons</string>
 
 </resources>
