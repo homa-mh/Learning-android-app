@@ -25,21 +25,20 @@ public class TaskDatabase extends SQLiteOpenHelper {
         String query = "CREATE TABLE " + TABLE_NAME + " (" +
                 "id INTEGER PRIMARY KEY AUTOINCREMENT," +
                 "isCompleted INTEGER," +
-                "title TEXT," +
-                "description TEXT," +
+                "title_en TEXT," +
+                "title_fa TEXT," +
                 "iconName TEXT)";
         db.execSQL(query);
 
         // default tasks
-        db.execSQL("INSERT INTO " + TABLE_NAME + " (isCompleted, title, description, iconName) VALUES (0, '" + context.getString(R.string.task_name_book) + "', '" + context.getString(R.string.task_book) + "', 'task_book')");
-        db.execSQL("INSERT INTO " + TABLE_NAME + " (isCompleted, title, description, iconName) VALUES (0, '" + context.getString(R.string.task_name_successful) + "', '" + context.getString(R.string.task_successful) + "', 'task_successful')");
-        db.execSQL("INSERT INTO " + TABLE_NAME + " (isCompleted, title, description, iconName) VALUES (0, '" + context.getString(R.string.task_name_quiz) + "', '" + context.getString(R.string.task_quiz) + "', 'task_quiz')");
-        db.execSQL("INSERT INTO " + TABLE_NAME + " (isCompleted, title, description, iconName) VALUES (0, '" + context.getString(R.string.task_name_score) + "', '" + context.getString(R.string.task_score) + "', 'task_score')");
-        db.execSQL("INSERT INTO " + TABLE_NAME + " (isCompleted, title, description, iconName) VALUES (0, '" + context.getString(R.string.task_name_code) + "', '" + context.getString(R.string.task_code) + "', 'task_code')");
-        db.execSQL("INSERT INTO " + TABLE_NAME + " (isCompleted, title, description, iconName) VALUES (0, '" + context.getString(R.string.task_name_checklist) + "', '" + context.getString(R.string.task_checklist) + "', 'task_checklist')");
-        db.execSQL("INSERT INTO " + TABLE_NAME + " (isCompleted, title, description, iconName) VALUES (0, '" + context.getString(R.string.task_name_perfection) + "', '" + context.getString(R.string.task_perfection) + "', 'task_perfection')");
-        db.execSQL("INSERT INTO " + TABLE_NAME + " (isCompleted, title, description, iconName) VALUES (0, '" + context.getString(R.string.task_name_mind) + "', '" + context.getString(R.string.task_mind) + "', 'task_mind')");
-
+        db.execSQL("INSERT INTO " + TABLE_NAME + " (isCompleted, title_en, title_fa, iconName) VALUES (0, 'Study a Lesson', 'مطالعه‌ی یک درس', 'task_book')");
+        db.execSQL("INSERT INTO " + TABLE_NAME + " (isCompleted, title_en, title_fa, iconName) VALUES (0, 'Complete All Lessons', 'اتمام همه‌ی درس‌ها', 'task_successful')");
+        db.execSQL("INSERT INTO " + TABLE_NAME + " (isCompleted, title_en, title_fa, iconName) VALUES (0, 'Answer the First Quiz', 'پاسخ به اولین آزمون', 'task_quiz')");
+        db.execSQL("INSERT INTO " + TABLE_NAME + " (isCompleted, title_en, title_fa, iconName) VALUES (0, 'Get a Perfect Score on a Quiz', 'کسب نمره کامل در آزمون', 'task_score')");
+        db.execSQL("INSERT INTO " + TABLE_NAME + " (isCompleted, title_en, title_fa, iconName) VALUES (0, 'Solve a Coding Exercise', 'حل یک تمرین کدنویسی', 'task_code')");
+        db.execSQL("INSERT INTO " + TABLE_NAME + " (isCompleted, title_en, title_fa, iconName) VALUES (0, 'Complete All Quizzes', 'تکمیل همه‌ی آزمون‌ها', 'task_checklist')");
+        db.execSQL("INSERT INTO " + TABLE_NAME + " (isCompleted, title_en, title_fa, iconName) VALUES (0, 'Top Student', 'دانشجوی برتر', 'task_perfection')");
+        db.execSQL("INSERT INTO " + TABLE_NAME + " (isCompleted, title_en, title_fa, iconName) VALUES (0, 'Genius', 'نابغه', 'task_mind')");
 
 
     }

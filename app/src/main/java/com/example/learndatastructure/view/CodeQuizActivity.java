@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.media.MediaPlayer;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -103,7 +104,7 @@ public class CodeQuizActivity extends AppCompatActivity {
             String actual = result.trim();
 
             boolean isCorrect = actual.equalsIgnoreCase(expected);
-            updateEditorBackground(isCorrect);
+            updateEditorBackground(isCorrect, this);
             if (isCorrect) {
                 answerStatusList.set(currentIndex, true);
             }
@@ -275,17 +276,30 @@ public class CodeQuizActivity extends AppCompatActivity {
                 .start();
     }
 
-    private void updateEditorBackground(boolean isCorrect) {
+    private void updateEditorBackground(boolean isCorrect, Context context) {
         boolean isDark = switchTheme.isChecked();
 
         if (isCorrect) {
             edtCode.setBackgroundResource(isDark
                     ? R.drawable.code_editor_correct_dark
                     : R.drawable.code_editor_correct_light);
+
+            MediaPlayer mediaPlayer = MediaPlayer.create(context, R.raw.correct_answer);
+            mediaPlayer.start();
+            mediaPlayer.setOnCompletionListener(mp -> {
+                mp.release();
+            });
+
         } else {
             edtCode.setBackgroundResource(isDark
                     ? R.drawable.code_editor_wrong_dark
                     : R.drawable.code_editor_wrong_light);
+
+            MediaPlayer mediaPlayer = MediaPlayer.create(context, R.raw.wrong_answer);
+            mediaPlayer.start();
+            mediaPlayer.setOnCompletionListener(mp -> {
+                mp.release();
+            });
         }
     }
 

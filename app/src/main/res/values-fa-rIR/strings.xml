@@ -40,25 +40,8 @@
     <string name="email_via">ارسال ایمیل با:</string>
     <string name="no_email">برنامه ایمیل پیدا نشد</string>
     <string name="share_via">ارسال با:</string>
+    <string name="settings_achievement">دستاورد ها</string>
 
 
-    // tasks
-    <string name="task_name_book">مطالعه یک درس</string>
-    <string name="task_name_successful">کامل کردن تمام دروس</string>
-    <string name="task_name_quiz">پاسخ به اولین کوییز</string>
-    <string name="task_name_score">کسب نمره کامل در یک کوییز</string>
-    <string name="task_name_code">پاسخ به تمرین کدنویسی</string>
-    <string name="task_name_checklist">اتمام همه کوییزها</string>
-    <string name="task_name_perfection">درس خون</string>
-    <string name="task_name_mind">نابغه</string>
-
-    <string name="task_book">یک درس از بخش آموزش را مطالعه کن</string>
-    <string name="task_successful">تمام دروس را به پایان برسان</string>
-    <string name="task_quiz">اولین آزمون تئوری را کامل کن</string>
-    <string name="task_score">در یک آزمون نمره کامل کسب کن</string>
-    <string name="task_code">یک تمرین کدنویسی را با موفقیت حل کن</string>
-    <string name="task_checklist">همه آزمون‌های چندگزینه‌ای را کامل کن</string>
-    <string name="task_perfection">در پنج آزمون عملی نمره کامل بگیر</string>
-    <string name="task_mind">در تمام دروس نمره کامل بگیر</string>
 
 </resources>

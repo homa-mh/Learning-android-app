@@ -1,9 +1,11 @@
 package com.example.learndatastructure.view;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.ColorMatrix;
 import android.graphics.ColorMatrixColorFilter;
 import android.graphics.PorterDuff;
+import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,8 +42,15 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
     @Override
     public void onBindViewHolder(@NonNull TaskViewHolder holder, int position) {
         TaskModel task = taskList.get(position);
-        holder.title.setText(task.getTitle());
-        holder.description.setText(task.getDescription());
+
+        SharedPreferences prefs = context.getSharedPreferences("app_settings", Context.MODE_PRIVATE);
+        String lang = prefs.getString("language", "English");
+        if (lang.equals("Persian")) {
+            holder.title.setText(task.getTitleFa());
+        } else {
+            holder.title.setText(task.getTitleEn());
+        }
+
         holder.icon.setImageResource(
                 context.getResources().getIdentifier(task.getIconName(), "drawable", context.getPackageName())
         );
