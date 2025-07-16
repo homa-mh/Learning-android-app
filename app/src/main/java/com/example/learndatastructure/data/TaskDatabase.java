@@ -12,12 +12,11 @@ public class TaskDatabase extends SQLiteOpenHelper {
     public static final int DB_VERSION = 1;
 
     public static final String TABLE_NAME = "tasks";
-    private final Context context;
+
 
 
     public TaskDatabase(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
-        this.context = context;
     }
 
     @Override
@@ -33,12 +32,12 @@ public class TaskDatabase extends SQLiteOpenHelper {
         // default tasks
         db.execSQL("INSERT INTO " + TABLE_NAME + " (isCompleted, title_en, title_fa, iconName) VALUES (0, 'Study a Lesson', 'مطالعه‌ی یک درس', 'task_book')");
         db.execSQL("INSERT INTO " + TABLE_NAME + " (isCompleted, title_en, title_fa, iconName) VALUES (0, 'Complete All Lessons', 'اتمام همه‌ی درس‌ها', 'task_successful')");
-        db.execSQL("INSERT INTO " + TABLE_NAME + " (isCompleted, title_en, title_fa, iconName) VALUES (0, 'Answer the First Quiz', 'پاسخ به اولین آزمون', 'task_quiz')");
-        db.execSQL("INSERT INTO " + TABLE_NAME + " (isCompleted, title_en, title_fa, iconName) VALUES (0, 'Get a Perfect Score on a Quiz', 'کسب نمره کامل در آزمون', 'task_score')");
+        db.execSQL("INSERT INTO " + TABLE_NAME + " (isCompleted, title_en, title_fa, iconName) VALUES (0, 'Answer the First Quiz', 'پاسخ به اولین آزمون تستی', 'task_quiz')");
+        db.execSQL("INSERT INTO " + TABLE_NAME + " (isCompleted, title_en, title_fa, iconName) VALUES (0, 'Get a Perfect Score', 'کسب نمره کامل در آزمون', 'task_score')");
         db.execSQL("INSERT INTO " + TABLE_NAME + " (isCompleted, title_en, title_fa, iconName) VALUES (0, 'Solve a Coding Exercise', 'حل یک تمرین کدنویسی', 'task_code')");
         db.execSQL("INSERT INTO " + TABLE_NAME + " (isCompleted, title_en, title_fa, iconName) VALUES (0, 'Complete All Quizzes', 'تکمیل همه‌ی آزمون‌ها', 'task_checklist')");
-        db.execSQL("INSERT INTO " + TABLE_NAME + " (isCompleted, title_en, title_fa, iconName) VALUES (0, 'Top Student', 'دانشجوی برتر', 'task_perfection')");
-        db.execSQL("INSERT INTO " + TABLE_NAME + " (isCompleted, title_en, title_fa, iconName) VALUES (0, 'Genius', 'نابغه', 'task_mind')");
+        db.execSQL("INSERT INTO " + TABLE_NAME + " (isCompleted, title_en, title_fa, iconName) VALUES (0, 'Get 5 Perfect Score', 'کسب 5 نمره کامل در آزمون', 'task_perfection')");
+        db.execSQL("INSERT INTO " + TABLE_NAME + " (isCompleted, title_en, title_fa, iconName) VALUES (0, 'Get 10 Perfect Score', 'کسب 10 نمره کامل در آزمون', 'task_mind')");
 
 
     }

@@ -43,5 +43,6 @@
     <string name="settings_achievement">دستاورد ها</string>
 
 
+    <string name="achievement_message">🎉 تسک شماره %1$d با موفقیت انجام شد!</string>
 
 </resources>

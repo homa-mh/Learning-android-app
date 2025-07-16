@@ -220,7 +220,7 @@ public class LessonsAdapter extends RecyclerView.Adapter<LessonsAdapter.LessonVi
         checkTaskCondition(taskViewModel, 5, hasCompletedCodeQuiz);                              // تمرین کدنویسی
         checkTaskCondition(taskViewModel, 6, multiQuizCompletedCount == lessons.size());         // اتمام همه کوییزها
         checkTaskCondition(taskViewModel, 7, fullScoreCount >= 5);                                // در پنج درس نمره کامل
-        checkTaskCondition(taskViewModel, 8, fullScoreCount == lessons.size());                  // تمام نمرات کامل
+        checkTaskCondition(taskViewModel, 8, fullScoreCount >= 10);                  // تمام نمرات کامل
 
         // 3. نمایش انیمیشن فقط یکبار
         SharedPreferences flagPrefs = context.getSharedPreferences("gamification_flags", Context.MODE_PRIVATE);
@@ -262,7 +262,10 @@ public class LessonsAdapter extends RecyclerView.Adapter<LessonsAdapter.LessonVi
             animationView.setProgress(0f);
             animationView.playAnimation();
 
-            Toast.makeText(context, "🎉 تسک " + taskId + " با موفقیت انجام شد!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context,
+                    context.getString(R.string.achievement_message, taskId),
+                    Toast.LENGTH_SHORT).show();
+
 
             animationView.addAnimatorListener(new AnimatorListenerAdapter() {
                 @Override

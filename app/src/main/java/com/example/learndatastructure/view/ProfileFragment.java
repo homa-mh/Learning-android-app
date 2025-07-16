@@ -98,7 +98,8 @@ public class ProfileFragment extends Fragment {
         adapter = new TaskAdapter(requireContext(), new ArrayList<>());
         recyclerView.setAdapter(adapter);
 
-        taskViewModel = new ViewModelProvider(this).get(TaskViewModel.class);
+        taskViewModel = new ViewModelProvider(requireActivity()).get(TaskViewModel.class);
+
         taskViewModel.getTasks().observe(getViewLifecycleOwner(), tasks -> {
             adapter = new TaskAdapter(requireContext(), tasks);
             recyclerView.setAdapter(adapter);
@@ -268,6 +269,17 @@ public class ProfileFragment extends Fragment {
                 spinnerLanguage.setSelection(position);
             }
         }
+    }
+    public void refreshTasks() {
+        if (taskViewModel != null) {
+            taskViewModel.refreshTasks();  // در ViewModel پیاده‌سازیش می‌کنی
+        }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        refreshTasks();  // هر وقت فرگمنت دیده شد، دیتاش آپدیت میشه
     }
 
 

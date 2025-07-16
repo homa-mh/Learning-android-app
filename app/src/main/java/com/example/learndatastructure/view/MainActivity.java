@@ -25,6 +25,10 @@ import com.example.learndatastructure.viewModel.SettingsViewModel;
 public class MainActivity extends AppCompatActivity {
 
     private LinearLayout linearHome, linearProfile;
+    private Fragment homeFragment;
+    private Fragment profileFragment;
+    private Fragment activeFragment;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,28 +45,60 @@ public class MainActivity extends AppCompatActivity {
         linearHome = findViewById(R.id.linear_home);
         linearProfile = findViewById(R.id.linear_profile);
 
-        // now we check which fragment must be shown (default is home fragment)
-        String tab = getIntent().getStringExtra("tab");
-        if ("profile".equals(tab)) {
-            loadFragment(new ProfileFragment(), true);
-            highlightSelectedTab(false);
-        } else {
-            loadFragment(new HomeFragment(), false);
-            highlightSelectedTab(true);
-        }
+
+        homeFragment = new HomeFragment();
+        profileFragment = new ProfileFragment();
+
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.add(R.id.fragment_container, homeFragment);
+        transaction.add(R.id.fragment_container, profileFragment);
+        transaction.hide(profileFragment); // home is default
+        transaction.commit();
+
+        activeFragment = homeFragment;
+
+
+
+
 
         // on click listener for tabs
         linearHome.setOnClickListener(v -> {
-            loadFragment(new HomeFragment(), false);  // right to left
+            switchFragment(homeFragment , false);
             highlightSelectedTab(true);
         });
 
         linearProfile.setOnClickListener(v -> {
-            loadFragment(new ProfileFragment(), true);  // left to right
+            switchFragment(profileFragment, true);
             highlightSelectedTab(false);
         });
 
+
     }
+
+    private void switchFragment(Fragment targetFragment, boolean toRight) {
+        if (activeFragment == targetFragment) return;
+
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+
+        if (toRight) {
+            transaction.setCustomAnimations(
+                    R.anim.slide_in_right,
+                    R.anim.slide_out_left
+            );
+        } else {
+            transaction.setCustomAnimations(
+                    R.anim.slide_in_left,
+                    R.anim.slide_out_right
+            );
+        }
+
+        transaction.hide(activeFragment);
+        transaction.show(targetFragment);
+        transaction.commit();
+
+        activeFragment = targetFragment;
+    }
+
 
     private void loadFragment(Fragment fragment, boolean toRight) {
         Fragment currentFragment = getSupportFragmentManager().findFragmentById(R.id.fragment_container);
