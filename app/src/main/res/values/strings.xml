@@ -7,11 +7,15 @@
     <string name="lessons_quiz2">Practical Quiz</string>
     <string name="lessons_done">Done</string>
     <string name="lessons_submit">Submit</string>
+    <string name="lessons_no_answer">Please Write some code first</string>
+    <string name="no_internet">Please Check Your Internet Connection.</string>
     <string name="lessons_score">Score</string>
     <string name="lessons_userAnswer">Your Answer</string>
     <string name="lessons_correctAnswer">Correct Answer</string>
     <string name="lessons_check">Check</string>
     <string name="lessons_next">Next</string>
+    <string name="lessons_hint">Hint</string>
+    <string name="lessons_ok">Ok</string>
     <string name="result_question">Question : </string>
     <string name="result_yourAnswer">Your answer : </string>
     <string name="result_returned">What is returned : </string>

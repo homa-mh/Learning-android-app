@@ -24,6 +24,7 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -64,7 +65,7 @@ public class CodeQuizActivity extends AppCompatActivity {
         FontUtil.applyFontToView(this, findViewById(android.R.id.content), typeface);
 
         if (!isNetworkAvailable(this)) {
-            Toast.makeText(this, "No Internet connection!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.no_internet), Toast.LENGTH_SHORT).show();
             finish();
             return;
         }
@@ -131,13 +132,21 @@ public class CodeQuizActivity extends AppCompatActivity {
 
         btnCheck.setOnClickListener(v -> {
             if (!isNetworkAvailable(this)) {
-                Toast.makeText(this, "Please connect to the internet to submit", Toast.LENGTH_SHORT).show();
+                new AlertDialog.Builder(this)
+                        .setTitle("")
+                        .setMessage(getString(R.string.no_internet))
+                        .setPositiveButton(getString(R.string.lessons_ok), null)
+                        .show();
                 return;
             }
 
             String userCode = edtCode.getText().toString().trim();
             if (userCode.isEmpty()) {
-                Toast.makeText(this, "Write some code first", Toast.LENGTH_SHORT).show();
+                new AlertDialog.Builder(this)
+                        .setTitle("")
+                        .setMessage(getString(R.string.lessons_no_answer))
+                        .setPositiveButton(getString(R.string.lessons_ok), null)
+                        .show();
                 return;
             }
 
@@ -183,9 +192,13 @@ public class CodeQuizActivity extends AppCompatActivity {
 
         btnHint.setOnClickListener(v -> {
             String hint = quizList.get(currentIndex).getHint();
-            Toast toast = Toast.makeText(getApplicationContext(), hint != null ? hint : "No hint available.", Toast.LENGTH_SHORT);
-            toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 50);
-            toast.show();
+            new AlertDialog.Builder(this)
+                    .setTitle(getString(R.string.lessons_hint))
+                    .setMessage(hint)
+                    .setPositiveButton(getString(R.string.lessons_ok), null)
+                    .show();
+
+
         });
 
         switchTheme.setOnCheckedChangeListener((buttonView, isChecked) -> {
