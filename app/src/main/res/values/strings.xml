@@ -24,7 +24,7 @@
     <string name="result_noAnswer">No answer</string>
     <string name="login">Login</string>
     <string name="signup">SignUp</string>
-
+    <string name="reminder_set">Reminder set to </string>
 
     <string name="settings_darkMode">Dark Mode</string>
     <string name="settings_achievement">Achievements</string>

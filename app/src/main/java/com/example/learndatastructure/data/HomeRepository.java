@@ -80,6 +80,7 @@ public class HomeRepository {
         }
         saveLessonsToFile(lessons);
     }
+
     public void updateMultiQuizProgress(int lessonId, Integer multiQuizScore) {
         List<HomeModel> lessons = getLessons();  // Load the current lessons list
         for (HomeModel lesson : lessons) {

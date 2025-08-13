@@ -177,7 +177,7 @@ public class ProfileFragment extends Fragment {
                         (timePicker, hour, minute) -> {
                             viewModel.updateReminderTime(hour, minute);
                             String formatted = String.format("%02d:%02d", hour, minute);
-                            Toast.makeText(getContext(), "Reminder set to " + formatted, Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getContext(), getString(R.string.reminder_set) + formatted, Toast.LENGTH_SHORT).show();
                             txtReminderTime.setText( formatted);
                         },
                         currentTime[0],

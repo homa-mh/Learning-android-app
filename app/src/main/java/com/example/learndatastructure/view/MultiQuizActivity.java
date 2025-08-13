@@ -130,7 +130,7 @@ public class MultiQuizActivity extends AppCompatActivity {
         // Update button visibility
         btnPrev.setEnabled(currentIndex != 0 );
         btnNext.setEnabled(currentIndex != quizList.size() - 1);
-        btnSubmit.setVisibility(currentIndex == quizList.size() - 1 ? View.VISIBLE : View.GONE);
+        btnSubmit.setVisibility(currentIndex == quizList.size() - 1 ? View.VISIBLE : View.INVISIBLE);
 
         txtQuestionNum.setText((currentIndex + 1) + " / " + quizList.size());
     }

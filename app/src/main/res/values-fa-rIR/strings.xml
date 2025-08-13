@@ -40,6 +40,7 @@
     <string name="app_creator">App Creator : </string>
     <string name="creator_name">Mh</string>
     <string name="settings_contact">تماس با ما</string>
+    <string name="reminder_set">یادآور تنظیم شد. ساعت:</string>
     <string name="contact_subject">نظر درباره اپلیکیشن آموزش ساختمان داده</string>
     <string name="email_via">ارسال ایمیل با:</string>
     <string name="no_email">برنامه ایمیل پیدا نشد</string>

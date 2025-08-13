@@ -97,7 +97,10 @@ public class LessonsAdapter extends RecyclerView.Adapter<LessonsAdapter.LessonVi
         // Check if the lesson is completed
         if (lesson.isLessonCompleted()) {
             holder.iconLesson.setImageResource(R.drawable.completed);
+        } else {
+            holder.iconLesson.setImageResource(R.drawable.circle);
         }
+
         // Update multi-quiz score if available. and change the color based on the score.
         if (lesson.getMultiQuizScore() != null) {
             holder.txtMultiQuizScore.setText(lesson.getMultiQuizScore() + " %");
@@ -120,6 +123,9 @@ public class LessonsAdapter extends RecyclerView.Adapter<LessonsAdapter.LessonVi
 
             }
             holder.iconMultiQuiz.setImageResource(R.drawable.completed);  // Change icon if score is available
+        }else {
+            holder.iconMultiQuiz.setImageResource(R.drawable.circle);
+            holder.txtMultiQuizScore.setText("");
         }
 
         // does the same for multi-quiz score
@@ -140,6 +146,9 @@ public class LessonsAdapter extends RecyclerView.Adapter<LessonsAdapter.LessonVi
 
             }
             holder.iconCodeQuiz.setImageResource(R.drawable.completed);  // Change icon if score is available
+        }else {
+            holder.iconCodeQuiz.setImageResource(R.drawable.circle);
+            holder.txtCodeQuizScore.setText("");
         }
 
 
@@ -160,6 +169,8 @@ public class LessonsAdapter extends RecyclerView.Adapter<LessonsAdapter.LessonVi
         // hide code quiz if not exists
         if(lesson.getCodeQuizFilename() == null){
             holder.cardCode.setVisibility(View.GONE);
+        }else {
+            holder.cardCode.setVisibility(View.VISIBLE);
         }
 
 
@@ -307,8 +318,14 @@ public class LessonsAdapter extends RecyclerView.Adapter<LessonsAdapter.LessonVi
             }
             lessons = filteredList;
         }
+
+        for (HomeModel lesson : lessons) {
+            lesson.setExpanded(false);
+        }
         notifyDataSetChanged();
+
     }
+
 
 
     // ViewHolder class. which holds our views, obviously.
