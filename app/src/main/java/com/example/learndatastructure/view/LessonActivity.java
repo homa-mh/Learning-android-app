@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModelProvider;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.text.LineBreaker;
 import android.os.Build;
@@ -15,6 +16,7 @@ import android.os.Handler;
 import android.text.Html;
 import android.text.Layout;
 import android.util.Log;
+import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -35,6 +37,7 @@ public class LessonActivity extends AppCompatActivity {
     private Button btnPrev, btnNext;
     private int currentPage = 0;
     private List<String> pages;
+    private WebView webContent;
 
     @SuppressLint({"MissingInflatedId", "SetTextI18n"})
     @Override
@@ -51,6 +54,11 @@ public class LessonActivity extends AppCompatActivity {
         txtPageNum = findViewById(R.id.txt_page_num);
         btnPrev = findViewById(R.id.btn_prev);
         btnNext = findViewById(R.id.btn_next);
+
+        webContent = findViewById(R.id.webContent);
+        webContent.getSettings().setJavaScriptEnabled(false);
+        webContent.setBackgroundColor(Color.TRANSPARENT);
+
 
         String title = getIntent().getStringExtra("lesson_title");
         int lessonId = getIntent().getIntExtra("lesson_id",0);
@@ -128,16 +136,68 @@ public class LessonActivity extends AppCompatActivity {
 
 
 
+
     private void showPage(int pageIndex) {
         if (pages != null && pageIndex < pages.size()) {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                txtContent.setJustificationMode(LineBreaker.JUSTIFICATION_MODE_INTER_WORD);
-            }
-            txtContent.setText(Html.fromHtml(pages.get(pageIndex)));
+
+            String rawHtml = pages.get(pageIndex);
+
+            // اطمینان از اضافه شدن کلاس زبان برای highlight.js
+            rawHtml = rawHtml.replaceAll("<pre><code>", "<pre class='code-block'><code class='language-python'>");
+
+            // HTML کامل با مسیر لوکال
+            String styledHtml =
+                    "<html>" +
+                            "<head>" +
+                            "<meta charset='utf-8' />" +
+                            "<link rel='stylesheet' href='file:///android_asset/highlight/monokai.min.css'>" +
+                            "<style>" +
+                            "body { font-family: sans-serif; line-height: 1.6; padding: 8px; }" +
+                            ".text-block { direction: rtl; text-align: justify; margin-bottom: 12px; }" +
+                            ".text-block.eng { direction: ltr; text-align: left; margin-bottom: 12px; }" +
+                            ".code-block {"  +
+                            "color: #ffffff;" +
+                            "border-radius: 6px;" +
+                            "display: block;" +
+                            "overflow-x: auto;" +
+                            "font-family: monospace;" +
+                            "direction: ltr !important;" +
+                            "text-align: left;" +
+                            "white-space: pre-wrap;" +
+                            "margin-bottom: 12px;" +
+                            "}" +
+                            "@media (prefers-color-scheme: dark) {\n" +
+                            "    .text-block,\n" +
+                            "    .text-block.eng, table {\n" +
+                            "        color: white;\n" +
+                            "    }\n" +
+                            "}" +
+                            "table { border-collapse: collapse; width: 100%; margin-bottom: 12px; text-align:center;}" +
+                            "table, th, td { border: 1px solid #ccc; }" +
+                            "th, td { padding: 6px; text-align: left; }" +
+                            "</style>" +
+                            "</head>" +
+                            "<body>" +
+                            rawHtml +
+                            "<script src='file:///android_asset/highlight/highlight.min.js'></script>" +
+                            "<script>hljs.highlightAll();</script>" +
+                            "</body>" +
+                            "</html>";
+
+            webContent.getSettings().setJavaScriptEnabled(true);
+            webContent.loadDataWithBaseURL(null, styledHtml, "text/html", "UTF-8", null);
+
         } else {
-            txtContent.setText("No content found");
+            webContent.loadData("<p>No content found</p>", "text/html", "UTF-8");
         }
     }
+
+
+
+
+
+
+
 
     private void updateLessonProgress(int lessonId, boolean lessonCompleted) {
         HomeViewModel lessonViewModel;

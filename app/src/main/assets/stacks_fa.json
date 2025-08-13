@@ -4,31 +4,31 @@
   "pages": [
     {
       "page": 1,
-      "content": "<h2>پشته چیست؟</h2><p>پشته یا <b>Stack</b> یک ساختار داده‌ی خطی است که از اصل <b>آخرین ورودی، اولین خروجی (LIFO)</b> پیروی می‌کند. یعنی آخرین عنصری که وارد پشته شده، اولین عنصری است که خارج می‌شود. پشته را می‌توان مانند یک دسته بشقاب در نظر گرفت؛ آخرین بشقابی که روی بقیه قرار داده‌اید، اولین بشقابی است که برمی‌دارید.</p>"
+      "content": "<div class='text-block'><h2>پشته چیست؟</h2><p>پشته یا <b>Stack</b> یک ساختار داده‌ی خطی است که از اصل <b>آخرین ورودی، اولین خروجی (LIFO)</b> پیروی می‌کند. یعنی آخرین عنصری که وارد پشته شده، اولین عنصری است که خارج می‌شود. پشته را می‌توان مانند یک دسته بشقاب در نظر گرفت؛ آخرین بشقابی که روی بقیه قرار داده‌اید، اولین بشقابی است که برمی‌دارید.</p></div>"
     },
     {
       "page": 2,
-      "content": "<h2>عملیات‌های اصلی پشته</h2><ul><li><b>push(item)</b>: افزودن یک عنصر به بالای پشته.</li><li><b>pop()</b>: حذف و بازگرداندن عنصر بالای پشته.</li><li><b>peek()/top()</b>: مشاهده‌ی عنصر بالایی بدون حذف آن.</li><li><b>is_empty()</b>: بررسی خالی بودن پشته.</li><li><b>size()</b>: بازگرداندن تعداد عناصر در پشته.</li></ul>"
+      "content": "<div class='text-block'><h2>عملیات‌های اصلی پشته</h2><ul><li><b>push(item)</b>: افزودن یک عنصر به بالای پشته.</li><li><b>pop()</b>: حذف و بازگرداندن عنصر بالای پشته.</li><li><b>peek()/top()</b>: مشاهده‌ی عنصر بالایی بدون حذف آن.</li><li><b>is_empty()</b>: بررسی خالی بودن پشته.</li><li><b>size()</b>: بازگرداندن تعداد عناصر در پشته.</li></ul></div>"
     },
     {
       "page": 3,
-      "content": "<h2>مثال پشته در پایتون</h2><pre><code>stack = []\n\nstack.append(10)  # افزودن ۱۰\nstack.append(20)  # افزودن ۲۰\nprint(stack.pop())  # حذف → ۲۰\nprint(stack[-1])    # مشاهده عنصر بالا → ۱۰\nprint(len(stack))   # اندازه → ۱\nprint(not stack)    # آیا پشته خالی است؟ → False</code></pre>"
+      "content": "<div class='text-block'><h2>مثال پشته در پایتون</h2></dv><div class='code-block'><pre><code class='language-python'>stack = []\n\nstack.append(10)  # افزودن ۱۰\nstack.append(20)  # افزودن ۲۰\nprint(stack.pop())  # حذف → ۲۰\nprint(stack[-1])    # مشاهده عنصر بالا → ۱۰\nprint(len(stack))   # اندازه → ۱\nprint(not stack)    # آیا پشته خالی است؟ → False</code></pre></div>"
     },
     {
       "page": 4,
-      "content": "<h2>کاربردهای پشته</h2><ul><li>دستورات بازگشت (undo/redo)</li><li>بازگشت به عقب در حل ماز یا بررسی درخت‌ها</li><li>مدیریت فراخوانی توابع در زمان اجرا</li><li>محاسبه و تجزیه عبارات (postfix, prefix)</li><li>تحلیل نحو در کامپایلرها</li></ul>"
+      "content": "<div class='text-block'><h2>کاربردهای پشته</h2><ul><li>دستورات بازگشت (undo/redo)</li><li>بازگشت به عقب در حل ماز یا بررسی درخت‌ها</li><li>مدیریت فراخوانی توابع در زمان اجرا</li><li>محاسبه و تجزیه عبارات (postfix, prefix)</li><li>تحلیل نحو در کامپایلرها</li></ul></div>"
     },
     {
       "page": 5,
-      "content": "<h2>نشانه‌گذاری پسوندی (Postfix)</h2><p>در نشانه‌گذاری پسوندی، عملگرها بعد از عملوندها قرار می‌گیرند. مثال: <code>2 3 +</code> یعنی <code>2 + 3</code>.</p><pre><code>def evaluate_postfix(expr):\n    stack = []\n    for token in expr.split():\n        if token.isdigit():\n            stack.append(int(token))\n        else:\n            b = stack.pop()\n            a = stack.pop()\n            if token == '+': stack.append(a + b)\n            elif token == '-': stack.append(a - b)\n            elif token == '*': stack.append(a * b)\n            elif token == '/': stack.append(a / b)\n    return stack.pop()\n\nprint(evaluate_postfix(\"2 3 4 * +\"))  # خروجی → 14</code></pre>"
+      "content": "<div class='text-block'><h2>نشانه\u200Cگذاری پسوندی (Postfix)</h2><p>در نشانه\u200Cگذاری پسوندی، عملگرها بعد از عملوندها قرار می\u200Cگیرند. مثال: <code>2 3 +</code> یعنی <code>2 + 3</code>.</p></div><div class='code-block'><pre><code class='language-python'>def evaluate_postfix(expr):\n    stack = []\n    for token in expr.split():\n        if token.isdigit():\n            stack.append(int(token))\n        else:\n            b = stack.pop()\n            a = stack.pop()\n            if token == '+': stack.append(a + b)\n            elif token == '-': stack.append(a - b)\n            elif token == '*': stack.append(a * b)\n            elif token == '/': stack.append(a / b)\n    return stack.pop()\n\nprint(evaluate_postfix(\"2 3 4 * +\"))  # خروجی → 14</code></pre></div>"
     },
     {
       "page": 6,
-      "content": "<h2>نشانه‌گذاری پیشوندی (Prefix)</h2><p>در نشانه‌گذاری پیشوندی، عملگرها قبل از عملوندها می‌آیند. مثال: <code>+ 2 3</code> یعنی <code>2 + 3</code>. برای تجزیه این عبارات، معمولاً باید عبارت را معکوس کرده و با پشته بررسی کرد.</p><pre><code>def evaluate_prefix(expr):\n    tokens = expr.split()[::-1]\n    stack = []\n    for token in tokens:\n        if token.isdigit():\n            stack.append(int(token))\n        else:\n            a = stack.pop()\n            b = stack.pop()\n            if token == '+': stack.append(a + b)\n            elif token == '-': stack.append(a - b)\n            elif token == '*': stack.append(a * b)\n            elif token == '/': stack.append(a / b)\n    return stack.pop()\n\nprint(evaluate_prefix(\"+ 2 * 3 4\"))  # خروجی → 14</code></pre>"
+      "content": "<div class='text-block'><h2>نشانه\u200Cگذاری پیشوندی (Prefix)</h2><p>در نشانه\u200Cگذاری پیشوندی، عملگرها قبل از عملوندها می\u200Cآیند. مثال: <code>+ 2 3</code> یعنی <code>2 + 3</code>. برای تجزیه این عبارات، معمولاً باید عبارت را معکوس کرده و با پشته بررسی کرد.</p></div><div class='code-block'><pre><code class='language-python'>def evaluate_prefix(expr):\n    tokens = expr.split()[::-1]\n    stack = []\n    for token in tokens:\n        if token.isdigit():\n            stack.append(int(token))\n        else:\n            a = stack.pop()\n            b = stack.pop()\n            if token == '+': stack.append(a + b)\n            elif token == '-': stack.append(a - b)\n            elif token == '*': stack.append(a * b)\n            elif token == '/': stack.append(a / b)\n    return stack.pop()\n\nprint(evaluate_prefix(\"+ 2 * 3 4\"))  # خروجی → 14</code></pre></div>"
     },
     {
       "page": 7,
-      "content": "<h2>مزایا و معایب پشته</h2><h3>مزایا</h3><ul><li>ساده و کارآمد برای عملیات LIFO</li><li>مدیریت آسان فراخوانی‌های تودرتو یا بازگشتی</li><li>قابل استفاده برای undo/redo، و جستجوهای بازگشتی</li></ul><h3>معایب</h3><ul><li>فقط به عنصر بالای پشته دسترسی داریم</li><li>در پیاده‌سازی مبتنی بر آرایه، اندازه محدود است</li><li>دسترسی تصادفی به عناصر غیرممکن است</li></ul>"
+      "content": "<div class='text-block'><h2>مزایا و معایب پشته</h2><h3>مزایا</h3><ul><li>ساده و کارآمد برای عملیات LIFO</li><li>مدیریت آسان فراخوانی‌های تودرتو یا بازگشتی</li><li>قابل استفاده برای undo/redo، و جستجوهای بازگشتی</li></ul><h3>معایب</h3><ul><li>فقط به عنصر بالای پشته دسترسی داریم</li><li>در پیاده‌سازی مبتنی بر آرایه، اندازه محدود است</li><li>دسترسی تصادفی به عناصر غیرممکن است</li></ul></div>"
     }
   ]
 }

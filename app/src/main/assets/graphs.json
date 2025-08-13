@@ -4,31 +4,31 @@
   "pages": [
     {
       "page": 1,
-      "content": "<h2>What is a Graph?</h2><p>A graph is a non-linear data structure consisting of <b>nodes (vertices)</b> and <b>edges</b>. It is used to represent relationships or connections between entities. Common examples include social networks, maps, and recommendation systems.</p>"
+      "content": "<div class='text-block eng'><h2>What is a Graph?</h2><p>A graph is a non-linear data structure consisting of <b>nodes (vertices)</b> and <b>edges</b>. It is used to represent relationships or connections between entities. Common examples include social networks, maps, and recommendation systems.</p></div>"
     },
     {
       "page": 2,
-      "content": "<h2>Terminology</h2><ul><li><b>Vertex (Node):</b> A fundamental unit representing an entity.</li><li><b>Edge:</b> A link connecting two vertices.</li><li><b>Adjacent:</b> Two nodes connected by an edge.</li><li><b>Degree:</b> The number of edges connected to a node.</li></ul>"
+      "content": "<div class='text-block eng'><h2>Terminology</h2><ul><li><b>Vertex (Node):</b> A fundamental unit representing an entity.</li><li><b>Edge:</b> A link connecting two vertices.</li><li><b>Adjacent:</b> Two nodes connected by an edge.</li><li><b>Degree:</b> The number of edges connected to a node.</li></ul></div>"
     },
     {
       "page": 3,
-      "content": "<h2>Types of Graphs</h2><ul><li><b>Directed Graph (Digraph):</b> Edges have direction (A → B).</li><li><b>Undirected Graph:</b> Edges have no direction (A — B).</li><li><b>Weighted Graph:</b> Edges have weights (e.g., distance or cost).</li><li><b>Unweighted Graph:</b> All edges are considered equal.</li><li><b>Cyclic / Acyclic:</b> A cyclic graph contains at least one cycle.</li></ul>"
+      "content": "<div class='text-block eng'><h2>Types of Graphs</h2><ul><li><b>Directed Graph (Digraph):</b> Edges have direction (A → B).</li><li><b>Undirected Graph:</b> Edges have no direction (A — B).</li><li><b>Weighted Graph:</b> Edges have weights (e.g., distance or cost).</li><li><b>Unweighted Graph:</b> All edges are considered equal.</li><li><b>Cyclic / Acyclic:</b> A cyclic graph contains at least one cycle.</li></ul></div>"
     },
     {
       "page": 4,
-      "content": "<h2>Graph Representations</h2><ul><li><b>Adjacency Matrix:</b> A 2D array where matrix[i][j] = 1 if an edge exists.</li><li><b>Adjacency List:</b> Each node stores a list of its neighbors.</li></ul><p>Python Example (Adjacency List):</p><pre><code>graph = {\n  'A': ['B', 'C'],\n  'B': ['A', 'D'],\n  'C': ['A'],\n  'D': ['B']\n}</code></pre>"
+      "content": "<div class='text-block eng'><h2>Graph Representations</h2><ul><li><b>Adjacency Matrix:</b> A 2D array where matrix[i][j] = 1 if an edge exists.</li><li><b>Adjacency List:</b> Each node stores a list of its neighbors.</li></ul><p>Python Example (Adjacency List):</p></div><div class='code-block'><pre><code>graph = {\n  'A': ['B', 'C'],\n  'B': ['A', 'D'],\n  'C': ['A'],\n  'D': ['B']\n}</code></pre></div>"
     },
     {
       "page": 5,
-      "content": "<h2>Graph Operations</h2><ul><li>Add Vertex</li><li>Add Edge</li><li>Remove Vertex</li><li>Remove Edge</li><li>Search (DFS, BFS)</li></ul><p>Example (Add Edge):</p><pre><code>def add_edge(graph, u, v):\n  graph[u].append(v)\n  graph[v].append(u)</code></pre>"
+      "content": "<div class='text-block eng'><h2>Graph Operations</h2><ul><li>Add Vertex</li><li>Add Edge</li><li>Remove Vertex</li><li>Remove Edge</li><li>Search (DFS, BFS)</li></ul><p>Example (Add Edge):</p></div><div class='code-block'><pre><code>def add_edge(graph, u, v):\n  graph[u].append(v)\n  graph[v].append(u)</code></pre></div>"
     },
     {
       "page": 6,
-      "content": "<h2>Traversing a Graph</h2><p><b>DFS (Depth-First Search):</b> Explores as far as possible before backtracking.</p><pre><code>def dfs(graph, start, visited=set()):\n  if start not in visited:\n    print(start)\n    visited.add(start)\n    for neighbor in graph[start]:\n      dfs(graph, neighbor, visited)</code></pre><p><b>BFS (Breadth-First Search):</b> Explores all neighbors before going deeper.</p>"
+      "content": "<div class='text-block eng'><h2>Traversing a Graph</h2><p><b>DFS (Depth-First Search):</b> Explores as far as possible before backtracking.</p></div><div class='code-block'><pre><code>def dfs(graph, start, visited=set()):\n  if start not in visited:\n    print(start)\n    visited.add(start)\n    for neighbor in graph[start]:\n      dfs(graph, neighbor, visited)</code></pre></div><div class='text-block eng'><p><b>BFS (Breadth-First Search):</b> Explores all neighbors before going deeper.</p></div>"
     },
     {
       "page": 7,
-      "content": "<h2>Use Cases of Graphs</h2><ul><li>Navigation systems (maps, GPS)</li><li>Social networks (Facebook, LinkedIn)</li><li>Recommendation engines</li><li>Web page ranking (Google PageRank)</li><li>Dependency resolution (package installers)</li></ul>"
+      "content": "<div class='text-block eng'><h2>Use Cases of Graphs</h2><ul><li>Navigation systems (maps, GPS)</li><li>Social networks (Facebook, LinkedIn)</li><li>Recommendation engines</li><li>Web page ranking (Google PageRank)</li><li>Dependency resolution (package installers)</li></ul></div>"
     }
   ]
 }

@@ -4,31 +4,31 @@
   "pages": [
     {
       "page": 1,
-      "content": "<h2>آرایه‌ها چه نوع ساختمان داده‌ای هستند؟</h2><p>آرایه‌ها (<b>Array</b>) نوعی <b>ساختمان دادهٔ خطی (Linear)</b> هستند. یعنی داده‌ها در آن‌ها به‌صورت متوالی و پشت سر هم در حافظه ذخیره می‌شوند. در پایتون، آرایه‌ها معمولاً با استفاده از لیست‌ها (<code>list</code>) پیاده‌سازی می‌شوند و هر عنصر با <b>اندیس (index)</b> قابل دسترسی است که از 0 شروع می‌شود.</p>"
+      "content": "<div class='text-block'><h2>آرایه‌ها چه نوع ساختمان داده‌ای هستند؟</h2><p>آرایه‌ها (<b>Array</b>) نوعی <b>ساختمان دادهٔ خطی (Linear)</b> هستند. یعنی داده‌ها در آن‌ها به‌صورت متوالی و پشت سر هم در حافظه ذخیره می‌شوند. در پایتون، آرایه‌ها معمولاً با استفاده از لیست‌ها (<code>list</code>) پیاده‌سازی می‌شوند و هر عنصر با <b>اندیس (index)</b> قابل دسترسی است که از 0 شروع می‌شود.</p></div>"
     },
     {
       "page": 2,
-      "content": "<h2>تعریف کامل آرایه</h2><p>در پایتون برای ذخیره چند مقدار از یک نوع یا انواع مختلف، از لیست‌ها استفاده می‌شود. به‌عنوان مثال اگر بخواهیم 100 عدد صحیح ذخیره کنیم، می‌توانیم از یک لیست استفاده کنیم:</p><pre><code>numbers = [0] * 100</code></pre>"
+      "content": "<div class='text-block'><h2>تعریف کامل آرایه</h2><p>در پایتون برای ذخیره چند مقدار از یک نوع یا انواع مختلف، از لیست‌ها استفاده می‌شود. به‌عنوان مثال اگر بخواهیم 100 عدد صحیح ذخیره کنیم، می‌توانیم از یک لیست استفاده کنیم:</p><div class='code-block'><pre><code>numbers = [0] * 100</code></pre></div></div>"
     },
     {
       "page": 3,
-      "content": "<h2>انواع آرایه</h2><ul><li><b>آرایهٔ یک‌بعدی:</b> لیستی ساده از عناصر.</li><li><b>آرایهٔ دوبعدی:</b> لیستی از لیست‌ها، مانند ماتریس.</li><li><b>آرایهٔ چندبعدی:</b> ساختارهای تودرتو برای داده‌های پیچیده‌تر.</li></ul><p>مثال آرایه دوبعدی:</p><pre><code>matrix = [[0 for _ in range(4)] for _ in range(3)]</code></pre>"
+      "content": "<div class='text-block'><h2>انواع آرایه</h2><ul><li><b>آرایهٔ یک‌بعدی:</b> لیستی ساده از عناصر.</li><li><b>آرایهٔ دوبعدی:</b> لیستی از لیست‌ها، مانند ماتریس.</li><li><b>آرایهٔ چندبعدی:</b> ساختارهای تودرتو برای داده‌های پیچیده‌تر.</li></ul><p>مثال آرایه دوبعدی:</p><div class='code-block'><pre><code>matrix = [[0 for _ in range(4)] for _ in range(3)]</code></pre></div></div>"
     },
     {
       "page": 4,
-      "content": "<h2>عملیات اصلی روی آرایه</h2><ul><li><b>دسترسی (Access):</b> با استفاده از اندیس. <br>پیچیدگی: <code>O(1)</code></li><li><b>جست‌وجو (Search):</b> یافتن عنصر خاص. <br>پیچیدگی: <code>O(n)</code> یا <code>O(log n)</code></li><li><b>درج (Insert):</b> افزودن مقدار. <br>در انتها: <code>O(1)</code> (در شرایط خاص)<br>در موقعیت خاص: <code>O(n)</code></li><li><b>حذف (Delete):</b> حذف عنصر با جابه‌جایی سایر عناصر. <br>پیچیدگی: <code>O(n)</code></li></ul>"
+      "content": "<div class='text-block'><h2>عملیات اصلی روی آرایه</h2><ul><li><b>دسترسی (Access):</b> با استفاده از اندیس. <br>پیچیدگی: <code>O(1)</code></li><li><b>جست‌وجو (Search):</b> یافتن عنصر خاص. <br>پیچیدگی: <code>O(n)</code> یا <code>O(log n)</code></li><li><b>درج (Insert):</b> افزودن مقدار. <br>در انتها: <code>O(1)</code> (در شرایط خاص)<br>در موقعیت خاص: <code>O(n)</code></li><li><b>حذف (Delete):</b> حذف عنصر با جابه‌جایی سایر عناصر. <br>پیچیدگی: <code>O(n)</code></li></ul></div>"
     },
     {
       "page": 5,
-      "content": "<h2>جست‌وجو در آرایه</h2><h3>1. جست‌وجوی خطی (Linear Search)</h3><p>تمام عناصر یکی‌یکی بررسی می‌شوند تا مقدار موردنظر پیدا شود.</p><pre><code>def linear_search(arr, target):<br>&nbsp;&nbsp;for i in range(len(arr)):<br>&nbsp;&nbsp;&nbsp;&nbsp;if arr[i] == target:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return i<br>&nbsp;&nbsp;return -1</code></pre><p>پیچیدگی: <code>O(n)</code></p>"
+      "content": "<div class='text-block'><h2>جست‌وجو در آرایه</h2><h3>1. جست‌وجوی خطی (Linear Search)</h3><p>تمام عناصر یکی‌یکی بررسی می‌شوند تا مقدار موردنظر پیدا شود.</p></div><div class='code-block'><pre><code>def linear_search(arr, target):\n    for i in range(len(arr)):\n        if arr[i] == target:\n            return i\n    return -1</code></pre></div><div class='text-block'><p>پیچیدگی: <code>O(n)</code></p></div>"
     },
     {
       "page": 6,
-      "content": "<h3>2. جست‌وجوی دودویی (Binary Search)</h3><p>تنها در لیست‌های مرتب‌شده قابل استفاده است.</p><pre><code>def binary_search(arr, target):<br>&nbsp;&nbsp;left, right = 0, len(arr) - 1<br>&nbsp;&nbsp;while left <= right:<br>&nbsp;&nbsp;&nbsp;&nbsp;mid = (left + right) // 2<br>&nbsp;&nbsp;&nbsp;&nbsp;if arr[mid] == target:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return mid<br>&nbsp;&nbsp;&nbsp;&nbsp;elif arr[mid] < target:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;left = mid + 1<br>&nbsp;&nbsp;&nbsp;&nbsp;else:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;right = mid - 1<br>&nbsp;&nbsp;return -1</code></pre><p>پیچیدگی: <code>O(log n)</code></p>"
+      "content": "<div class='text-block'><h3>2. جست‌وجوی دودویی (Binary Search)</h3><p>تنها در لیست‌های مرتب‌شده قابل استفاده است.</p></div><div class='code-block'><pre><code>def binary_search(arr, target):\n    left, right = 0, len(arr) - 1\n    while left <= right:\n        mid = (left + right) // 2\n        if arr[mid] == target:\n            return mid\n        elif arr[mid] < target:\n            left = mid + 1\n        else:\n            right = mid - 1\n    return -1</code></pre></div><div class='text-block'><p>پیچیدگی: <code>O(log n)</code></p></div>"
     },
     {
       "page": 7,
-      "content": "<h2>مزایا و محدودیت‌های آرایه</h2><ul><li><b>مزایا:</b> دسترسی سریع به عناصر با استفاده از اندیس، پیاده‌سازی ساده.</li><li><b>محدودیت‌ها:</b> هزینه بالا برای درج یا حذف در وسط لیست، استفاده بیشتر از حافظه در مقایسه با آرایه‌های سنتی.</li></ul><p>در درس‌های آینده با ساختمان داده‌هایی مانند لیست پیوندی، صف و پشته آشنا می‌شوید که برخی از این محدودیت‌ها را برطرف می‌کنند.</p>"
+      "content": "<div class='text-block'><h2>مزایا و محدودیت‌های آرایه</h2><ul><li><b>مزایا:</b> دسترسی سریع به عناصر با استفاده از اندیس، پیاده‌سازی ساده.</li><li><b>محدودیت‌ها:</b> هزینه بالا برای درج یا حذف در وسط لیست، استفاده بیشتر از حافظه در مقایسه با آرایه‌های سنتی.</li></ul><p>در درس‌های آینده با ساختمان داده‌هایی مانند لیست پیوندی، صف و پشته آشنا می‌شوید که برخی از این محدودیت‌ها را برطرف می‌کنند.</p></div>"
     }
   ]
 }

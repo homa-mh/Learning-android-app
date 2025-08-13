@@ -4,31 +4,31 @@
   "pages": [
     {
       "page": 1,
-      "content": "<h2>What is a Stack?</h2><p>A <b>stack</b> is a linear data structure that follows the <b>Last In, First Out (LIFO)</b> principle. This means the last element added to the stack will be the first one to be removed. Imagine a stack of plates: the last plate you place on top is the first one you'll take off.</p>"
+      "content": "<div class='text-block eng'><h2>What is a Stack?</h2><p>A <b>stack</b> is a linear data structure that follows the <b>Last In, First Out (LIFO)</b> principle. This means the last element added to the stack will be the first one to be removed. Imagine a stack of plates: the last plate you place on top is the first one you'll take off.</p></div>"
     },
     {
       "page": 2,
-      "content": "<h2>Core Operations of a Stack</h2><ul><li><b>push(item)</b>: Adds an item to the top of the stack.</li><li><b>pop()</b>: Removes the item from the top of the stack and returns it.</li><li><b>peek()/top()</b>: Returns the top item without removing it.</li><li><b>is_empty()</b>: Checks whether the stack is empty.</li><li><b>size()</b>: Returns the number of items in the stack.</li></ul>"
+      "content": "<div class='text-block eng'><h2>Core Operations of a Stack</h2><ul><li><b>push(item)</b>: Adds an item to the top of the stack.</li><li><b>pop()</b>: Removes the item from the top of the stack and returns it.</li><li><b>peek()/top()</b>: Returns the top item without removing it.</li><li><b>is_empty()</b>: Checks whether the stack is empty.</li><li><b>size()</b>: Returns the number of items in the stack.</li></ul></div>"
     },
     {
       "page": 3,
-      "content": "<h2>Python Stack Example</h2><pre><code>stack = []\n\nstack.append(10)  # Push 10\nstack.append(20)  # Push 20\nprint(stack.pop())  # Pop → 20\nprint(stack[-1])    # Peek → 10\nprint(len(stack))   # Size → 1\nprint(not stack)    # is_empty → False</code></pre>"
+      "content": "<div class='text-block eng'><h2>Python Stack Example</h2></div><div class='code-block'><pre><code class='language-python'>stack = []\n\nstack.append(10)  # Push 10\nstack.append(20)  # Push 20\nprint(stack.pop())  # Pop → 20\nprint(stack[-1])    # Peek → 10\nprint(len(stack))   # Size → 1\nprint(not stack)    # is_empty → False</code></pre></div>"
     },
     {
       "page": 4,
-      "content": "<h2>Applications of Stacks</h2><ul><li>Undo/Redo in editors</li><li>Backtracking (e.g., maze solvers, parsers)</li><li>Function call stack</li><li>Expression Evaluation (postfix, prefix)</li><li>Syntax parsing (in compilers)</li></ul>"
+      "content": "<div class='text-block eng'><h2>Applications of Stacks</h2><ul><li>Undo/Redo in editors</li><li>Backtracking (e.g., maze solvers, parsers)</li><li>Function call stack</li><li>Expression Evaluation (postfix, prefix)</li><li>Syntax parsing (in compilers)</li></ul></div>"
     },
     {
       "page": 5,
-      "content": "<h2>Postfix (Reverse Polish) Notation</h2><p>Operators come after operands. Example: <code>2 3 +</code> means <code>2 + 3</code>.</p><pre><code>def evaluate_postfix(expr):\n    stack = []\n    for token in expr.split():\n        if token.isdigit():\n            stack.append(int(token))\n        else:\n            b = stack.pop()\n            a = stack.pop()\n            if token == '+': stack.append(a + b)\n            elif token == '-': stack.append(a - b)\n            elif token == '*': stack.append(a * b)\n            elif token == '/': stack.append(a / b)\n    return stack.pop()\n\nprint(evaluate_postfix(\"2 3 4 * +\"))  # → 14</code></pre>"
+      "content": "<div class='text-block eng'><h2>Postfix (Reverse Polish) Notation</h2><p>Operators come after operands. Example: <code>2 3 +</code> means <code>2 + 3</code>.</p></div><div class='code-block'><pre><code class='language-python'>def evaluate_postfix(expr):\n    stack = []\n    for token in expr.split():\n        if token.isdigit():\n            stack.append(int(token))\n        else:\n            b = stack.pop()\n            a = stack.pop()\n            if token == '+': stack.append(a + b)\n            elif token == '-': stack.append(a - b)\n            elif token == '*': stack.append(a * b)\n            elif token == '/': stack.append(a / b)\n    return stack.pop()\n\nprint(evaluate_postfix(\"2 3 4 * +\"))  # → 14</code></pre></div>"
     },
     {
       "page": 6,
-      "content": "<h2>Prefix Notation</h2><p>Operators come before operands. Example: <code>+ 2 3</code> means <code>2 + 3</code>. Parsing prefix requires recursion or reversing the expression and using a stack.</p><pre><code>def evaluate_prefix(expr):\n    tokens = expr.split()[::-1]\n    stack = []\n    for token in tokens:\n        if token.isdigit():\n            stack.append(int(token))\n        else:\n            a = stack.pop()\n            b = stack.pop()\n            if token == '+': stack.append(a + b)\n            elif token == '-': stack.append(a - b)\n            elif token == '*': stack.append(a * b)\n            elif token == '/': stack.append(a / b)\n    return stack.pop()\n\nprint(evaluate_prefix(\"+ 2 * 3 4\"))  # → 14</code></pre>"
+      "content": "<div class='text-block eng'><h2>Prefix Notation</h2><p>Operators come before operands. Example: <code>+ 2 3</code> means <code>2 + 3</code>. Parsing prefix requires recursion or reversing the expression and using a stack.</p></div><div class='code-block'><pre><code class='language-python'>def evaluate_prefix(expr):\n    tokens = expr.split()[::-1]\n    stack = []\n    for token in tokens:\n        if token.isdigit():\n            stack.append(int(token))\n        else:\n            a = stack.pop()\n            b = stack.pop()\n            if token == '+': stack.append(a + b)\n            elif token == '-': stack.append(a - b)\n            elif token == '*': stack.append(a * b)\n            elif token == '/': stack.append(a / b)\n    return stack.pop()\n\nprint(evaluate_prefix(\"+ 2 * 3 4\"))  # → 14</code></pre></div>"
     },
     {
       "page": 7,
-      "content": "<h2>Advantages of Stacks</h2><ul><li>Simple and efficient for LIFO operations</li><li>Helps manage nested or recursive processes</li><li>Supports undo/redo, backtracking</li></ul><h2>Disadvantages of Stacks</h2><ul><li>Only top element accessible</li><li>Fixed size in array-based implementations</li><li>Not ideal for random access of elements</li></ul>"
+      "content": "<div class='text-block eng'><h2>Advantages of Stacks</h2><ul><li>Simple and efficient for LIFO operations</li><li>Helps manage nested or recursive processes</li><li>Supports undo/redo, backtracking</li></ul></div><div class='text-block eng'><h2>Disadvantages of Stacks</h2><ul><li>Only top element accessible</li><li>Fixed size in array-based implementations</li><li>Not ideal for random access of elements</li></ul></div>"
     }
   ]
 }

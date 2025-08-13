@@ -4,31 +4,31 @@
   "pages": [
     {
       "page": 1,
-      "content": "<h2>What Type of Data Structure is an Array?</h2><p>Arrays are a type of <b>Linear Data Structure</b>. In Python, arrays are typically implemented using <code>lists</code>, and elements are accessed by <b>index</b>, starting from 0.</p>"
+      "content": "<div class='text-block eng'><h2>What Type of Data Structure is an Array?</h2><p>Arrays are a type of <b>Linear Data Structure</b>. In Python, arrays are typically implemented using <code>lists</code>, and elements are accessed by <b>index</b>, starting from 0.</p></div>"
     },
     {
       "page": 2,
-      "content": "<h2>Complete Definition of an Array</h2><p>In Python, we use lists to store multiple values, often of the same type. For example, to store 100 integers:</p><pre><code>numbers = [0] * 100</code></pre>"
+      "content": "<div class='text-block eng'><h2>Complete Definition of an Array</h2><p>In Python, we use lists to store multiple values, often of the same type. For example, to store 100 integers:</p></div><pre><code>numbers = [0] * 100</code></pre>"
     },
     {
       "page": 3,
-      "content": "<h2>Types of Arrays</h2><ul><li><b>One-Dimensional Array:</b> A simple list of elements.</li><li><b>Two-Dimensional Array:</b> A list of lists, like a matrix.</li><li><b>Multi-Dimensional Array:</b> Nested lists for more complex data.</li></ul><p>Example of a 2D array:</p><pre><code>matrix = [[0 for _ in range(4)] for _ in range(3)]</code></pre>"
+      "content": "<div class='text-block eng'><h2>Types of Arrays</h2><ul><li><b>One-Dimensional Array:</b> A simple list of elements.</li><li><b>Two-Dimensional Array:</b> A list of lists, like a matrix.</li><li><b>Multi-Dimensional Array:</b> Nested lists for more complex data.</li></ul><p>Example of a 2D array:</p></div><pre><code>matrix = [[0 for _ in range(4)] for _ in range(3)]</code></pre>"
     },
     {
       "page": 4,
-      "content": "<h2>Basic Operations on Arrays</h2><ul><li><b>Access:</b> Using an index. <br>Complexity: <code>O(1)</code></li><li><b>Search:</b> Finding a specific element. <br>Complexity: <code>O(n)</code> or <code>O(log n)</code></li><li><b>Insert:</b> Adding a value. <br>At the end: <code>O(1)</code> in amortized time<br>At a specific index: <code>O(n)</code></li><li><b>Delete:</b> Removing an element with shifting. <br>Complexity: <code>O(n)</code></li></ul>"
+      "content": "<div class='text-block eng'><h2>Basic Operations on Arrays</h2><ul><li><b>Access:</b> Using an index. <br>Complexity: <code>O(1)</code></li><li><b>Search:</b> Finding a specific element. <br>Complexity: <code>O(n)</code> or <code>O(log n)</code></li><li><b>Insert:</b> Adding a value. <br>At the end: <code>O(1)</code> in amortized time<br>At a specific index: <code>O(n)</code></li><li><b>Delete:</b> Removing an element with shifting. <br>Complexity: <code>O(n)</code></li></ul></div>"
     },
     {
       "page": 5,
-      "content": "<h2>Searching in Arrays</h2><h3>1. Linear Search</h3><p>Each element is checked one by one until the desired value is found.</p><pre><code>def linear_search(arr, target):<br>&nbsp;&nbsp;for i in range(len(arr)):<br>&nbsp;&nbsp;&nbsp;&nbsp;if arr[i] == target:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return i<br>&nbsp;&nbsp;return -1</code></pre><p>Complexity: <code>O(n)</code></p>"
+      "content": "<div class='text-block eng'><h2>Searching in Arrays</h2><h3>1. Linear Search</h3><p>Each element is checked one by one until the desired value is found.</p></div><div class='code-block'><pre><code>def linear_search(arr, target):\n    for i in range(len(arr)):\n        if arr[i] == target:\n            return i\n    return -1</code></pre></div><div class='text-block eng'><p>Complexity: <code>O(n)</code></p>"
     },
     {
       "page": 6,
-      "content": "<h3>2. Binary Search</h3><p>Works only on sorted lists.</p><pre><code>def binary_search(arr, target):<br>&nbsp;&nbsp;left, right = 0, len(arr) - 1<br>&nbsp;&nbsp;while left <= right:<br>&nbsp;&nbsp;&nbsp;&nbsp;mid = (left + right) // 2<br>&nbsp;&nbsp;&nbsp;&nbsp;if arr[mid] == target:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return mid<br>&nbsp;&nbsp;&nbsp;&nbsp;elif arr[mid] < target:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;left = mid + 1<br>&nbsp;&nbsp;&nbsp;&nbsp;else:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;right = mid - 1<br>&nbsp;&nbsp;return -1</code></pre><p>Complexity: <code>O(log n)</code></p>"
+      "content": "<div class='text-block eng'><h3>2. Binary Search</h3><p>Works only on sorted lists.</p></div><div class='code-block'><pre><code>def binary_search(arr, target):\n    left, right = 0, len(arr) - 1\n    while left <= right:\n        mid = (left + right) // 2\n        if arr[mid] == target:\n            return mid\n        elif arr[mid] < target:\n            left = mid + 1\n        else:\n            right = mid - 1\n    return -1</code></pre></div><div class='text-block eng'><p>Complexity: <code>O(log n)</code></p></div>"
     },
     {
       "page": 7,
-      "content": "<h2>Advantages and Limitations of Arrays</h2><ul><li><b>Advantages:</b> Fast access by index, simple to implement.</li><li><b>Limitations:</b> Costly insertions or deletions in the middle, memory usage may be higher than traditional arrays.</li></ul><p>In later lessons, we will explore linked lists, queues, and stacks which address some of these limitations.</p>"
+      "content": "<div class='text-block eng'><h2>Advantages and Limitations of Arrays</h2><ul><li><b>Advantages:</b> Fast access by index, simple to implement.</li><li><b>Limitations:</b> Costly insertions or deletions in the middle, memory usage may be higher than traditional arrays.</li></ul><p>In later lessons, we will explore linked lists, queues, and stacks which address some of these limitations.</p></div>"
     }
   ]
 }

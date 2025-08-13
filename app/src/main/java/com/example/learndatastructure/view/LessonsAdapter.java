@@ -35,7 +35,11 @@ public class LessonsAdapter extends RecyclerView.Adapter<LessonsAdapter.LessonVi
 
     private Context context;
     private List<HomeModel> lessons;
-    private List<HomeModel> allLessons;  // برای ذخیره تمام درس‌ها
+    private List<HomeModel> allLessons;
+
+    // we have two variables for lessons because of the category:
+    // one for storing all lessons, and one for storing the lessons
+    // we're going to show
 
 
     public LessonsAdapter(Context context) {
@@ -189,11 +193,11 @@ public class LessonsAdapter extends RecyclerView.Adapter<LessonsAdapter.LessonVi
         });
 
 
-        // gamifiction conditions
-        // بخش گیمیفیکیشن
+        // gamifiction
+
         TaskViewModel taskViewModel = new ViewModelProvider((FragmentActivity) context).get(TaskViewModel.class);
 
-        // 1. شمارش درس‌های کامل‌شده
+        //  completed lessons count
         int completedLessonsCount = 0;
         int fullScoreCount = 0;
         int multiQuizCompletedCount = 0;
@@ -212,7 +216,7 @@ public class LessonsAdapter extends RecyclerView.Adapter<LessonsAdapter.LessonVi
             }
         }
 
-        // 2. شروط گیمیفیکیشن
+        //  conditions
         checkTaskCondition(taskViewModel, 1, completedLessonsCount >= 1);                        // مطالعه یک درس
         checkTaskCondition(taskViewModel, 2, completedLessonsCount == lessons.size());          // تمام دروس
         checkTaskCondition(taskViewModel, 3, hasAnyMultiQuiz);                                   // اولین کوییز
@@ -222,7 +226,7 @@ public class LessonsAdapter extends RecyclerView.Adapter<LessonsAdapter.LessonVi
         checkTaskCondition(taskViewModel, 7, fullScoreCount >= 5);                                // در پنج درس نمره کامل
         checkTaskCondition(taskViewModel, 8, fullScoreCount >= 10);                  // تمام نمرات کامل
 
-        // 3. نمایش انیمیشن فقط یکبار
+        //  animation (one time)
         SharedPreferences flagPrefs = context.getSharedPreferences("gamification_flags", Context.MODE_PRIVATE);
         for (int taskId = 1; taskId <= 8; taskId++) {
             String key = "task_" + taskId + "_just_completed";

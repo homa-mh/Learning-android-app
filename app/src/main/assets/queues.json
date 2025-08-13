@@ -4,27 +4,27 @@
   "pages": [
     {
       "page": 1,
-      "content": "<h2>What is a Queue?</h2><p>A <b>Queue</b> is a type of <b>Linear Data Structure</b> that follows the <b>FIFO (First In First Out)</b> principle. This means that the first element added to the queue will be the first one to be removed.</p><p>Think of a queue like a line of people waiting for service: the person who arrives first is served first.</p>"
+      "content": "<div class='text-block eng'><h2>What is a Queue?</h2><p>A <b>Queue</b> is a type of <b>Linear Data Structure</b> that follows the <b>FIFO (First In First Out)</b> principle. This means that the first element added to the queue will be the first one to be removed.</p><p>Think of a queue like a line of people waiting for service: the person who arrives first is served first.</p></div>"
     },
     {
       "page": 2,
-      "content": "<h2>Queue Operations</h2><ul><li><b>enqueue(item)</b>: Add an item to the rear of the queue.</li><li><b>dequeue()</b>: Remove and return the front item of the queue.</li><li><b>front()</b>: Return the front item without removing it.</li><li><b>isEmpty()</b>: Check if the queue is empty.</li><li><b>size()</b>: Return the number of items in the queue.</li></ul><p>In Python, we can implement queues using <code>collections.deque</code> for efficiency.</p><pre><code>from collections import deque\nq = deque()\nq.append(10)  # enqueue\nq.append(20)\nprint(q.popleft())  # dequeue: 10</code></pre>"
+      "content": "<div class='text-block eng'><h2>Queue Operations</h2><ul><li><b>enqueue(item)</b>: Add an item to the rear of the queue.</li><li><b>dequeue()</b>: Remove and return the front item of the queue.</li><li><b>front()</b>: Return the front item without removing it.</li><li><b>isEmpty()</b>: Check if the queue is empty.</li><li><b>size()</b>: Return the number of items in the queue.</li></ul><p>In Python, we can implement queues using <code>collections.deque</code> for efficiency.</p></div><div class='code-block'><pre><code class='language-python'>from collections import deque\nq = deque()\nq.append(10)  # enqueue\nq.append(20)\nprint(q.popleft())  # dequeue: 10</code></pre></div>"
     },
     {
       "page": 3,
-      "content": "<h2>Types of Queues</h2><ul><li><b>Simple Queue</b>: Basic FIFO structure.</li><li><b>Circular Queue</b>: Rear connects to front in a circle, useful in buffer management.</li><li><b>Priority Queue</b>: Elements are served based on priority, not just arrival order.</li><li><b>Deque (Double-Ended Queue)</b>: Allows insertion and deletion from both ends.</li></ul>"
+      "content": "<div class='text-block eng'><h2>Types of Queues</h2><ul><li><b>Simple Queue</b>: Basic FIFO structure.</li><li><b>Circular Queue</b>: Rear connects to front in a circle, useful in buffer management.</li><li><b>Priority Queue</b>: Elements are served based on priority, not just arrival order.</li><li><b>Deque (Double-Ended Queue)</b>: Allows insertion and deletion from both ends.</li></ul></div>"
     },
     {
       "page": 4,
-      "content": "<h2>Time Complexities</h2><table><tr><th>Operation</th><th>Time Complexity</th></tr><tr><td>enqueue</td><td>O(1)</td></tr><tr><td>dequeue</td><td>O(1)</td></tr><tr><td>front</td><td>O(1)</td></tr><tr><td>isEmpty</td><td>O(1)</td></tr></table><p>Using <code>collections.deque</code> ensures constant time for both ends of the queue.</p>"
+      "content": "<div class='table-block'><h2>Time Complexities</h2><table><tr><th>Operation</th><th>Time Complexity</th></tr><tr><td>enqueue</td><td>O(1)</td></tr><tr><td>dequeue</td><td>O(1)</td></tr><tr><td>front</td><td>O(1)</td></tr><tr><td>isEmpty</td><td>O(1)</td></tr></table><p>Using <code>collections.deque</code> ensures constant time for both ends of the queue.</p></div>"
     },
     {
       "page": 5,
-      "content": "<h2>Applications of Queues</h2><ul><li><b>CPU and Disk Scheduling</b>: Processes are scheduled in order using queues.</li><li><b>Data Buffers</b>: Queues are used in IO Buffers, like printers and network queues.</li><li><b>Breadth-First Search (BFS)</b>: Used in graph traversal algorithms.</li><li><b>Task Scheduling</b>: Queues help in managing background jobs.</li></ul>"
+      "content": "<div class='text-block eng'><h2>Applications of Queues</h2><ul><li><b>CPU and Disk Scheduling</b>: Processes are scheduled in order using queues.</li><li><b>Data Buffers</b>: Queues are used in IO Buffers, like printers and network queues.</li><li><b>Breadth-First Search (BFS)</b>: Used in graph traversal algorithms.</li><li><b>Task Scheduling</b>: Queues help in managing background jobs.</li></ul></div>"
     },
     {
       "page": 6,
-      "content": "<h2>Example: BFS with Queue</h2><pre><code>from collections import deque\ndef bfs(graph, start):\n    visited = set()\n    queue = deque([start])\n    while queue:\n        vertex = queue.popleft()\n        if vertex not in visited:\n            print(vertex)\n            visited.add(vertex)\n            queue.extend(graph[vertex])</code></pre>"
+      "content": "<div class='text-block eng'><h2>Example: BFS with Queue</h2></div><div class='code-block'><pre><code class='language-python'>from collections import deque\ndef bfs(graph, start):\n    visited = set()\n    queue = deque([start])\n    while queue:\n        vertex = queue.popleft()\n        if vertex not in visited:\n            print(vertex)\n            visited.add(vertex)\n            queue.extend(graph[vertex])</code></pre></div>"
     }
   ]
 }

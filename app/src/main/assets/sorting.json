@@ -2,45 +2,45 @@
   "id": 8,
   "title": "Sorting Algorithms",
   "pages": [
-  {
-    "page": 1,
-    "content": "<h2>What is Sorting?</h2><p>Sorting is the process of arranging data in a particular format, typically in ascending or descending order. Sorting is crucial in computer science because it helps in efficiently searching, organizing, and analyzing data.</p><p>There are various sorting algorithms, each with different characteristics, time complexities, and use-cases. In this lesson, we will explore several well-known sorting algorithms with Python examples.</p>"
-  },
-  {
-    "page": 2,
-    "content": "<h2>1. Bubble Sort</h2><p>Bubble Sort repeatedly steps through the list, compares adjacent elements, and swaps them if they are in the wrong order. This process is repeated until the list is sorted.</p><pre><code>def bubble_sort(arr):\n    n = len(arr)\n    for i in range(n):\n        for j in range(0, n-i-1):\n            if arr[j] > arr[j+1]:\n                arr[j], arr[j+1] = arr[j+1], arr[j]\n    return arr\n\nprint(bubble_sort([64, 34, 25, 12, 22, 11, 90]))</code></pre><p><b>Time Complexity:</b> O(n^2)</p>"
-  },
-  {
-    "page": 3,
-    "content": "<h2>2. Selection Sort</h2><p>Selection Sort divides the array into two parts: the sorted part at the beginning and the unsorted part. It repeatedly selects the smallest (or largest) element from the unsorted part and moves it to the sorted part.</p><pre><code>def selection_sort(arr):\n    for i in range(len(arr)):\n        min_idx = i\n        for j in range(i+1, len(arr)):\n            if arr[j] < arr[min_idx]:\n                min_idx = j\n        arr[i], arr[min_idx] = arr[min_idx], arr[i]\n    return arr\n\nprint(selection_sort([64, 25, 12, 22, 11]))</code></pre><p><b>Time Complexity:</b> O(n^2)</p>"
-  },
-  {
-    "page": 4,
-    "content": "<h2>3. Insertion Sort</h2><p>Insertion Sort builds the final sorted array one item at a time. It picks an element and inserts it into its correct position in the already sorted part of the array.</p><pre><code>def insertion_sort(arr):\n    for i in range(1, len(arr)):\n        key = arr[i]\n        j = i - 1\n        while j >= 0 and key < arr[j]:\n            arr[j + 1] = arr[j]\n            j -= 1\n        arr[j + 1] = key\n    return arr\n\nprint(insertion_sort([12, 11, 13, 5, 6]))</code></pre><p><b>Time Complexity:</b> O(n^2)</p>"
-  },
-  {
-    "page": 5,
-    "content": "<h2>4. Merge Sort</h2><p>Merge Sort is a divide-and-conquer algorithm. It divides the array into halves, sorts each half, and then merges them back together.</p><pre><code>def merge_sort(arr):\n    if len(arr) > 1:\n        mid = len(arr) // 2\n        L = arr[:mid]\n        R = arr[mid:]\n\n        merge_sort(L)\n        merge_sort(R)\n\n        i = j = k = 0\n        while i < len(L) and j < len(R):\n            if L[i] < R[j]:\n                arr[k] = L[i]\n                i += 1\n            else:\n                arr[k] = R[j]\n                j += 1\n            k += 1\n\n        while i < len(L):\n            arr[k] = L[i]\n            i += 1\n            k += 1\n\n        while j < len(R):\n            arr[k] = R[j]\n            j += 1\n            k += 1\n\n    return arr\n\nprint(merge_sort([38, 27, 43, 3, 9, 82, 10]))</code></pre><p><b>Time Complexity:</b> O(n log n)</p>"
-  },
-  {
-    "page": 6,
-    "content": "<h2>5. Quick Sort</h2><p>Quick Sort is another divide-and-conquer algorithm. It selects a 'pivot' element and partitions the array into two parts: elements less than the pivot and elements greater than the pivot.</p><pre><code>def quick_sort(arr):\n    if len(arr) <= 1:\n        return arr\n    pivot = arr[len(arr) // 2]\n    left = [x for x in arr if x < pivot]\n    middle = [x for x in arr if x == pivot]\n    right = [x for x in arr if x > pivot]\n    return quick_sort(left) + middle + quick_sort(right)\n\nprint(quick_sort([3, 6, 8, 10, 1, 2, 1]))</code></pre><p><b>Time Complexity:</b> Average O(n log n), Worst O(n^2)</p>"
-  },
-  {
-    "page": 7,
-    "content": "<h2>6. Heap Sort</h2><p>Heap Sort is a comparison-based algorithm that uses a binary heap data structure. It first builds a max heap and then repeatedly extracts the maximum element.</p><pre><code>def heapify(arr, n, i):\n    largest = i\n    l = 2 * i + 1\n    r = 2 * i + 2\n\n    if l < n and arr[l] > arr[largest]:\n        largest = l\n\n    if r < n and arr[r] > arr[largest]:\n        largest = r\n\n    if largest != i:\n        arr[i], arr[largest] = arr[largest], arr[i]\n        heapify(arr, n, largest)\n\ndef heap_sort(arr):\n    n = len(arr)\n\n    for i in range(n // 2 - 1, -1, -1):\n        heapify(arr, n, i)\n\n    for i in range(n-1, 0, -1):\n        arr[i], arr[0] = arr[0], arr[i]\n        heapify(arr, i, 0)\n\n    return arr\n\nprint(heap_sort([12, 11, 13, 5, 6, 7]))</code></pre><p><b>Time Complexity:</b> O(n log n)</p>"
-  },
-  {
-    "page": 8,
-    "content": "<h2>7. Radix Sort</h2><p>Radix Sort processes each digit of the numbers starting from the least significant digit to the most significant. It uses counting sort as a subroutine.</p><pre><code>def counting_sort(arr, exp):\n    n = len(arr)\n    output = [0] * n\n    count = [0] * 10\n\n    for i in arr:\n        index = (i // exp) % 10\n        count[index] += 1\n\n    for i in range(1, 10):\n        count[i] += count[i - 1]\n\n    i = n - 1\n    while i >= 0:\n        index = (arr[i] // exp) % 10\n        output[count[index] - 1] = arr[i]\n        count[index] -= 1\n        i -= 1\n\n    for i in range(len(arr)):\n        arr[i] = output[i]\n\ndef radix_sort(arr):\n    max1 = max(arr)\n    exp = 1\n    while max1 // exp > 0:\n        counting_sort(arr, exp)\n        exp *= 10\n    return arr\n\nprint(radix_sort([170, 45, 75, 90, 802, 24, 2, 66]))</code></pre><p><b>Time Complexity:</b> O(nk), where k is the number of digits</p>"
-  },
-  {
-    "page": 9,
-    "content": "<h2>8. Binary Tree Sort</h2><p>Binary Tree Sort builds a Binary Search Tree (BST) and then performs in-order traversal to get the sorted elements.</p><pre><code>class Node:\n    def **init**(self, key):\n        self.left = self.right = None\n        self.val = key\n\ndef insert(root, key):\n    if root is None:\n        return Node(key)\n    if key < root.val:\n        root.left = insert(root.left, key)\n    else:\n        root.right = insert(root.right, key)\n    return root\n\ndef inorder(root, res):\n    if root:\n        inorder(root.left, res)\n        res.append(root.val)\n        inorder(root.right, res)\n\ndef tree_sort(arr):\n    if not arr:\n        return []\n    root = None\n    for key in arr:\n        root = insert(root, key)\n    res = []\n    inorder(root, res)\n    return res\n\nprint(tree_sort([5, 3, 7, 2, 4, 6, 8]))</code></pre><p><b>Time Complexity:</b> Average O(n log n), Worst O(n^2) if tree is unbalanced</p>"
-  },
-  {
-    "page": 10,
-    "content": "<h2>Comparison of Sorting Algorithms</h2>\n<pre>\nAlgorithm        Best Case   Average Case   Worst Case   Stable   In-place\n---------------------------------------------------------------------------\nBubble Sort      O(n)        O(n^2)         O(n^2)       Yes      Yes\nSelection Sort   O(n^2)      O(n^2)         O(n^2)       No       Yes\nInsertion Sort   O(n)        O(n^2)         O(n^2)       Yes      Yes\nMerge Sort       O(n log n)  O(n log n)     O(n log n)   Yes      No\nQuick Sort       O(n log n)  O(n log n)     O(n^2)       No       Yes\nHeap Sort        O(n log n)  O(n log n)     O(n log n)   No       Yes\nRadix Sort       O(nk)       O(nk)          O(nk)        Yes      No\nTree Sort        O(n log n)  O(n log n)     O(n^2)       Yes      No\n</pre>\n"
-  }
-]
+    {
+      "page": 1,
+      "content": "<div class='text-block eng'><h2>What is Sorting?</h2><p>Sorting is the process of arranging data in a particular format, typically in ascending or descending order. Sorting is crucial in computer science because it helps in efficiently searching, organizing, and analyzing data.</p><p>There are various sorting algorithms, each with different characteristics, time complexities, and use-cases. In this lesson, we will explore several well-known sorting algorithms with Python examples.</p></div>"
+    },
+    {
+      "page": 2,
+      "content": "<div class='text-block eng'><h2>1. Bubble Sort</h2><p>Bubble Sort repeatedly steps through the list, compares adjacent elements, and swaps them if they are in the wrong order. This process is repeated until the list is sorted.</p><pre><code class='language-python'>def bubble_sort(arr):\n    n = len(arr)\n    for i in range(n):\n        for j in range(0, n-i-1):\n            if arr[j] > arr[j+1]:\n                arr[j], arr[j+1] = arr[j+1], arr[j]\n    return arr\n\nprint(bubble_sort([64, 34, 25, 12, 22, 11, 90]))</code></pre><p><b>Time Complexity:</b> O(n^2)</p></div>"
+    },
+    {
+      "page": 3,
+      "content": "<div class='text-block eng'><h2>2. Selection Sort</h2><p>Selection Sort divides the array into two parts: the sorted part at the beginning and the unsorted part. It repeatedly selects the smallest (or largest) element from the unsorted part and moves it to the sorted part.</p><pre><code class='language-python'>def selection_sort(arr):\n    for i in range(len(arr)):\n        min_idx = i\n        for j in range(i+1, len(arr)):\n            if arr[j] < arr[min_idx]:\n                min_idx = j\n        arr[i], arr[min_idx] = arr[min_idx], arr[i]\n    return arr\n\nprint(selection_sort([64, 25, 12, 22, 11]))</code></pre><p><b>Time Complexity:</b> O(n^2)</p></div>"
+    },
+    {
+      "page": 4,
+      "content": "<div class='text-block eng'><h2>3. Insertion Sort</h2><p>Insertion Sort builds the final sorted array one item at a time. It picks an element and inserts it into its correct position in the already sorted part of the array.</p><pre><code class='language-python'>def insertion_sort(arr):\n    for i in range(1, len(arr)):\n        key = arr[i]\n        j = i - 1\n        while j >= 0 and key < arr[j]:\n            arr[j + 1] = arr[j]\n            j -= 1\n        arr[j + 1] = key\n    return arr\n\nprint(insertion_sort([12, 11, 13, 5, 6]))</code></pre><p><b>Time Complexity:</b> O(n^2)</p></div>"
+    },
+    {
+      "page": 5,
+      "content": "<div class='text-block eng'><h2>4. Merge Sort</h2><p>Merge Sort is a divide-and-conquer algorithm. It divides the array into halves, sorts each half, and then merges them back together.</p><pre><code class='language-python'>def merge_sort(arr):\n    if len(arr) > 1:\n        mid = len(arr) // 2\n        L = arr[:mid]\n        R = arr[mid:]\n\n        merge_sort(L)\n        merge_sort(R)\n\n        i = j = k = 0\n        while i < len(L) and j < len(R):\n            if L[i] < R[j]:\n                arr[k] = L[i]\n                i += 1\n            else:\n                arr[k] = R[j]\n                j += 1\n            k += 1\n\n        while i < len(L):\n            arr[k] = L[i]\n            i += 1\n            k += 1\n\n        while j < len(R):\n            arr[k] = R[j]\n            j += 1\n            k += 1\n\n    return arr\n\nprint(merge_sort([38, 27, 43, 3, 9, 82, 10]))</code></pre><p><b>Time Complexity:</b> O(n log n)</p></div>"
+    },
+    {
+      "page": 6,
+      "content": "<div class='text-block eng'><h2>5. Quick Sort</h2><p>Quick Sort is another divide-and-conquer algorithm. It selects a 'pivot' element and partitions the array into two parts: elements less than the pivot and elements greater than the pivot.</p><pre><code class='language-python'>def quick_sort(arr):\n    if len(arr) <= 1:\n        return arr\n    pivot = arr[len(arr) // 2]\n    left = [x for x in arr if x < pivot]\n    middle = [x for x in arr if x == pivot]\n    right = [x for x in arr if x > pivot]\n    return quick_sort(left) + middle + quick_sort(right)\n\nprint(quick_sort([3, 6, 8, 10, 1, 2, 1]))</code></pre><p><b>Time Complexity:</b> Average O(n log n), Worst O(n^2)</p></div>"
+    },
+    {
+      "page": 7,
+      "content": "<div class='text-block eng'><h2>6. Heap Sort</h2><p>Heap Sort is a comparison-based algorithm that uses a binary heap data structure. It first builds a max heap and then repeatedly extracts the maximum element.</p><pre><code class='language-python'>def heapify(arr, n, i):\n    largest = i\n    l = 2 * i + 1\n    r = 2 * i + 2\n\n    if l < n and arr[l] > arr[largest]:\n        largest = l\n\n    if r < n and arr[r] > arr[largest]:\n        largest = r\n\n    if largest != i:\n        arr[i], arr[largest] = arr[largest], arr[i]\n        heapify(arr, n, largest)\n\ndef heap_sort(arr):\n    n = len(arr)\n\n    for i in range(n // 2 - 1, -1, -1):\n        heapify(arr, n, i)\n\n    for i in range(n-1, 0, -1):\n        arr[i], arr[0] = arr[0], arr[i]\n        heapify(arr, i, 0)\n\n    return arr\n\nprint(heap_sort([12, 11, 13, 5, 6, 7]))</code></pre><p><b>Time Complexity:</b> O(n log n)</p></div>"
+    },
+    {
+      "page": 8,
+      "content": "<div class='text-block eng'><h2>7. Radix Sort</h2><p>Radix Sort processes each digit of the numbers starting from the least significant digit to the most significant. It uses counting sort as a subroutine.</p><pre><code class='language-python'>def counting_sort(arr, exp):\n    n = len(arr)\n    output = [0] * n\n    count = [0] * 10\n\n    for i in arr:\n        index = (i // exp) % 10\n        count[index] += 1\n\n    for i in range(1, 10):\n        count[i] += count[i - 1]\n\n    i = n - 1\n    while i >= 0:\n        index = (arr[i] // exp) % 10\n        output[count[index] - 1] = arr[i]\n        count[index] -= 1\n        i -= 1\n\n    for i in range(len(arr)):\n        arr[i] = output[i]\n\ndef radix_sort(arr):\n    max1 = max(arr)\n    exp = 1\n    while max1 // exp > 0:\n        counting_sort(arr, exp)\n        exp *= 10\n    return arr\n\nprint(radix_sort([170, 45, 75, 90, 802, 24, 2, 66]))</code></pre><p><b>Time Complexity:</b> O(nk), where k is the number of digits</p></div>"
+    },
+    {
+      "page": 9,
+      "content": "<div class='text-block eng'><h2>8. Binary Tree Sort</h2><p>Binary Tree Sort builds a Binary Search Tree (BST) and then performs in-order traversal to get the sorted elements.</p><pre><code class='language-python'>class Node:\n    def __init__(self, key):\n        self.left = self.right = None\n        self.val = key\n\ndef insert(root, key):\n    if root is None:\n        return Node(key)\n    if key < root.val:\n        root.left = insert(root.left, key)\n    else:\n        root.right = insert(root.right, key)\n    return root\n\ndef inorder(root, res):\n    if root:\n        inorder(root.left, res)\n        res.append(root.val)\n        inorder(root.right, res)\n\ndef tree_sort(arr):\n    if not arr:\n        return []\n    root = None\n    for key in arr:\n        root = insert(root, key)\n    res = []\n    inorder(root, res)\n    return res\n\nprint(tree_sort([5, 3, 7, 2, 4, 6, 8]))</code></pre><p><b>Time Complexity:</b> Average O(n log n), Worst O(n^2) if tree is unbalanced</p></div>"
+    },
+    {
+      "page": 10,
+      "content": "<div class='text-block eng'><h2>Comparison of Sorting Algorithms</h2><table border='1' cellpadding='5'><thead><tr><th>Algorithm</th><th>Best Case</th><th>Average Case</th><th>Worst Case</th><th>Stable</th><th>In-place</th></tr></thead><tbody><tr><td>Bubble Sort</td><td>O(n)</td><td>O(n^2)</td><td>O(n^2)</td><td>Yes</td><td>Yes</td></tr><tr><td>Selection Sort</td><td>O(n^2)</td><td>O(n^2)</td><td>O(n^2)</td><td>No</td><td>Yes</td></tr><tr><td>Insertion Sort</td><td>O(n)</td><td>O(n^2)</td><td>O(n^2)</td><td>Yes</td><td>Yes</td></tr><tr><td>Merge Sort</td><td>O(n log n)</td><td>O(n log n)</td><td>O(n log n)</td><td>Yes</td><td>No</td></tr><tr><td>Quick Sort</td><td>O(n log n)</td><td>O(n log n)</td><td>O(n^2)</td><td>No</td><td>Yes</td></tr><tr><td>Heap Sort</td><td>O(n log n)</td><td>O(n log n)</td><td>O(n log n)</td><td>No</td><td>Yes</td></tr><tr><td>Radix Sort</td><td>O(nk)</td><td>O(nk)</td><td>O(nk)</td><td>Yes</td><td>No</td></tr><tr><td>Tree Sort</td><td>O(n log n)</td><td>O(n log n)</td><td>O(n^2)</td><td>Yes</td><td>No</td></tr></tbody></table></div>"
+    }
+  ]
 }

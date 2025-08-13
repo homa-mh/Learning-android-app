@@ -4,47 +4,47 @@
   "pages": [
     {
       "page": 1,
-      "content": "<h2>معرفی لیست‌های پیوندی</h2><p>لیست‌های پیوندی یکی از ساختمان داده‌های خطی هستند که برای ذخیره مجموعه‌ای از عناصر به کار می‌روند. برخلاف آرایه‌ها، داده‌ها در لیست پیوندی به‌صورت متوالی در حافظه قرار نمی‌گیرند. هر عنصر (که \"گره\" یا Node نام دارد) شامل دو بخش است:</p><ul><li>مقدار (Data)</li><li>اشاره‌گر (Pointer یا Reference) به گره بعدی</li></ul>"
+      "content": "<div class='text-block eng'><h2>معرفی لیست‌های پیوندی</h2><p>لیست‌های پیوندی یکی از ساختمان داده‌های خطی هستند که برای ذخیره مجموعه‌ای از عناصر به کار می‌روند. برخلاف آرایه‌ها، داده‌ها در لیست پیوندی به‌صورت متوالی در حافظه قرار نمی‌گیرند. هر عنصر (که \"گره\" یا Node نام دارد) شامل دو بخش است:</p><ul><li>مقدار (Data)</li><li>اشاره‌گر (Pointer یا Reference) به گره بعدی</li></ul></div>"
     },
     {
       "page": 2,
-      "content": "<h2>تفاوت آرایه و لیست پیوندی</h2><table><thead><tr><th>ویژگی</th><th>آرایه</th><th>لیست پیوندی</th></tr></thead><tbody><tr><td>اندازه</td><td>ثابت</td><td>متغیر</td></tr><tr><td>حافظه</td><td>متوالی</td><td>پراکنده</td></tr><tr><td>درج/حذف</td><td>کند در وسط</td><td>سریع در ابتدا یا وسط</td></tr><tr><td>دسترسی تصادفی</td><td>سریع (O(1))</td><td>کند (O(n))</td></tr></tbody></table><p>لیست پیوندی زمانی مفید است که تعداد عناصر متغیر باشد یا عملیات درج/حذف زیاد انجام شود.</p>"
+      "content": "<div class='text-block eng'><h2>تفاوت آرایه و لیست پیوندی</h2><table border='1' cellpadding='5'><thead><tr><th>ویژگی</th><th>آرایه</th><th>لیست پیوندی</th></tr></thead><tbody><tr><td>اندازه</td><td>ثابت</td><td>متغیر</td></tr><tr><td>حافظه</td><td>متوالی</td><td>پراکنده</td></tr><tr><td>درج/حذف</td><td>کند در وسط</td><td>سریع در ابتدا یا وسط</td></tr><tr><td>دسترسی تصادفی</td><td>سریع (O(1))</td><td>کند (O(n))</td></tr></tbody></table><p>لیست پیوندی زمانی مفید است که تعداد عناصر متغیر باشد یا عملیات درج/حذف زیاد انجام شود.</p></div>"
     },
     {
       "page": 3,
-      "content": "<h2>ساختار گره در لیست پیوندی</h2><p>در پایتون می‌توان یک گره ساده را این‌گونه تعریف کرد:</p><pre><code>class Node:\n    def __init__(self, data):\n        self.data = data\n        self.next = None\n</code></pre><p>این کلاس یک مقدار (<code>data</code>) را ذخیره می‌کند و یک اشاره‌گر (<code>next</code>) به گره بعدی دارد.</p>"
+      "content": "<div class='text-block eng'><h2>ساختار گره در لیست پیوندی</h2><p>در پایتون می‌توان یک گره ساده را این‌گونه تعریف کرد:</p></div><div class='code-block'><pre><code class='language-python'>class Node:\n    def __init__(self, data):\n        self.data = data\n        self.next = None\n</code></pre></div><div class='text-block eng'><p>این کلاس یک مقدار (<code>data</code>) را ذخیره می‌کند و یک اشاره‌گر (<code>next</code>) به گره بعدی دارد.</p></div>"
     },
     {
       "page": 4,
-      "content": "<h2>تعریف لیست پیوندی تکی</h2><p>لیست پیوندی تکی (Singly Linked List) لیستی است که هر گره فقط به گره بعدی اشاره می‌کند.</p><pre><code>class LinkedList:\n    def __init__(self):\n        self.head = None\n</code></pre><p>عملیات پایه:</p><ul><li>درج در ابتدا</li><li>درج در انتها</li><li>حذف گره</li><li>پیمایش لیست</li></ul>"
+      "content": "<div class='text-block eng'><h2>تعریف لیست پیوندی تکی</h2><p>لیست پیوندی تکی (Singly Linked List) لیستی است که هر گره فقط به گره بعدی اشاره می‌کند.</p></div><div class='code-block'><pre><code class='language-python'>class LinkedList:\n    def __init__(self):\n        self.head = None\n</code></pre></div><div class='text-block eng'><p>عملیات پایه:</p><ul><li>درج در ابتدا</li><li>درج در انتها</li><li>حذف گره</li><li>پیمایش لیست</li></ul></div>"
     },
     {
       "page": 5,
-      "content": "<h2>درج و پیمایش در لیست پیوندی</h2><p>درج در ابتدا:</p><pre><code>def insert_at_beginning(self, data):\n    new_node = Node(data)\n    new_node.next = self.head\n    self.head = new_node\n</code></pre><p>پیمایش لیست:</p><pre><code>def print_list(self):\n    current = self.head\n    while current:\n        print(current.data)\n        current = current.next\n</code></pre>"
+      "content": "<div class='text-block eng'><h2>درج و پیمایش در لیست پیوندی</h2><p>درج در ابتدا:</p></div><div class='code-block'><pre><code class='language-python'>def insert_at_beginning(self, data):\n    new_node = Node(data)\n    new_node.next = self.head\n    self.head = new_node\n</code></pre></div><div class='text-block eng'><p>پیمایش لیست:</p></div><div class='code-block'><pre><code class='language-python'>def print_list(self):\n    current = self.head\n    while current:\n        print(current.data)\n        current = current.next\n</code></pre></div>"
     },
     {
       "page": 6,
-      "content": "<h2>حذف گره از لیست پیوندی</h2><p>برای حذف یک گره با مقدار خاص:</p><pre><code>def delete(self, key):\n    current = self.head\n    if current and current.data == key:\n        self.head = current.next\n        return\n    prev = None\n    while current and current.data != key:\n        prev = current\n        current = current.next\n    if current:\n        prev.next = current.next\n</code></pre>"
+      "content": "<div class='text-block eng'><h2>حذف گره از لیست پیوندی</h2><p>برای حذف یک گره با مقدار خاص:</p></div><div class='code-block'><pre><code class='language-python'>def delete(self, key):\n    current = self.head\n    if current and current.data == key:\n        self.head = current.next\n        return\n    prev = None\n    while current and current.data != key:\n        prev = current\n        current = current.next\n    if current:\n        prev.next = current.next\n</code></pre></div>"
     },
     {
       "page": 7,
-      "content": "<h2>لیست پیوندی دوطرفه (Doubly Linked List)</h2><p>در این نوع لیست، هر گره به گره قبل و بعد اشاره دارد:</p><pre><code>class DNode:\n    def __init__(self, data):\n        self.data = data\n        self.prev = None\n        self.next = None\n</code></pre><p>مزیت آن نسبت به لیست تکی: حرکت به دو جهت (جلو و عقب)</p>"
+      "content": "<div class='text-block eng'><h2>لیست پیوندی دوطرفه (Doubly Linked List)</h2><p>در این نوع لیست، هر گره به گره قبل و بعد اشاره دارد:</p></div><div class='code-block'><pre><code class='language-python'>class DNode:\n    def __init__(self, data):\n        self.data = data\n        self.prev = None\n        self.next = None\n</code></pre></div><div class='text-block eng'><p>مزیت آن نسبت به لیست تکی: حرکت به دو جهت (جلو و عقب)</p></div>"
     },
     {
       "page": 8,
-      "content": "<h2>لیست پیوندی حلقوی (Circular Linked List)</h2><p>در این ساختار، گره آخر به گره اول اشاره می‌کند. می‌تواند به‌صورت تکی یا دوطرفه باشد.</p><p>مزیت: امکان پیمایش چرخشی بدون توقف (برای کاربردهایی مثل صف‌های چرخان)</p>"
+      "content": "<div class='text-block eng'><h2>لیست پیوندی حلقوی (Circular Linked List)</h2><p>در این ساختار، گره آخر به گره اول اشاره می‌کند. می‌تواند به‌صورت تکی یا دوطرفه باشد.</p><p>مزیت: امکان پیمایش چرخشی بدون توقف (برای کاربردهایی مثل صف‌های چرخان)</p></div>"
     },
     {
       "page": 9,
-      "content": "<h2>مزایا و معایب لیست پیوندی</h2><ul><li>اندازه پویا</li><li>درج و حذف مؤثر (در ابتدا و وسط)</li><li>دسترسی کند به عناصر (O(n))</li><li>مصرف حافظه بیشتر به‌دلیل اشاره‌گرها</li></ul>"
+      "content": "<div class='text-block eng'><h2>مزایا و معایب لیست پیوندی</h2><ul><li>اندازه پویا</li><li>درج و حذف مؤثر (در ابتدا و وسط)</li><li>دسترسی کند به عناصر (O(n))</li><li>مصرف حافظه بیشتر به‌دلیل اشاره‌گرها</li></ul></div>"
     },
     {
       "page": 10,
-      "content": "<h2>پیچیدگی زمانی عملیات</h2><table><thead><tr><th>عملیات</th><th>زمان اجرا</th></tr></thead><tbody><tr><td>دسترسی</td><td>O(n)</td></tr><tr><td>جست‌وجو</td><td>O(n)</td></tr><tr><td>درج در ابتدا</td><td>O(1)</td></tr><tr><td>درج در وسط/انتها</td><td>O(n)</td></tr><tr><td>حذف</td><td>O(n)</td></tr></tbody></table>"
+      "content": "<div class='text-block eng'><h2>پیچیدگی زمانی عملیات</h2><table border='1' cellpadding='5'><thead><tr><th>عملیات</th><th>زمان اجرا</th></tr></thead><tbody><tr><td>دسترسی</td><td>O(n)</td></tr><tr><td>جست‌وجو</td><td>O(n)</td></tr><tr><td>درج در ابتدا</td><td>O(1)</td></tr><tr><td>درج در وسط/انتها</td><td>O(n)</td></tr><tr><td>حذف</td><td>O(n)</td></tr></tbody></table></div>"
     },
     {
       "page": 11,
-      "content": "<h2>مثال عملی (ساخت لیست و درج چند مقدار)</h2><pre><code>ll = LinkedList()\nll.insert_at_beginning(10)\nll.insert_at_beginning(20)\nll.insert_at_beginning(30)\nll.print_list()  # خروجی: 30 20 10\n</code></pre>"
+      "content": "<div class='text-block eng'><h2>مثال عملی (ساخت لیست و درج چند مقدار)</h2></div><div class='code-block'><pre><code class='language-python'>ll = LinkedList()\nll.insert_at_beginning(10)\nll.insert_at_beginning(20)\nll.insert_at_beginning(30)\nll.print_list()  # خروجی: 30 20 10\n</code></pre></div>"
     }
   ]
 }

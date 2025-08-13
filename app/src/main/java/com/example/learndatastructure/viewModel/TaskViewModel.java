@@ -40,9 +40,8 @@ public class TaskViewModel extends AndroidViewModel {
     }
 
     public void refreshTasks() {
-        // اینجا می‌تونی از دیتابیس بخونی یا لیست موجود رو دوباره set کنی
-        List<TaskModel> currentTasks = repository.getAllTasks();  // یا هر چیزی که داری
-        tasksLiveData.setValue(currentTasks);  // این باعث اجرا شدن observe توی ProfileFragment میشه
+        List<TaskModel> currentTasks = repository.getAllTasks();
+        tasksLiveData.setValue(currentTasks);
     }
 
     public void completeTaskIfNotDone(int taskId, Context context) {
@@ -66,3 +65,8 @@ public class TaskViewModel extends AndroidViewModel {
 
 
 }
+
+
+
+
+
