@@ -13,7 +13,7 @@ public class SettingsLocalStorageManager {
 
     // Settings
     public void setDarkMode(boolean enabled) {
-        prefs.edit().putBoolean("dark_mode", enabled).apply();
+        prefs.edit().putBoolean("dark_mode", enabled).commit();
     }
 
     public boolean isDarkMode() {

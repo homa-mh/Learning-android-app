@@ -13,20 +13,20 @@ import com.example.learndatastructure.notifications.ReminderHelper;
 
 public class SettingsViewModel extends AndroidViewModel {
     private final SettingsRepository repo;
-    private SettingsModel settings;
 
     public MutableLiveData<Boolean> darkMode = new MutableLiveData<>();
     public MutableLiveData<Boolean> reminder = new MutableLiveData<>();
     public MutableLiveData<Boolean> sound = new MutableLiveData<>();
     public MutableLiveData<String> language = new MutableLiveData<>();
 
-
     public SettingsViewModel(@NonNull Application application) {
         super(application);
         repo = new SettingsRepository(application);
-        settings = repo.getSettings();
+        loadSettingsFromRepo();
+    }
 
-        // Load initial values
+    public void loadSettingsFromRepo() {
+        SettingsModel settings = repo.getSettings();
         darkMode.setValue(settings.isDarkMode());
         reminder.setValue(settings.isReminders());
         sound.setValue(settings.isSound());
@@ -34,19 +34,23 @@ public class SettingsViewModel extends AndroidViewModel {
     }
 
     public void toggleDarkMode(boolean value) {
+        SettingsModel settings = repo.getSettings(); // تازه بگیر
         settings.setDarkMode(value);
-        darkMode.setValue(value);
         repo.saveSettings(settings);
+
         AppCompatDelegate.setDefaultNightMode(
                 value ? AppCompatDelegate.MODE_NIGHT_YES : AppCompatDelegate.MODE_NIGHT_NO
         );
+
+        loadSettingsFromRepo(); // دوباره لود کن
     }
 
-
     public void toggleReminder(boolean value) {
+        SettingsModel settings = repo.getSettings();
         settings.setReminders(value);
-        reminder.setValue(value);
         repo.saveSettings(settings);
+
+        reminder.setValue(value);
 
         int[] time = settings.getReminderTime();
         if (value) {
@@ -57,6 +61,7 @@ public class SettingsViewModel extends AndroidViewModel {
     }
 
     public void updateReminderTime(int hour, int minute) {
+        SettingsModel settings = repo.getSettings();
         settings.setReminderTime(new int[]{hour, minute});
         repo.saveSettings(settings);
 
@@ -65,18 +70,18 @@ public class SettingsViewModel extends AndroidViewModel {
         }
     }
 
-
-
     public void toggleSound(boolean value) {
+        SettingsModel settings = repo.getSettings();
         settings.setSound(value);
-        sound.setValue(value);
         repo.saveSettings(settings);
+        sound.setValue(value);
     }
 
     public void changeLanguage(String lang) {
+        SettingsModel settings = repo.getSettings();
         settings.setLanguage(lang);
-        language.setValue(lang);
         repo.saveSettings(settings);
+        language.setValue(lang);
     }
 
     public void logout() {
@@ -86,14 +91,12 @@ public class SettingsViewModel extends AndroidViewModel {
     public String getShareMessage() {
         return "Hey! Check out this awesome app to learn data structures:\nhttps://play.google.com/store/apps/details?id=com.example.learndatastructure";
     }
+
     public boolean isLoggedIn() {
         return repo.isLoggedIn();
     }
 
     public int[] getReminderTime() {
-        return settings.getReminderTime();
+        return repo.getSettings().getReminderTime();
     }
-
-
-
 }

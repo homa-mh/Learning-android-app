@@ -16,7 +16,7 @@
     },
     {
       "page": 4,
-      "content": "<div class='table-block'><h2>Time Complexities</h2><table><tr><th>Operation</th><th>Time Complexity</th></tr><tr><td>enqueue</td><td>O(1)</td></tr><tr><td>dequeue</td><td>O(1)</td></tr><tr><td>front</td><td>O(1)</td></tr><tr><td>isEmpty</td><td>O(1)</td></tr></table><p>Using <code>collections.deque</code> ensures constant time for both ends of the queue.</p></div>"
+      "content": "<div class='text-block eng'><h2>Time Complexities</h2></div><div class='table-block'><table><tr><th>Operation</th><th>Time Complexity</th></tr><tr><td>enqueue</td><td>O(1)</td></tr><tr><td>dequeue</td><td>O(1)</td></tr><tr><td>front</td><td>O(1)</td></tr><tr><td>isEmpty</td><td>O(1)</td></tr></table></div><div class='text-block eng'><p>Using <code>collections.deque</code> ensures constant time for both ends of the queue.</p></div>"
     },
     {
       "page": 5,

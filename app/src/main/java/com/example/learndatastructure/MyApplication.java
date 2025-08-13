@@ -27,6 +27,7 @@ public class MyApplication extends Application {
         SettingsRepository repo = new SettingsRepository(this);
         boolean isDarkMode = repo.getSettings().isDarkMode();
 
+        // تم را قبل از هر چیزی ست کن
         AppCompatDelegate.setDefaultNightMode(
                 isDarkMode ? AppCompatDelegate.MODE_NIGHT_YES : AppCompatDelegate.MODE_NIGHT_NO
         );

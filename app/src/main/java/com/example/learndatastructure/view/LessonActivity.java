@@ -157,7 +157,7 @@ public class LessonActivity extends AppCompatActivity {
                             ".text-block.eng { direction: ltr; text-align: left; margin-bottom: 12px; }" +
                             ".code-block {"  +
                             "color: #ffffff;" +
-                            "border-radius: 6px;" +
+                            "border-radius: 10px;" +
                             "display: block;" +
                             "overflow-x: auto;" +
                             "font-family: monospace;" +

@@ -122,9 +122,16 @@ public class ProfileFragment extends Fragment {
 
         // default value for settings (gets data from view model)
         viewModel.darkMode.observe(getViewLifecycleOwner(), value -> {
+            darkModeSwitch.setOnCheckedChangeListener(null);
             darkModeSwitch.setChecked(value);
             darkModeSwitch.setText(value ? R.string.settings_on : R.string.settings_off);
+
+            darkModeSwitch.setOnCheckedChangeListener((buttonView, isChecked) -> {
+                viewModel.toggleDarkMode(isChecked);
+                darkModeSwitch.setText(isChecked ? R.string.settings_on : R.string.settings_off);
+            });
         });
+
         viewModel.sound.observe(getViewLifecycleOwner(), value -> {
             soundSwitch.setChecked(value);
             soundSwitch.setText(value ? R.string.settings_on : R.string.settings_off);
