@@ -4,7 +4,7 @@
 
 ---
 
-## 🔹 User Flow & UX
+##  User Flow & UX
 
 ### 1. Splash Screen (IntroActivity)
 After launching the app, the splash screen displays the app logo and name.  
@@ -51,7 +51,7 @@ Includes app settings: *Figure 7*
 
 ---
 
-## 🔹 Development Environment
+##  Development Environment
 
 - **IDE:** Android Studio Hedgehog | 2023.1.1 Patch 2  
 - **Gradle version:** 8.0  
@@ -63,13 +63,13 @@ Android Studio provides emulator, UI design tools, debugging, and Gradle managem
 
 ---
 
-## 🔹 Programming Language
+##  Programming Language
 
 - **Java**: Officially supported for Android development
 
 ---
 
-## 🔹 Libraries Used
+##  Libraries Used
 
 | Library | Version | Purpose |
 |---------|--------|---------|
@@ -85,7 +85,7 @@ Android Studio provides emulator, UI design tools, debugging, and Gradle managem
 
 ---
 
-## 🔹 Software Architecture
+##  Software Architecture
 
 - **MVVM (Model-View-ViewModel)** for separation of concerns and easier maintenance:
   - **Model:** Data classes and JSON file management
@@ -96,7 +96,7 @@ Android Studio provides emulator, UI design tools, debugging, and Gradle managem
 
 ---
 
-## 🔹 Installation & Running the App
+##  Installation & Running the App
 
 ### Accessing the Source Code
 [GitHub Repository](https://github.com/homa-mh/Learning-android-app)
